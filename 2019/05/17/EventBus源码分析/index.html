@@ -79,17 +79,20 @@
 
 
 
-<meta name="description" content="源码地址：https://github.com/cn-ljb/KotlinBlogs 这篇不聊具体的知识点，仅聊聊kotlin在开发中好的地方，以及博主自认为不好的地方。 优点1、延迟加载（lazy） 初始化变量的时机被推迟到访问时，有了它真是方便了我们这些不注重内存效率的码农…(lazy具体的实现在委托章节已经进行了详细讲解，不妨点进去看看它是怎么实现的) //仅在被访问时，才会开辟10个元素大">
+<meta name="description" content="版本 ： org.greenrobot:eventbus:3.1.1  简介Android或者Java平台下的一款高效的事件总线框架。 特点：  简洁的组件通信机制 发布者、订阅者完全分离 线程安全 内存安全   调用者代码简洁 快捷迅速 包小 经过了100,000,000+App安装量验证 支持优先级  源码分析我们以一个最简单的示例作为分析的突破口（以下代码均以Kotlin编写）。 第1步：编">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Kotlin-Android世界的一股清流-优点&amp;缺点">
-<meta property="og:url" content="http://yoursite.com/2019/05/17/Kotlin-Android世界的一股清流-开发中的优点与槽点/index.html">
+<meta property="og:title" content="EventBus源码分析">
+<meta property="og:url" content="http://yoursite.com/2019/05/17/EventBus源码分析/index.html">
 <meta property="og:site_name" content="雷小歪的博客">
-<meta property="og:description" content="源码地址：https://github.com/cn-ljb/KotlinBlogs 这篇不聊具体的知识点，仅聊聊kotlin在开发中好的地方，以及博主自认为不好的地方。 优点1、延迟加载（lazy） 初始化变量的时机被推迟到访问时，有了它真是方便了我们这些不注重内存效率的码农…(lazy具体的实现在委托章节已经进行了详细讲解，不妨点进去看看它是怎么实现的) //仅在被访问时，才会开辟10个元素大">
+<meta property="og:description" content="版本 ： org.greenrobot:eventbus:3.1.1  简介Android或者Java平台下的一款高效的事件总线框架。 特点：  简洁的组件通信机制 发布者、订阅者完全分离 线程安全 内存安全   调用者代码简洁 快捷迅速 包小 经过了100,000,000+App安装量验证 支持优先级  源码分析我们以一个最简单的示例作为分析的突破口（以下代码均以Kotlin编写）。 第1步：编">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-05-17T07:02:46.546Z">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/6656959-fc11f27e46ac7cb7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://i.imgur.com/9VZwpyO.png">
+<meta property="og:updated_time" content="2019-05-17T07:07:18.167Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Kotlin-Android世界的一股清流-优点&amp;缺点">
-<meta name="twitter:description" content="源码地址：https://github.com/cn-ljb/KotlinBlogs 这篇不聊具体的知识点，仅聊聊kotlin在开发中好的地方，以及博主自认为不好的地方。 优点1、延迟加载（lazy） 初始化变量的时机被推迟到访问时，有了它真是方便了我们这些不注重内存效率的码农…(lazy具体的实现在委托章节已经进行了详细讲解，不妨点进去看看它是怎么实现的) //仅在被访问时，才会开辟10个元素大">
+<meta name="twitter:title" content="EventBus源码分析">
+<meta name="twitter:description" content="版本 ： org.greenrobot:eventbus:3.1.1  简介Android或者Java平台下的一款高效的事件总线框架。 特点：  简洁的组件通信机制 发布者、订阅者完全分离 线程安全 内存安全   调用者代码简洁 快捷迅速 包小 经过了100,000,000+App安装量验证 支持优先级  源码分析我们以一个最简单的示例作为分析的突破口（以下代码均以Kotlin编写）。 第1步：编">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/6656959-fc11f27e46ac7cb7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
 
@@ -119,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/05/17/Kotlin-Android世界的一股清流-开发中的优点与槽点/">
+  <link rel="canonical" href="http://yoursite.com/2019/05/17/EventBus源码分析/">
 
 
 
 
 
-  <title>Kotlin-Android世界的一股清流-优点&缺点 | 雷小歪的博客</title>
+  <title>EventBus源码分析 | 雷小歪的博客</title>
   
 
 
@@ -274,7 +277,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/17/Kotlin-Android世界的一股清流-开发中的优点与槽点/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/17/EventBus源码分析/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="cn-ljb">
@@ -291,7 +294,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Kotlin-Android世界的一股清流-优点&缺点</h1>
+          <h1 class="post-title" itemprop="name headline">EventBus源码分析</h1>
         
 
         <div class="post-meta">
@@ -303,7 +306,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-17T14:53:51+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-17T14:55:51+08:00">
                 2019-05-17
               </time>
             
@@ -341,51 +344,385 @@
       
 
       
-        <p>源码地址：<a href="https://github.com/cn-ljb/KotlinBlogs" target="_blank" rel="noopener">https://github.com/cn-ljb/KotlinBlogs</a></p>
-<p>这篇不聊具体的知识点，仅聊聊kotlin在开发中好的地方，以及博主自认为不好的地方。</p>
-<h2 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h2><p>1、延迟加载（lazy）</p>
-<p>初始化变量的时机被推迟到访问时，有了它真是方便了我们这些不注重内存效率的码农…<br>(lazy具体的实现在<a href="http://www.jianshu.com/p/65d586c31704" target="_blank" rel="noopener">委托章节</a>已经进行了详细讲解，不妨点进去看看它是怎么实现的)</p>
-<pre><code>//仅在被访问时，才会开辟10个元素大小的数组
+        <p>版本 ： org.greenrobot:eventbus:3.1.1</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/6656959-fc11f27e46ac7cb7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="EventBus-Publish-Subscribe.png"></p>
+<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>Android或者Java平台下的一款高效的事件总线框架。</p>
+<p>特点：</p>
+<ul>
+<li>简洁的组件通信机制<ul>
+<li>发布者、订阅者完全分离</li>
+<li>线程安全</li>
+<li>内存安全</li>
+</ul>
+</li>
+<li>调用者代码简洁</li>
+<li>快捷迅速</li>
+<li>包小</li>
+<li>经过了100,000,000+App安装量验证</li>
+<li>支持优先级</li>
+</ul>
+<h2 id="源码分析"><a href="#源码分析" class="headerlink" title="源码分析"></a>源码分析</h2><p>我们以一个最简单的示例作为分析的突破口（以下代码均以Kotlin编写）。</p>
+<p>第1步：编写一个事件类</p>
+<pre><code>class MessageEvent(val data: String)
+</code></pre><p>第2步：订阅者</p>
+<pre><code>class MainActivity : AppCompatActivity() {
 
-val arr by lazy { Array(10, { i: Int -&gt; i}) }
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+        //1、注册
+        EventBus.getDefault().register(this)
+    }
 
-fun main(args: Array&lt;String&gt;) {
+    //2、定义订阅触发方法
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    fun onMessageEvent(event: MessageEvent) {
+        Log.i(&quot;test&quot;, &quot;MessageEvent事件被触发&quot;)
+    }
 
-    arr.map {
-        println(it)
+    override fun onDestroy() {
+        super.onDestroy()
+        //3、注销
+        EventBus.getDefault().unregister(this)
     }
 }
-</code></pre><p>仅当你调用数组arr时，该数组才会被初始化出来。</p>
-<p>2、getter/setter</p>
-<p>首先Kotlin中我们不需要想Java那样手动的添加getter、setter方法了，这些Kotlin已经为我们做好了</p>
-<p>3、with()函数简化代码</p>
-<pre><code>/*
-* 通过with语句，可以直接将对象传入，省掉对象的声明
-* 使用场景：当对一个变量要进行多次使用，并返回与该变量相关的结果
-* */
-fun alphabet4(): String {
-    return with(StringBuilder()) {
-        append(&quot;START\n&quot;)
-        for (letter in &apos;A&apos;..&apos;Z&apos;) {
-            append(letter)
+</code></pre><p>第3步：发布者</p>
+<pre><code>EventBus.getDefault().post(MessageEvent(&quot;123456&quot;))
+</code></pre><p>显然第1步没什么好分析的，怎么看它都是一个普普通通的类。</p>
+<h3 id="EventBus-getDefault-register-this-源码"><a href="#EventBus-getDefault-register-this-源码" class="headerlink" title="EventBus.getDefault().register(this) 源码"></a>EventBus.getDefault().register(this) 源码</h3><p>而第2步中大致又可以分为三部分：<strong>注册</strong>、<strong>定义触发方法</strong>、<strong>注销</strong>。我们看看<strong>注册</strong>的源码都执行了哪些逻辑：</p>
+<pre><code>// EventBus.getDefault().register(this)方法源码
+public void register(Object subscriber) {
+    //1
+    Class&lt;?&gt; subscriberClass = subscriber.getClass();
+    //2
+    List&lt;SubscriberMethod&gt; subscriberMethods = subscriberMethodFinder.findSubscriberMethods(subscriberClass);
+    synchronized (this) {
+        //3
+        for (SubscriberMethod subscriberMethod : subscriberMethods) {
+            subscribe(subscriber, subscriberMethod);
         }
-        append(&quot;\nEND&quot;)
-        toString()
     }
 }
-</code></pre><p>4、apply()函数简化代码</p>
-<pre><code>/**
- *apply函数，在函数范围内，可以任意调用该对象的任意方法，并返回该对象
- * 使用场景：初始化变量，并对该变量域有操作时
- */
-fun alphabet5() = StringBuilder().apply {
-    append(&quot;START\n&quot;)
-    for (letter in &apos;A&apos;..&apos;Z&apos;) {
-        append(letter)
+</code></pre><p>register()方法内部实现大致可看为3行代码：</p>
+<ul>
+<li>1、获取传入subscriber对象的字节码对象</li>
+<li>2、通过字节码对象获取到一个List<subscribermethod>集合</subscribermethod></li>
+<li>3、遍历这个集合，调用subscribe()方法 ，把当前subscriber和item subscriberMethod以形参形式传入</li>
+</ul>
+<p>字节码对象不必多讲，我们看看subscriberMethodFinder.findSubscriberMethods()这个方法返回的集合究竟是什么：</p>
+<pre><code>List&lt;SubscriberMethod&gt; findSubscriberMethods(Class&lt;?&gt; subscriberClass) {
+    缓存机制...
+
+    if (ignoreGeneratedIndex) {
+        subscriberMethods = findUsingReflection(subscriberClass);
+    } else {
+        subscriberMethods = findUsingInfo(subscriberClass);
     }
-    append(&quot;\nEND&quot;)
-}.toString()
-</code></pre>
+
+      缓存机制...
+    return subscriberMethods;
+}
+</code></pre><p>便于阅读，这里省掉部分不影响核心功能的的代码，重点放到这个if判断上，通过源码的查看ignoreGeneratedIndex我们并没有进行过修改操作，这里走的是默认值false,再看看findUsingInfo()方法做了什么：</p>
+<pre><code>private List&lt;SubscriberMethod&gt; findUsingInfo(Class&lt;?&gt; subscriberClass) {
+    //1、
+    FindState findState = prepareFindState();
+    findState.initForSubscriber(subscriberClass);
+    //2、
+    while (findState.clazz != null) {
+        findState.subscriberInfo = getSubscriberInfo(findState);
+        if (findState.subscriberInfo != null) {
+           缓存机制...
+        } else {
+            findUsingReflectionInSingleClass(findState);
+        }
+        //3、
+        findState.moveToSuperclass();
+    }
+    //4、
+    return getMethodsAndRelease(findState);
+}
+</code></pre><p>这里又出现了一个新类FindState：</p>
+<pre><code>static class FindState {
+    final List&lt;SubscriberMethod&gt; subscriberMethods = new ArrayList&lt;&gt;();
+    final Map&lt;Class, Object&gt; anyMethodByEventType = new HashMap&lt;&gt;();
+    final Map&lt;String, Class&gt; subscriberClassByMethodKey = new HashMap&lt;&gt;();
+    final StringBuilder methodKeyBuilder = new StringBuilder(128);
+
+    Class&lt;?&gt; subscriberClass;
+    Class&lt;?&gt; clazz;
+    boolean skipSuperClasses;
+    SubscriberInfo subscriberInfo;
+
+    void initForSubscriber(Class&lt;?&gt; subscriberClass) {
+        this.subscriberClass = clazz = subscriberClass;
+        skipSuperClasses = false;
+        subscriberInfo = null;
+    }
+
+    ...
+｝
+</code></pre><p>可以看出来FindState是一个容器管理类，貌似存放了一些跟这个订阅者Class字节码对象相关的数据，顺便看下initForSubscriber()方法将我们的订阅者Class对象赋值给了该容器的subscriberClass和class.</p>
+<p>再看这里的while循环肯定为true了，if语句我们看else部分，其他部分属于缓存机制，findUsingReflectionInSingleClass()方法如下：</p>
+<pre><code>private void findUsingReflectionInSingleClass(FindState findState) {
+    //1、
+    Method[] methods;
+    try {
+        // This is faster than getMethods, especially when subscribers are fat classes like Activities
+        methods = findState.clazz.getDeclaredMethods();
+    } catch (Throwable th) {
+        // Workaround for java.lang.NoClassDefFoundError, see https://github.com/greenrobot/EventBus/issues/149
+        methods = findState.clazz.getMethods();
+        findState.skipSuperClasses = true;
+    }
+
+    //2、
+    for (Method method : methods) {
+        int modifiers = method.getModifiers();
+        if ((modifiers &amp; Modifier.PUBLIC) != 0 &amp;&amp; (modifiers &amp; MODIFIERS_IGNORE) == 0) {
+            Class&lt;?&gt;[] parameterTypes = method.getParameterTypes();
+            if (parameterTypes.length == 1) {
+                Subscribe subscribeAnnotation = method.getAnnotation(Subscribe.class);
+                if (subscribeAnnotation != null) {
+                    Class&lt;?&gt; eventType = parameterTypes[0];
+                    if (findState.checkAdd(method, eventType)) {
+                        ThreadMode threadMode = subscribeAnnotation.threadMode();
+                        //3、
+                        findState.subscriberMethods.add(new SubscriberMethod(method, eventType, threadMode,
+                                subscribeAnnotation.priority(), subscribeAnnotation.sticky()));
+                    }
+                }
+            } else if (strictMethodVerification &amp;&amp; method.isAnnotationPresent(Subscribe.class)) {
+              ...
+            }
+        } else if (strictMethodVerification &amp;&amp; method.isAnnotationPresent(Subscribe.class)) {
+            ...
+        }
+    }
+}
+</code></pre><p>首先通过反射获取到了当前订阅者Class中的所有Method对象，接下来遍历这些Method对象，最终把我们编写订阅触发方法的Method找了出来（@Subscribe注解标识的方法），一个订阅者可以有多个订阅触发方法，都将它们存储到findState.subscriberMethods集合里。</p>
+<p>让我们findUsingInfo()，至于findState.moveToSuperclass()我们就不看了，这里就是获取当前订阅者Class的superClass通过while再去查询它里面的订阅事件，重走刚刚所分析的逻辑，最后看getMethodsAndRelease(findState)返回了什么东西：</p>
+<pre><code>private List&lt;SubscriberMethod&gt; getMethodsAndRelease(FindState findState) {
+    List&lt;SubscriberMethod&gt; subscriberMethods = new ArrayList&lt;&gt;(findState.subscriberMethods);
+    findState.recycle();
+       缓存机制...
+    return subscriberMethods;
+}
+</code></pre><p>原来就是将findState.subscriberMethods返回了回去，通过一层层的返回最终subscriberMethods返回到了register()方法中，那么register()方法中就剩最后遍历调用的subscribe()方法，看看它都做了什么：</p>
+<pre><code>private void subscribe(Object subscriber, SubscriberMethod subscriberMethod) {
+    Class&lt;?&gt; eventType = subscriberMethod.eventType;
+    //1、
+    Subscription newSubscription = new Subscription(subscriber, subscriberMethod);
+    CopyOnWriteArrayList&lt;Subscription&gt; subscriptions = subscriptionsByEventType.get(eventType);
+    if (subscriptions == null) {
+        subscriptions = new CopyOnWriteArrayList&lt;&gt;();
+        //2、
+        subscriptionsByEventType.put(eventType, subscriptions);
+    } else {
+        if (subscriptions.contains(newSubscription)) {
+            throw new EventBusException(&quot;Subscriber &quot; + subscriber.getClass() + &quot; already registered to event &quot;
+                    + eventType);
+        }
+    }
+
+    int size = subscriptions.size();
+    for (int i = 0; i &lt;= size; i++) {
+        if (i == size || subscriberMethod.priority &gt; subscriptions.get(i).subscriberMethod.priority) {
+            //2、
+            subscriptions.add(i, newSubscription);
+            break;
+        }
+    }
+
+    List&lt;Class&lt;?&gt;&gt; subscribedEvents = typesBySubscriber.get(subscriber);
+    if (subscribedEvents == null) {
+        subscribedEvents = new ArrayList&lt;&gt;();
+        typesBySubscriber.put(subscriber, subscribedEvents);
+    }
+    subscribedEvents.add(eventType);
+
+    粘性事件处理...
+}
+</code></pre><p>这里代码看似很多，大家只需记住1个对象、2个容器即可：</p>
+<ul>
+<li>对象：<strong>Subscription</strong> <ul>
+<li>存储了注册时传入的订阅者subscriber 和 某个订阅方法（@Subscribe注解标注的方法）</li>
+</ul>
+</li>
+<li>容器1：Map&lt;Class,List&lt; Subscription &gt;&gt; <strong>subscriptionsByEventType</strong> <ul>
+<li>存储了某个事件类型（eg:MessageEvent） -&gt; 对应的所有的<strong>Subscription</strong>（小对象）</li>
+</ul>
+</li>
+<li>容器2：Map&lt;Object, List&lt; Class &gt;&gt; <strong>typesBySubscriber</strong> <ul>
+<li>存储了某个订阅者 -&gt; 对应订阅的所有事件类型（eg:MessageEvent…）</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://i.imgur.com/9VZwpyO.png" alt></p>
+<p>到此整个register()的源码已经走了一遍，小结一句话：</p>
+<blockquote>
+<p>register()方法，通过反射将订阅者中@Subscribe注解标注的所有方法、订阅对象、订阅事件类型分别存储到了两个容器中。</p>
+</blockquote>
+<h3 id="EventBus-getDefault-unregister-this-源码"><a href="#EventBus-getDefault-unregister-this-源码" class="headerlink" title="EventBus.getDefault().unregister(this) 源码"></a>EventBus.getDefault().unregister(this) 源码</h3><p>想想，register()方法是将订阅者拆解出来存储到不同容器中，那么unregister()用来做什么？<br>那肯定是将当前订阅者相关的存储数据从容器中remove喽：</p>
+<pre><code>public synchronized void unregister(Object subscriber) {
+    //1、
+    List&lt;Class&lt;?&gt;&gt; subscribedTypes = typesBySubscriber.get(subscriber);
+    if (subscribedTypes != null) {
+        //2、
+        for (Class&lt;?&gt; eventType : subscribedTypes) {
+            unsubscribeByEventType(subscriber, eventType);
+        }
+        typesBySubscriber.remove(subscriber);
+    } else {
+        logger.log(Level.WARNING, &quot;Subscriber to unregister was not registered before: &quot; + subscriber.getClass());
+    }
+}
+
+private void unsubscribeByEventType(Object subscriber, Class&lt;?&gt; eventType) {
+    List&lt;Subscription&gt; subscriptions = subscriptionsByEventType.get(eventType);
+    if (subscriptions != null) {
+        int size = subscriptions.size();
+        for (int i = 0; i &lt; size; i++) {
+            Subscription subscription = subscriptions.get(i);
+            if (subscription.subscriber == subscriber) {
+                subscription.active = false;
+                subscriptions.remove(i);
+                i--;
+                size--;
+            }
+        }
+    }
+}
+</code></pre><p>可以看到先通过容器typesBySubscriber获取到当前订阅者订阅的所有事件类型，并从该容器中清除，再通过unsubscribeByEventType()方法清除subscriptionsByEventType容器中跟这个订阅者相关的数据。</p>
+<h3 id="EventBus-getDefault-post-源码"><a href="#EventBus-getDefault-post-源码" class="headerlink" title="EventBus.getDefault().post() 源码"></a>EventBus.getDefault().post() 源码</h3><p>还剩最后一个问题，我们在订阅者中定义的订阅方法（@Subscribe注解标注的）什么时候会被调用？</p>
+<blockquote>
+<p>EventBus.getDefault().post()</p>
+</blockquote>
+<p>从最上面的例子代码，我们也可以看到发布者代码只有一行，说明所有的类在任意地方都可以成为发布者发布事件，从而触发订阅者的订阅方法。其实，订阅者也可以是任意类，只是Android中常见的界面是Activity和Fragment，并且为了保证内存安全所以一定要在销毁的生命周期里调用注销api，只要任意类中在合理的位置进行注册和注销也是可以安全的使用EventBus的。</p>
+<p>来看看post()源码吧：</p>
+<pre><code>public void post(Object event) {
+    //1、
+    PostingThreadState postingState = currentPostingThreadState.get();
+    List&lt;Object&gt; eventQueue = postingState.eventQueue;
+    eventQueue.add(event);
+
+    if (!postingState.isPosting) {
+        postingState.isMainThread = isMainThread();
+        postingState.isPosting = true;
+        if (postingState.canceled) {
+            throw new EventBusException(&quot;Internal error. Abort state was not reset&quot;);
+        }
+        try {
+            //2、
+            while (!eventQueue.isEmpty()) {
+                postSingleEvent(eventQueue.remove(0), postingState);
+            }
+        } finally {
+            postingState.isPosting = false;
+            postingState.isMainThread = false;
+        }
+    }
+}
+</code></pre><p>一目了然，将当前要出发的事件类型添加到队列中，在while循环中调用postSingleEvent()方法发布事件：</p>
+<pre><code>private void postSingleEvent(Object event, PostingThreadState postingState) throws Error {
+    Class&lt;?&gt; eventClass = event.getClass();
+    boolean subscriptionFound = false;
+    if (eventInheritance) {
+        List&lt;Class&lt;?&gt;&gt; eventTypes = lookupAllEventTypes(eventClass);
+        int countTypes = eventTypes.size();
+        for (int h = 0; h &lt; countTypes; h++) {
+            Class&lt;?&gt; clazz = eventTypes.get(h);
+            subscriptionFound |= postSingleEventForEventType(event, postingState, clazz);
+        }
+    } else {
+        subscriptionFound = postSingleEventForEventType(event, postingState, eventClass);
+    }
+
+    可以忽略...
+}
+</code></pre><p>发现最后都会调用postSingleEventForEventType()方法：</p>
+<pre><code>private boolean postSingleEventForEventType(Object event, PostingThreadState postingState, Class&lt;?&gt; eventClass) {
+    CopyOnWriteArrayList&lt;Subscription&gt; subscriptions;
+    synchronized (this) {
+        //1、
+        subscriptions = subscriptionsByEventType.get(eventClass);
+    }
+    if (subscriptions != null &amp;&amp; !subscriptions.isEmpty()) {
+        //2、
+        for (Subscription subscription : subscriptions) {
+            postingState.event = event;
+            postingState.subscription = subscription;
+            boolean aborted = false;
+            try {
+                //3、
+                postToSubscription(subscription, event, postingState.isMainThread);
+                aborted = postingState.canceled;
+            } finally {
+                postingState.event = null;
+                postingState.subscription = null;
+                postingState.canceled = false;
+            }
+            if (aborted) {
+                break;
+            }
+        }
+        return true;
+    }
+    return false;
+}
+</code></pre><p>通过subscriptionsByEventType容器获取到了所有跟当前订阅事件类型关联的Subscription对象集合，遍历调用postToSubscription()方法：</p>
+<pre><code>private void postToSubscription(Subscription subscription, Object event, boolean isMainThread) {
+    switch (subscription.subscriberMethod.threadMode) {
+        case POSTING:
+            invokeSubscriber(subscription, event);
+            break;
+        case MAIN:
+            if (isMainThread) {
+                invokeSubscriber(subscription, event);
+            } else {
+                mainThreadPoster.enqueue(subscription, event);
+            }
+            break;
+        case MAIN_ORDERED:
+            if (mainThreadPoster != null) {
+                mainThreadPoster.enqueue(subscription, event);
+            } else {
+                // temporary: technically not correct as poster not decoupled from subscriber
+                invokeSubscriber(subscription, event);
+            }
+            break;
+        case BACKGROUND:
+            if (isMainThread) {
+                backgroundPoster.enqueue(subscription, event);
+            } else {
+                invokeSubscriber(subscription, event);
+            }
+            break;
+        case ASYNC:
+            asyncPoster.enqueue(subscription, event);
+            break;
+        default:
+            throw new IllegalStateException(&quot;Unknown thread mode: &quot; + subscription.subscriberMethod.threadMode);
+    }
+}
+</code></pre><p>该方法主要负责线程调度的过程，我们仅关注invokeSubscriber()即可：</p>
+<pre><code>void invokeSubscriber(Subscription subscription, Object event) {
+    try {
+        //1、
+        subscription.subscriberMethod.method.invoke(subscription.subscriber, event);
+    } catch (InvocationTargetException e) {
+        handleSubscriberException(subscription, event, e.getCause());
+    } catch (IllegalAccessException e) {
+        throw new IllegalStateException(&quot;Unexpected exception&quot;, e);
+    }
+}
+</code></pre><p>通过我们之前在Subscription对象里保存的method对象和它的订阅者对象，以及当前事件类型对象以反射调用的形式触发了我们在订阅者中编写的订阅方法。</p>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>通过以上的源码追踪，EventBus的内部实现我们已经有了一个清晰的认识，乘热打铁总结一下：</p>
+<ul>
+<li>register()方法通过反射将当前订阅者中的订阅方法、订阅类型、订阅者进行了拆解存储到了两个容器中；</li>
+<li>unregister()方法负责将当前的订阅者数据从那两个容器中移除；</li>
+<li>post（）方法在容器中找到跟当前订阅事件类型相关联的订阅方法、订阅者，并通过反射进行调用。</li>
+</ul>
+
       
     </div>
     
@@ -409,8 +746,8 @@ fun alphabet5() = StringBuilder().apply {
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/05/17/Kotlin-Android世界的一股清流-委托/" rel="next" title="Kotlin-Android世界的一股清流-委托">
-                <i class="fa fa-chevron-left"></i> Kotlin-Android世界的一股清流-委托
+              <a href="/2019/05/17/Kotlin-Android世界的一股清流-开发中的优点与槽点/" rel="next" title="Kotlin-Android世界的一股清流-优点&缺点">
+                <i class="fa fa-chevron-left"></i> Kotlin-Android世界的一股清流-优点&缺点
               </a>
             
           </div>
@@ -418,10 +755,6 @@ fun alphabet5() = StringBuilder().apply {
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/05/17/EventBus源码分析/" rel="prev" title="EventBus源码分析">
-                EventBus源码分析 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -535,7 +868,7 @@ fun alphabet5() = StringBuilder().apply {
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#优点"><span class="nav-number">1.</span> <span class="nav-text">优点</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#源码分析"><span class="nav-number">2.</span> <span class="nav-text">源码分析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#EventBus-getDefault-register-this-源码"><span class="nav-number">2.1.</span> <span class="nav-text">EventBus.getDefault().register(this) 源码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#EventBus-getDefault-unregister-this-源码"><span class="nav-number">2.2.</span> <span class="nav-text">EventBus.getDefault().unregister(this) 源码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#EventBus-getDefault-post-源码"><span class="nav-number">2.3.</span> <span class="nav-text">EventBus.getDefault().post() 源码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小结"><span class="nav-number">3.</span> <span class="nav-text">小结</span></a></li></ol></div>
             
 
           </div>

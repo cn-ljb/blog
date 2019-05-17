@@ -79,16 +79,27 @@
 
 
 
-<meta name="description" content="There is a lot of misery in life. Be sure to keep learning.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="雷小歪的博客">
-<meta property="og:url" content="http://yoursite.com/archives/2019/05/index.html">
+<meta name="description" content="源码地址：https://github.com/cn-ljb/KotlinBlogs 委托一、委托类什么是委托类？ 代理设计模式，在Java中实现一个简单的代理模式如下： //抽象功能 public interface Base {      void doSome();  }  //实际操作类 public class BaseImpl implements Base {      @Overr">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Kotlin-Android世界的一股清流-委托">
+<meta property="og:url" content="http://yoursite.com/2019/05/17/Kotlin-Android世界的一股清流-委托/index.html">
 <meta property="og:site_name" content="雷小歪的博客">
-<meta property="og:description" content="There is a lot of misery in life. Be sure to keep learning.">
+<meta property="og:description" content="源码地址：https://github.com/cn-ljb/KotlinBlogs 委托一、委托类什么是委托类？ 代理设计模式，在Java中实现一个简单的代理模式如下： //抽象功能 public interface Base {      void doSome();  }  //实际操作类 public class BaseImpl implements Base {      @Overr">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://i.imgur.com/9nPrS2i.png">
+<meta property="og:image" content="http://i.imgur.com/80sMZMC.png">
+<meta property="og:image" content="http://i.imgur.com/kowXTAT.png">
+<meta property="og:image" content="http://i.imgur.com/1I6i5nN.png">
+<meta property="og:image" content="http://i.imgur.com/T7D79uJ.png">
+<meta property="og:image" content="http://i.imgur.com/8mTHHI5.png">
+<meta property="og:image" content="http://i.imgur.com/sFBIp1x.png">
+<meta property="og:image" content="http://i.imgur.com/GJyzjgK.png">
+<meta property="og:image" content="http://i.imgur.com/VdXjgqV.png">
+<meta property="og:updated_time" content="2019-05-17T06:57:48.630Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="雷小歪的博客">
-<meta name="twitter:description" content="There is a lot of misery in life. Be sure to keep learning.">
+<meta name="twitter:title" content="Kotlin-Android世界的一股清流-委托">
+<meta name="twitter:description" content="源码地址：https://github.com/cn-ljb/KotlinBlogs 委托一、委托类什么是委托类？ 代理设计模式，在Java中实现一个简单的代理模式如下： //抽象功能 public interface Base {      void doSome();  }  //实际操作类 public class BaseImpl implements Base {      @Overr">
+<meta name="twitter:image" content="http://i.imgur.com/9nPrS2i.png">
 
 
 
@@ -118,13 +129,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/archives/2019/05/">
+  <link rel="canonical" href="http://yoursite.com/2019/05/17/Kotlin-Android世界的一股清流-委托/">
 
 
 
 
 
-  <title>归档 | 雷小歪的博客</title>
+  <title>Kotlin-Android世界的一股清流-委托 | 雷小歪的博客</title>
   
 
 
@@ -143,7 +154,7 @@
     
   
 
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -259,391 +270,312 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
+  <div id="posts" class="posts-expand">
+    
 
-      <span class="archive-page-counter">
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/17/Kotlin-Android世界的一股清流-委托/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="cn-ljb">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="雷小歪的博客">
+    </span>
+
+    
+      <header class="post-header">
+
         
         
+          <h1 class="post-title" itemprop="name headline">Kotlin-Android世界的一股清流-委托</h1>
         
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-17T14:52:51+08:00">
+                2019-05-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
           
-        
-        嗯..! 目前共计 11 篇日志。 继续努力。
-      </span>
 
-      
-
-        
-        
-        
-
-        
           
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2019">2019</h1>
-          </div>
-        
-        
+            
+          
 
-        
+          
+          
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+          
 
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/05/17/Kotlin-Android世界的一股清流-委托/" itemprop="url">
-              
-                <span itemprop="name">Kotlin-Android世界的一股清流-委托</span>
-              
-            </a>
-        
-      </h2>
+          
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-05-17T14:52:51+08:00" content="2019-05-17">
-          05-17
-        </time>
-      </div>
+          
 
-    </header>
-  </article>
+        </div>
+      </header>
+    
 
-
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/05/17/Kotlin-Android世界的一股清流-开发中的优点与槽点/" itemprop="url">
-              
-                <span itemprop="name">Kotlin-Android世界的一股清流-优点&缺点</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-05-17T14:52:51+08:00" content="2019-05-17">
-          05-17
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
 
-        
-        
-        
+      
+        <p>源码地址：<a href="https://github.com/cn-ljb/KotlinBlogs" target="_blank" rel="noopener">https://github.com/cn-ljb/KotlinBlogs</a></p>
+<h1 id="委托"><a href="#委托" class="headerlink" title="委托"></a>委托</h1><h2 id="一、委托类"><a href="#一、委托类" class="headerlink" title="一、委托类"></a>一、委托类</h2><p>什么是委托类？</p>
+<p>代理设计模式，在Java中实现一个简单的代理模式如下：</p>
+<pre><code>//抽象功能
+public interface Base {
 
-        
-        
+    void doSome();
 
-        
+}
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+//实际操作类
+public class BaseImpl implements Base {
 
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/05/17/Kotlin-Android世界的一股清流-Class类/" itemprop="url">
-              
-                <span itemprop="name">Kotlin-Android世界的一股清流-Class类</span>
-              
-            </a>
-        
-      </h2>
+    @Override
+    public void doSome() {
+        System.out.println(&quot;java do some thing.&quot;);
+    }
+}
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-05-17T14:51:51+08:00" content="2019-05-17">
-          05-17
-        </time>
-      </div>
+//代理类
+public class BaseProxy implements Base {
 
-    </header>
-  </article>
+    private Base impl;
+
+    public BaseProxy(Base impl) {
+        this.impl = impl;
+    }
+
+    @Override
+    public void doSome() {
+        impl.doSome();
+    }
+}
+</code></pre><p>Kotlin在语法上提供by关键字，所以实现以上代码，可以更简洁点：</p>
+<pre><code>interface Base {
+    fun doSome()
+}
 
 
+class BaseImpl : Base {
+
+    override fun doSome() {
+        println(&quot;do some thing...&quot;)
+    }
+
+}
+
+class BaseProxy(val b: Base) : Base by b
+</code></pre><p>当然，你可以在代理中扩展doSome函数，只需覆写它即可</p>
+<pre><code>class BaseProxy(val b: Base) : Base by b{
+
+    override fun doSome() {
+        println(&quot;pre&quot;)
+        b.doSome()
+        println(&quot;next&quot;)
+    }
+}
+</code></pre><h2 id="二、委托属性"><a href="#二、委托属性" class="headerlink" title="二、委托属性"></a>二、委托属性</h2><p>委托类并不是重点，主要看看委托属性。</p>
+<p>什么是委托属性？</p>
+<p>就如同代理设计模式一样 在调用属性或者赋值属性值时，我们希望做些额外操作，Kotlin基本语法如下：</p>
+<pre><code>val/var &lt;property name&gt;: &lt;Type&gt; by &lt;expression&gt;
+</code></pre><p> by 后面的表达式就是代理，因为get() set() 对应的属性会被 getValue() setValue() 方法代理。属性代理不需要任何接口的实现，但必须要提供 getValues() 函数(如果是 var 还需要 setValue())。</p>
+<p>例如：</p>
+<pre><code>class Person() {
+
+    var name: String by PrefixName()
+
+    constructor(name: String) : this() {
+        this.name = name
+    }
+
+}
+
+
+class PrefixName {
+
+    private var proxyName: String = &quot;admin_&quot;
+
+    operator fun getValue(person: Person, property: KProperty&lt;*&gt;): String {
+        return &quot;admin_$proxyName&quot;
+    }
+
+    operator fun setValue(person: Person, property: KProperty&lt;*&gt;, s: String) {
+        proxyName = s
+    }
+
+}
+</code></pre><p>我们将Person的name属性委托给了PrefixName类，该类提供了该属性新的getValue()和setValue()函数，将来在使用Person的name属性时，实际访问的是该类中的代理。</p>
+<pre><code>//代理属性
+val per = Person(&quot;Jake&quot;)
+println(per.name)
+per.name = &quot;haha&quot;
+println(per.name)
+</code></pre><p>输出：</p>
+<pre><code>admin_Jake
+admin_haha
+</code></pre><p>很多同学可能会纳闷，输出结果中可以看出一直使用的是PrefixName中的返回的属性，那Person中定义的name成员有什么意义，不能直接操作吗？</p>
+<p>其实，Person中是没有name属性的，定义语句只是Kotlin中的语法格式罢了。不信？我们反编译字节码，看看Java代码中到底有些什么东西。</p>
+<p>反编译为Java代码：</p>
+<p><img src="http://i.imgur.com/9nPrS2i.png" alt></p>
+<p>虽然Java代码里存在setter和getter方法，但是并没有name属性。也就是说我们的猜想是没有错的，Person中的name属性被代理后，实际Person类中并不存在该属性，从而替代它的是<strong>代理对象</strong>。</p>
+<p>无论是Person中的setter还是getter，实际调用的都是代理对象中setValue，getValue ，不妨看下反编译后的代理属性类是什么样子的：</p>
+<p><img src="http://i.imgur.com/80sMZMC.png" alt></p>
+<p>发现除了我们自己写的代码外，只多了几行检查参数的代码，也就是说Kotlin强制要求代理属性里的参setValue()\getValue()参数数必须不为null，如果参数为null，则抛出异常。</p>
+<p><img src="http://i.imgur.com/kowXTAT.png" alt></p>
+<p>注意：<strong>被定义为代理的属性，该类中实际是不存在的</strong></p>
+<p>理解这句话，不要被Kotlin的语法所迷惑。</p>
+<h3 id="标准委托属性"><a href="#标准委托属性" class="headerlink" title="标准委托属性"></a>标准委托属性</h3><p>我们除了可以自定义委托属性外，Kotlin也为我们提供了集中常用的委托属性。</p>
+<h4 id="1、延迟属性"><a href="#1、延迟属性" class="headerlink" title="1、延迟属性"></a>1、延迟属性</h4><p>lazy()</p>
+<p>该委托可以保证属性在使用是才被初始化出来</p>
+<p>例如：</p>
+<pre><code>val str: String by lazy { &quot;abc&quot; }
+</code></pre><p>定义时，在lazy后面的Lambda表达式进行初始化操作即可。细心的朋友也已经注意到lazy其实就是一个接收函数的函数（可以直接传递Lambda表达式）。</p>
+<p><img src="http://i.imgur.com/1I6i5nN.png" alt></p>
+<p>貌似有点不对啊，委托属性by关键字之后写的对象类，不是应该提供setValue()\getValue()函数吗？<br>那么我们不妨继续看下lazy()函数，发现其返回的是Lazy的一个对象。</p>
+<p><img src="http://i.imgur.com/T7D79uJ.png" alt></p>
+<p>然而Lazy是个接口，那么实际SynchronizedLazyImpl应该是Lazy中的子类对象，那么这个子类对象有setValue（）\getValue()函数吗</p>
+<p><img src="http://i.imgur.com/8mTHHI5.png" alt></p>
+<p>我们发现子类对象，也没有这两个函数，这不科学啊，不满足定义一个委托属性的规则啊。先别急，别忘了，Kotlin中有个神奇的特性：扩展函数。</p>
+<p><img src="http://i.imgur.com/sFBIp1x.png" alt></p>
+<p>原来Lazy的getValue()是通过扩展函数实现的，那么setValue()呢？很遗憾，并没有，也就是说lazy委托只能给只读属性（val）使用：<strong>使用时初始化，初始化之后不能再进行赋值</strong>（当然你可以手动给Lazy添加一个扩展setValue()函数，但是如果这样便曲解了lazy委托的意义）。</p>
+<p>既然这样，我们不妨在看看lazy是怎么实现的，其实让我们自己实现也完全没问题吧。</p>
+<p>继续看实际的Lazy实现类 SynchronizedLazyImpl类， 注意里面的value属性的getter()函数，扩展的getValue()函数返回的就是这个属性。</p>
+<p><img src="http://i.imgur.com/GJyzjgK.png" alt></p>
+<p>使用起来也跟普通的属性没有任何区别</p>
+<pre><code>//...没使用前是不会被初始化的
+println(str)  //输出：abc
+</code></pre><p>如果该属性需要多线程访问，为了保证线程安全，lazy()函数提供了两个参数的重载函数：</p>
+<pre><code>//多线程安全
+val str2: String by lazy(LazyThreadSafetyMode.PUBLICATION) { &quot;bcd&quot; }
+</code></pre><h4 id="2、可观察属性"><a href="#2、可观察属性" class="headerlink" title="2、可观察属性"></a>2、可观察属性</h4><p>Delegates.observable() </p>
+<p>有点类似于观察者设计模式，当属性值发生改变时，发出事件并做出响应事件。</p>
+<p>怎么用呢？</p>
+<pre><code>class Person() {
+
+    var name: String by PrefixName()
+
+    var age: Int by Delegates.observable(0, {
+        property, oldValue, newValue -&gt;
+        println(&quot;属性名：${property.name} , 旧值：$oldValue ,  新值：$newValue&quot;)
+    })
+
+    constructor(name: String) : this() {
+        this.name = name
+    }
+
+}
+</code></pre><p>我们为Person类添加一个age属性，该属性使用了可观察委托，第一个参数是属性初始值，一但属性值发生改变，第二个参数里的Lambda（函数）就会被调用。</p>
+<p>调用：</p>
+<pre><code>per.age = 10
+</code></pre><p>输出：</p>
+<pre><code>属性名：age , 旧值：0 ,  新值：10
+</code></pre><p>那么底层的实现代码过程就不带大家看了，套路是一样，by之后的对象类提供setValue()\getValue()函数，贴出主要部分，具体的实现感兴趣的同学按照这个套路看源码即可，不难~</p>
+<p><img src="http://i.imgur.com/VdXjgqV.png" alt></p>
+<h4 id="3、Map存储属性"><a href="#3、Map存储属性" class="headerlink" title="3、Map存储属性"></a>3、Map存储属性</h4><p>map </p>
+<p>该委托用于将map中存储的属性读取到Mode中，Kotlin官方考虑到如果存在一个Map集合，并且该集合的键值对对应Mode中的属性，那么可以使用该委托（实用性有待考察）。</p>
+<p>这个就不讲了，个人感觉有点鸡肋，Json解析有各种解析工具（Gson、fastjson等），可能是个人使用场景使用不到吧，上一个官方demo结束。</p>
+<pre><code>class User(val map: Map&lt;String, Any?&gt;) {
+    val name: String by map
+    val age: Int     by map
+}
+</code></pre><p>在这个例子中，构造函数接受一个 map :</p>
+<pre><code>val user = User(mapOf(
+    &quot;name&quot; to &quot;John Doe&quot;,
+    &quot;age&quot;  to 25
+))
+</code></pre><p>var 属性可以用 MutableMap 代替只读的 Map：</p>
+<pre><code>class MutableUser(val map: MutableMap&lt;String, Any?&gt;) {
+    var name: String by map
+    var age: Int     by map
+}
+</code></pre><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>除了了解常用的委托外，最主要的还是理解一个委托它究竟做了什么，怎么实现的？哪里不明白，反编译看Java源码可能会更直接，不得不承认Kotlin的语法糖太多，有些地方真的阅读起来比较晦涩，不过没事，谁让咱们懂Java。</p>
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/05/17/Kotlin-Android世界的一股清流-Lambda表达式/" itemprop="url">
-              
-                <span itemprop="name">Kotlin-Android世界的一股清流-Lambda</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-05-17T14:50:56+08:00" content="2019-05-17">
-          05-17
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/05/17/Kotlin-Android世界的一股清流-函数/" itemprop="url">
-              
-                <span itemprop="name">Kotlin-Android世界的一股清流-函数</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-05-17T14:49:56+08:00" content="2019-05-17">
-          05-17
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/05/17/Kotlin-Android世界的一股清流-流程控制/" itemprop="url">
-              
-                <span itemprop="name">Kotlin-Android世界的一股清流-流程控制</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-05-17T14:48:56+08:00" content="2019-05-17">
-          05-17
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/05/17/Kotlin-Android世界的一股清流-基本类型与运算符/" itemprop="url">
-              
-                <span itemprop="name">Kotlin-Android世界的一股清流-基本类型&运算符</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-05-17T14:48:30+08:00" content="2019-05-17">
-          05-17
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/05/17/Kotlin-Android世界的一股清流-Package/" itemprop="url">
-              
-                <span itemprop="name">Kotlin-Android世界的一股清流-Package</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-05-17T14:47:56+08:00" content="2019-05-17">
-          05-17
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/05/17/RxJava背压/" itemprop="url">
-              
-                <span itemprop="name">RxJava背压</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-05-17T14:30:59+08:00" content="2019-05-17">
-          05-17
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/05/17/hexo目录和常用命令/" itemprop="url">
-              
-                <span itemprop="name">Hexo目录和常用命令</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-05-17T14:22:59+08:00" content="2019-05-17">
-          05-17
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
     </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/05/17/Kotlin-Android世界的一股清流-开发中的优点与槽点/" rel="next" title="Kotlin-Android世界的一股清流-优点&缺点">
+                <i class="fa fa-chevron-left"></i> Kotlin-Android世界的一股清流-优点&缺点
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
-
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/archives/2019/05/page/2/">2</a><a class="extend next" rel="next" href="/archives/2019/05/page/2/"><i class="fa fa-angle-right"></i></a>
-  </nav>
+  </article>
 
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -651,6 +583,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -671,8 +607,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -714,6 +659,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#委托"><span class="nav-number">1.</span> <span class="nav-text">委托</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、委托类"><span class="nav-number">1.1.</span> <span class="nav-text">一、委托类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、委托属性"><span class="nav-number">1.2.</span> <span class="nav-text">二、委托属性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#标准委托属性"><span class="nav-number">1.2.1.</span> <span class="nav-text">标准委托属性</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、延迟属性"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">1、延迟属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、可观察属性"><span class="nav-number">1.2.1.2.</span> <span class="nav-text">2、可观察属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3、Map存储属性"><span class="nav-number">1.2.1.3.</span> <span class="nav-text">3、Map存储属性</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">1.3.</span> <span class="nav-text">总结</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -847,6 +808,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 

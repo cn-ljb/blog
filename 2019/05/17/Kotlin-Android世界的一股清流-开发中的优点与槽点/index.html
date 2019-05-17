@@ -79,16 +79,17 @@
 
 
 
-<meta name="description" content="There is a lot of misery in life. Be sure to keep learning.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="雷小歪的博客">
-<meta property="og:url" content="http://yoursite.com/archives/2019/05/index.html">
+<meta name="description" content="源码地址：https://github.com/cn-ljb/KotlinBlogs 这篇不聊具体的知识点，仅聊聊kotlin在开发中好的地方，以及博主自认为不好的地方。 优点1、延迟加载（lazy） 初始化变量的时机被推迟到访问时，有了它真是方便了我们这些不注重内存效率的码农…(lazy具体的实现在委托章节已经进行了详细讲解，不妨点进去看看它是怎么实现的) //仅在被访问时，才会开辟10个元素大">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Kotlin-Android世界的一股清流-优点&amp;缺点">
+<meta property="og:url" content="http://yoursite.com/2019/05/17/Kotlin-Android世界的一股清流-开发中的优点与槽点/index.html">
 <meta property="og:site_name" content="雷小歪的博客">
-<meta property="og:description" content="There is a lot of misery in life. Be sure to keep learning.">
+<meta property="og:description" content="源码地址：https://github.com/cn-ljb/KotlinBlogs 这篇不聊具体的知识点，仅聊聊kotlin在开发中好的地方，以及博主自认为不好的地方。 优点1、延迟加载（lazy） 初始化变量的时机被推迟到访问时，有了它真是方便了我们这些不注重内存效率的码农…(lazy具体的实现在委托章节已经进行了详细讲解，不妨点进去看看它是怎么实现的) //仅在被访问时，才会开辟10个元素大">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-05-17T06:58:22.819Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="雷小歪的博客">
-<meta name="twitter:description" content="There is a lot of misery in life. Be sure to keep learning.">
+<meta name="twitter:title" content="Kotlin-Android世界的一股清流-优点&amp;缺点">
+<meta name="twitter:description" content="源码地址：https://github.com/cn-ljb/KotlinBlogs 这篇不聊具体的知识点，仅聊聊kotlin在开发中好的地方，以及博主自认为不好的地方。 优点1、延迟加载（lazy） 初始化变量的时机被推迟到访问时，有了它真是方便了我们这些不注重内存效率的码农…(lazy具体的实现在委托章节已经进行了详细讲解，不妨点进去看看它是怎么实现的) //仅在被访问时，才会开辟10个元素大">
 
 
 
@@ -118,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/archives/2019/05/">
+  <link rel="canonical" href="http://yoursite.com/2019/05/17/Kotlin-Android世界的一股清流-开发中的优点与槽点/">
 
 
 
 
 
-  <title>归档 | 雷小歪的博客</title>
+  <title>Kotlin-Android世界的一股清流-优点&缺点 | 雷小歪的博客</title>
   
 
 
@@ -143,7 +144,7 @@
     
   
 
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -259,391 +260,188 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
+  <div id="posts" class="posts-expand">
+    
 
-      <span class="archive-page-counter">
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/17/Kotlin-Android世界的一股清流-开发中的优点与槽点/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="cn-ljb">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="雷小歪的博客">
+    </span>
+
+    
+      <header class="post-header">
+
         
         
+          <h1 class="post-title" itemprop="name headline">Kotlin-Android世界的一股清流-优点&缺点</h1>
         
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-17T14:52:51+08:00">
+                2019-05-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
           
-        
-        嗯..! 目前共计 11 篇日志。 继续努力。
-      </span>
 
-      
-
-        
-        
-        
-
-        
           
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2019">2019</h1>
-          </div>
-        
-        
+            
+          
 
-        
+          
+          
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+          
 
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/05/17/Kotlin-Android世界的一股清流-委托/" itemprop="url">
-              
-                <span itemprop="name">Kotlin-Android世界的一股清流-委托</span>
-              
-            </a>
-        
-      </h2>
+          
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-05-17T14:52:51+08:00" content="2019-05-17">
-          05-17
-        </time>
-      </div>
+          
 
-    </header>
-  </article>
+        </div>
+      </header>
+    
 
-
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/05/17/Kotlin-Android世界的一股清流-开发中的优点与槽点/" itemprop="url">
-              
-                <span itemprop="name">Kotlin-Android世界的一股清流-优点&缺点</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-05-17T14:52:51+08:00" content="2019-05-17">
-          05-17
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
 
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/05/17/Kotlin-Android世界的一股清流-Class类/" itemprop="url">
-              
-                <span itemprop="name">Kotlin-Android世界的一股清流-Class类</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-05-17T14:51:51+08:00" content="2019-05-17">
-          05-17
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
+        <p>源码地址：<a href="https://github.com/cn-ljb/KotlinBlogs" target="_blank" rel="noopener">https://github.com/cn-ljb/KotlinBlogs</a></p>
+<p>这篇不聊具体的知识点，仅聊聊kotlin在开发中好的地方，以及博主自认为不好的地方。</p>
+<h2 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h2><p>1、延迟加载（lazy）</p>
+<p>初始化变量的时机被推迟到访问时，有了它真是方便了我们这些不注重内存效率的码农…<br>(lazy具体的实现在<a href="http://www.jianshu.com/p/65d586c31704" target="_blank" rel="noopener">委托章节</a>已经进行了详细讲解，不妨点进去看看它是怎么实现的)</p>
+<pre><code>//仅在被访问时，才会开辟10个元素大小的数组
 
-        
-        
-        
+val arr by lazy { Array(10, { i: Int -&gt; i}) }
 
-        
-        
+fun main(args: Array&lt;String&gt;) {
 
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/05/17/Kotlin-Android世界的一股清流-Lambda表达式/" itemprop="url">
-              
-                <span itemprop="name">Kotlin-Android世界的一股清流-Lambda</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-05-17T14:50:56+08:00" content="2019-05-17">
-          05-17
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
+    arr.map {
+        println(it)
+    }
+}
+</code></pre><p>仅当你调用数组arr时，该数组才会被初始化出来。</p>
+<p>2、getter/setter</p>
+<p>首先Kotlin中我们不需要想Java那样手动的添加getter、setter方法了，这些Kotlin已经为我们做好了</p>
+<p>3、with()函数简化代码</p>
+<pre><code>/*
+* 通过with语句，可以直接将对象传入，省掉对象的声明
+* 使用场景：当对一个变量要进行多次使用，并返回与该变量相关的结果
+* */
+fun alphabet4(): String {
+    return with(StringBuilder()) {
+        append(&quot;START\n&quot;)
+        for (letter in &apos;A&apos;..&apos;Z&apos;) {
+            append(letter)
+        }
+        append(&quot;\nEND&quot;)
+        toString()
+    }
+}
+</code></pre><p>4、apply()函数简化代码</p>
+<pre><code>/**
+ *apply函数，在函数范围内，可以任意调用该对象的任意方法，并返回该对象
+ * 使用场景：初始化变量，并对该变量域有操作时
+ */
+fun alphabet5() = StringBuilder().apply {
+    append(&quot;START\n&quot;)
+    for (letter in &apos;A&apos;..&apos;Z&apos;) {
+        append(letter)
+    }
+    append(&quot;\nEND&quot;)
+}.toString()
+</code></pre>
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/05/17/Kotlin-Android世界的一股清流-函数/" itemprop="url">
-              
-                <span itemprop="name">Kotlin-Android世界的一股清流-函数</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-05-17T14:49:56+08:00" content="2019-05-17">
-          05-17
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/05/17/Kotlin-Android世界的一股清流-流程控制/" itemprop="url">
-              
-                <span itemprop="name">Kotlin-Android世界的一股清流-流程控制</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-05-17T14:48:56+08:00" content="2019-05-17">
-          05-17
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/05/17/Kotlin-Android世界的一股清流-基本类型与运算符/" itemprop="url">
-              
-                <span itemprop="name">Kotlin-Android世界的一股清流-基本类型&运算符</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-05-17T14:48:30+08:00" content="2019-05-17">
-          05-17
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/05/17/Kotlin-Android世界的一股清流-Package/" itemprop="url">
-              
-                <span itemprop="name">Kotlin-Android世界的一股清流-Package</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-05-17T14:47:56+08:00" content="2019-05-17">
-          05-17
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/05/17/RxJava背压/" itemprop="url">
-              
-                <span itemprop="name">RxJava背压</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-05-17T14:30:59+08:00" content="2019-05-17">
-          05-17
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/05/17/hexo目录和常用命令/" itemprop="url">
-              
-                <span itemprop="name">Hexo目录和常用命令</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-05-17T14:22:59+08:00" content="2019-05-17">
-          05-17
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
     </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/05/17/Kotlin-Android世界的一股清流-Class类/" rel="next" title="Kotlin-Android世界的一股清流-Class类">
+                <i class="fa fa-chevron-left"></i> Kotlin-Android世界的一股清流-Class类
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/05/17/Kotlin-Android世界的一股清流-委托/" rel="prev" title="Kotlin-Android世界的一股清流-委托">
+                Kotlin-Android世界的一股清流-委托 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
-
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/archives/2019/05/page/2/">2</a><a class="extend next" rel="next" href="/archives/2019/05/page/2/"><i class="fa fa-angle-right"></i></a>
-  </nav>
+  </article>
 
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -651,6 +449,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -671,8 +473,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -714,6 +525,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#优点"><span class="nav-number">1.</span> <span class="nav-text">优点</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -847,6 +674,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 

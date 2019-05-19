@@ -79,17 +79,20 @@
 
 
 
-<meta name="description" content="目录介绍 node_modules  npm 文件缓存目录 scaffolds     文夹件下存放的是文章、页面模版 scource       文夹件下存放的是我们的资源文件 themes        文件下存放的是我们的主题文件 .gitignore    git 忽略文件，设置提交文件时，哪些文件不提交 _config.yml   站点配置文件 package.json  站点版本，站点">
+<meta name="description" content="数据结构与算法之美-学习大纲 前面章节提到：为了选择正确的数据结构与算法，这就需要考量代码的执行效率和资源消耗这两个方面。 如何考量执行效率（时间）、资源消耗（空间）呢？ 事后分析法首先，性能测试、时间统计、内存监控等方案可以直观的让我们看到时间与空间的使用情况，并且得到确切值。 但以上方案都有以下局限性：  1、测试结果依赖测试环境   随着测试环境的硬件不同，得到的测试结果差距也就越大。举个例">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hexo目录和常用命令">
-<meta property="og:url" content="http://yoursite.com/2019/05/17/hexo目录和常用命令/index.html">
+<meta property="og:title" content="数据结构与算法之美 - 01复杂度分析(一)">
+<meta property="og:url" content="http://yoursite.com/2019/05/19/数据结构与算法-01复杂度分析（一）/index.html">
 <meta property="og:site_name" content="雷小歪的博客">
-<meta property="og:description" content="目录介绍 node_modules  npm 文件缓存目录 scaffolds     文夹件下存放的是文章、页面模版 scource       文夹件下存放的是我们的资源文件 themes        文件下存放的是我们的主题文件 .gitignore    git 忽略文件，设置提交文件时，哪些文件不提交 _config.yml   站点配置文件 package.json  站点版本，站点">
+<meta property="og:description" content="数据结构与算法之美-学习大纲 前面章节提到：为了选择正确的数据结构与算法，这就需要考量代码的执行效率和资源消耗这两个方面。 如何考量执行效率（时间）、资源消耗（空间）呢？ 事后分析法首先，性能测试、时间统计、内存监控等方案可以直观的让我们看到时间与空间的使用情况，并且得到确切值。 但以上方案都有以下局限性：  1、测试结果依赖测试环境   随着测试环境的硬件不同，得到的测试结果差距也就越大。举个例">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-05-17T06:35:08.176Z">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/6656959-e413fce7c53bae2a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/6656959-3d6972b727de00a2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-05-19T09:54:03.333Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo目录和常用命令">
-<meta name="twitter:description" content="目录介绍 node_modules  npm 文件缓存目录 scaffolds     文夹件下存放的是文章、页面模版 scource       文夹件下存放的是我们的资源文件 themes        文件下存放的是我们的主题文件 .gitignore    git 忽略文件，设置提交文件时，哪些文件不提交 _config.yml   站点配置文件 package.json  站点版本，站点">
+<meta name="twitter:title" content="数据结构与算法之美 - 01复杂度分析(一)">
+<meta name="twitter:description" content="数据结构与算法之美-学习大纲 前面章节提到：为了选择正确的数据结构与算法，这就需要考量代码的执行效率和资源消耗这两个方面。 如何考量执行效率（时间）、资源消耗（空间）呢？ 事后分析法首先，性能测试、时间统计、内存监控等方案可以直观的让我们看到时间与空间的使用情况，并且得到确切值。 但以上方案都有以下局限性：  1、测试结果依赖测试环境   随着测试环境的硬件不同，得到的测试结果差距也就越大。举个例">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/6656959-e413fce7c53bae2a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
 
@@ -119,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/05/17/hexo目录和常用命令/">
+  <link rel="canonical" href="http://yoursite.com/2019/05/19/数据结构与算法-01复杂度分析（一）/">
 
 
 
 
 
-  <title>Hexo目录和常用命令 | 雷小歪的博客</title>
+  <title>数据结构与算法之美 - 01复杂度分析(一) | 雷小歪的博客</title>
   
 
 
@@ -274,7 +277,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/17/hexo目录和常用命令/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/19/数据结构与算法-01复杂度分析（一）/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="cn-ljb">
@@ -291,7 +294,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Hexo目录和常用命令</h1>
+          <h1 class="post-title" itemprop="name headline">数据结构与算法之美 - 01复杂度分析(一)</h1>
         
 
         <div class="post-meta">
@@ -303,8 +306,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-17T14:22:59+08:00">
-                2019-05-17
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-19T17:47:51+08:00">
+                2019-05-19
               </time>
             
 
@@ -341,25 +344,223 @@
       
 
       
-        <h2 id="目录介绍"><a href="#目录介绍" class="headerlink" title="目录介绍"></a>目录介绍</h2><ul>
-<li>node_modules  npm 文件缓存目录</li>
-<li>scaffolds     文夹件下存放的是文章、页面模版</li>
-<li>scource       文夹件下存放的是我们的资源文件</li>
-<li>themes        文件下存放的是我们的主题文件</li>
-<li>.gitignore    git 忽略文件，设置提交文件时，哪些文件不提交</li>
-<li>_config.yml   站点配置文件</li>
-<li>package.json  站点版本，站点依赖文件</li>
-<li>yarn.lock     yarn.lock 文件由 Yarn 自动创建，并且完全通过 Yarn 进行操作。</li>
+        <p><a href="https://www.jianshu.com/p/86166a1048a3" target="_blank" rel="noopener">数据结构与算法之美-学习大纲</a></p>
+<p>前面章节提到：为了选择正确的数据结构与算法，这就需要考量代码的执行效率和资源消耗这两个方面。</p>
+<p>如何考量执行效率（时间）、资源消耗（空间）呢？</p>
+<h2 id="事后分析法"><a href="#事后分析法" class="headerlink" title="事后分析法"></a>事后分析法</h2><p>首先，<strong>性能测试、时间统计、内存监控</strong>等方案可以直观的让我们看到时间与空间的使用情况，并且得到确切值。</p>
+<p>但以上方案都有以下局限性：</p>
+<ul>
+<li><strong>1、测试结果依赖测试环境</strong></li>
 </ul>
-<h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><pre><code>$ hexo generate (hexo g) 生成静态文件
-$ hexo server (hexo s) 启动本地服务
-$ hexo deploy (hexo d) 提交到远程仓库
-$ hexo new page &quot;xx&quot;(hexo n page) 创建页面 
-$ hexo new &quot;xx&quot; (hexo n &quot;&quot;) 创建文章
-$ hexo d -g 生成静态并提交到远程仓库
-$ hexo s -g 生成静态文件并启动本地预览
-$ hexo clean 清除本地 public 文件
-</code></pre>
+<blockquote>
+<p>随着测试环境的硬件不同，得到的测试结果差距也就越大。举个例子：i9 cpu 和 i3 cpu 执行同一段代码，很明显i9所用的时间远远要小i3。</p>
+</blockquote>
+<ul>
+<li><strong>2、测试结果随数据规模的变化可能产出完全不一的结果</strong></li>
+</ul>
+<blockquote>
+<p>还是举个例子，我们在做排序的时候，数据规模足够大快速排序优于插入排序；但如果数据规模很小，插入排序反倒会比快速排序要快。</p>
+</blockquote>
+<ul>
+<li><strong>3、后滞性</strong></li>
+</ul>
+<blockquote>
+<p>我们只有在进行完性能测试后才能知道现在的算法是否优于之前的算法。</p>
+</blockquote>
+<p>所以有没有一种方法可以在不需要测试数据的情况下，就能<strong>粗略估算</strong>出当前算法的执行效率、资源消耗？</p>
+<h2 id="大O复杂度表示法"><a href="#大O复杂度表示法" class="headerlink" title="大O复杂度表示法"></a>大O复杂度表示法</h2><p>我们把算法的执行效率，粗略的比作代码的执行时间。</p>
+<p>举一个例子，尝试以“肉眼”的形式来估算出它的执行时间：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/6656959-e413fce7c53bae2a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="例子1.png"></p>
+<p>想必这段代码大家并不陌生，求1+2+3+…+n的和。</p>
+<p>我们假设每一行代码的运行时间是一样的，记作<strong>unitTime</strong>，那么上面这段代码的每行代码时间表示为：</p>
+<pre><code>int sum = 0;            // 1 * unitTime
+int i = 1;              // 1 * unitTime
+for (; i &lt;= n; i++) {   // n * unitTime
+    sum += i;           // n * unitTime
+}
+</code></pre><p>总的时间加起来就为： <strong>T(n) = (2+2n) * unitTime</strong></p>
+<ul>
+<li><p>T(n)表示执行代码的总时间；</p>
+</li>
+<li><p>2+2n，首先是一个表达式，表示n与代码执行次数的趋势，我们记作f(n)。</p>
+</li>
+</ul>
+<p>那么上面的例子可以写作f(n)=2+2n.</p>
+<p>这里我们引入一个概念，<strong>当n取值趋近于无穷大时，f(n)的常数项和系数项相比于n的取值规模对整个函数的影响可以忽略不计，我们仅关注函数的最大阶</strong>，则得到：f(n)=n.</p>
+<p>这种概念称之为<strong>“大O复杂度表示法”</strong>，有专门的公式来表示：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/6656959-3d6972b727de00a2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="大O公式.png"></p>
+<p>上面求和的例子以大O复杂度表示法表示为:T(n) = O(2n+2) = O(n)</p>
+<h2 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h2><p>还是以上面求和代码为例，我们最后得到的O(n)就是它的<strong>大O时间复杂度</strong>。所有我们总结出以下概念：<strong>大O时间复杂度并不表示代码的实际执行时间，而是代码执行时间与数据规模发生增长的变化趋势</strong>，叫作 <strong>渐进时间复杂度</strong>，简称<strong>时间复杂度</strong>。</p>
+<p>知道了什么是时间复杂度，那么怎么进行时间复杂度分析，或者说复杂度分析有哪些技巧？</p>
+<h3 id="复杂度分析"><a href="#复杂度分析" class="headerlink" title="复杂度分析"></a>复杂度分析</h3><ul>
+<li>1、<strong>执行次数最多的那段代码n的量级</strong></li>
+</ul>
+<p>还记得大O复杂度表示法的概念吗？重点的知识我们再记一遍，<strong>当n取值趋近于无穷大时，f(n)的常数项和系数项相比于n的取值规模对整个函数的影响可以忽略不计，我们仅关注函数的最大阶</strong>。</p>
+<p>那么这个概念套到代码里，<strong>分析一个算法时,我们只需关注被执行次数最多的那段代码</strong>。这段代码执行次数n的量级，就是这个算法的时间复杂度。</p>
+<pre><code>int sum = 0;            // 1 * unitTime
+int i = 1;              // 1 * unitTime
+for (; i &lt;= n; i++) {   // n * unitTime
+    sum += i;           // n * unitTime
+}
+</code></pre><p>还记的这段代码吧，这里for循环我们粗略估计为执行了n次（不要在意i&lt;=n执行了n+1，我们只在意对整个趋势影响最大的n），那么n的量级就是n，则时间复杂度就为： T(n)=O(n)</p>
+<p>再举个例子：</p>
+<pre><code>public int fun2(int n) {
+    int sum = 0;                // 1 * unitTime
+    int i = 1;                  // 1 * unitTime
+    int j;                      // 1 * unitTime
+    for (; i &lt;= n; i++) {       // n * unitTime
+        j = 1;                  // n * unitTime
+        for (; j &lt;= n; j++) {   // n² * unitTime
+            sum = sum + i * j;  // n² * unitTime
+        }
+    }
+    return sum;
+}
+</code></pre><p>跟之前的例子一样，我们当然可以得到 f(n)=3+2n+2n² ， 但是我们现在知道了时间复杂度等于执行次数最多的那段代码n的量级，所以一眼就能看出这个例子的时间复杂度是 T(n) = O(n²）</p>
+<ul>
+<li><strong>2、加法法则：总复杂度等于量级最大的那段代码复杂度</strong></li>
+</ul>
+<p>有时候，代码中出现多个时间复杂度的情况，例如：</p>
+<pre><code>public int fun3(int n) {
+    //1、
+    int sum1 = 0;
+    int i = 1;
+    for (; i &lt;= 100; i++) {
+        sum1 += i;
+    }
+
+    //2、
+    int sum2 = 0;
+    int j = 1;
+    for (; j &lt;= n; j++) {
+        sum2 += j;
+    }
+
+    //3、
+    int sum3 = 0;
+    int k = 1;
+    int l;
+    for (; k &lt;= n; k++) {
+        l = 1;
+        for (; l &lt;= n; l++) {
+            sum3 = sum3 + i * j;
+        }
+    }
+    return sum1 + sum2 + sum3;
+}
+</code></pre><p>很明显，这里有3段代码的时间复杂度，我们分别记为：T1(n) = O(1)、T2(n) = O(n)、T3(n) = O(n²).</p>
+<p>后面这两个时间复杂度不用解释了（看之前例子），至于第一个为什么是O(1)而不是O(100)，在这里说明下，前面的概念也提到了时间复杂度不是指代码的实际执行时间或者次数，而是指两者间的增长趋势，在这里面无论n如何增长，第一段代码的执行次数是不会受到影响的，对于这种<strong>常量阶的时间复杂度，我们统统记为：O(1)</strong>.</p>
+<p>回归正题，上面这三段代码都有自己的时间复杂度，那整个算法的时间复杂度怎么算呢？- <strong>取最大阶</strong></p>
+<p>那么上面这个例子的时间复杂度就为：T(n) = T1(n)+T2(n)+T3(n) = max(O(1),O(n),O(n²)) = O(n²)</p>
+<ul>
+<li><strong>3、乘法法则：嵌套代码的复杂度等于嵌套内外代码复杂度的乘积</strong></li>
+</ul>
+<p>根据法则的描述可以看出这个法则适用于嵌套代码，那什么是嵌套代码？</p>
+<p>其实fun2()的例子就是嵌套代码，只是我们一眼就可以看出第二层for循环里的代码执行次数为n²次，很多情况下算法并不能直观的让我们看到它的最大阶，例如我把这个例子的代码稍微改一下：</p>
+<pre><code>public int fun4(int n) {
+    int sum = 0;
+    int i = 1;
+    for (; i &lt;= n; i++) {
+        sum = sum + fun5(n, i);    // n * unitTime
+    }
+    return sum;
+}
+
+public int fun5(int n, int i) {
+    int sum = 0;
+    int j = 1;
+    for (; j &lt;= n; j++) {
+        sum = sum + j * i;         // n * unitTime
+    }
+    return sum;
+}
+</code></pre><p>我只是把第二层循环放到了新的方法中，由于n在两个代码片段中，我们很难一眼看到n的最大阶，此时我们只需把嵌套内外代码都看成独立的代码片段，并得出各自的时间复杂度：T1(n) = O(n)、T2(n) = O(n)，再作它们的乘积即可：</p>
+<p>T(n) = T1(n) <em> T2(n) = O(n) </em> O(n) = O(n*n) = O(n²)</p>
+<p>以上就是常用的3种复杂度分析的方法，至于实际问题中使用哪个方法，只有多练习，熟能生巧。</p>
+<h3 id="常见的时间复杂度"><a href="#常见的时间复杂度" class="headerlink" title="常见的时间复杂度"></a>常见的时间复杂度</h3><p>虽然代码千差万别，但实际上常见的复杂度量级并不对。通过上面的例子，我们已经了解了3种常见的时间复杂度：</p>
+<ul>
+<li><strong>常量阶 O(1)</strong></li>
+<li><strong>线性阶 O(n)</strong></li>
+<li><strong>次方阶 O(n²)</strong></li>
+</ul>
+<p>既然我们嵌套两层n循环时间复杂度是O(n²)，三层则为O(n³),同理无论多少次方我们统称为次方阶。</p>
+<p>除了这3种，还有以下常见时间复杂度：</p>
+<ul>
+<li><strong>对数阶 O(logn)</strong></li>
+</ul>
+<p>对数的概念还记得？（高中概念），比如：3² = 9 以对数的形式表示就是 2 = log39（输入不了小3），读作：2为以3为底，9的对数；那么x = logaN，读作：x为以a为底N的对数。</p>
+<p>知道了对数的基本概念后，什么样的代码是对数阶呢？</p>
+<pre><code>public void fun6(int n) {
+    int i = 1;
+    while (i &lt;= n) {
+        i = i * 2;        // ? * unitTime
+    }
+}
+</code></pre><p>也是一段很常见的代码，怎么证明它是对数阶呢？</p>
+<p>很明显我们只要求出循环里的i = i * 2 的执行次数与n之间的关系，就能算出它的时间复杂度</p>
+<p>我们可以尝试给n带入一个数，比如n=4时，循环次数与i值变化如下：</p>
+<pre><code>i=1  i = 1 * 2 = 2
+i=2  i = 2 * 2 = 4
+i=4  i = 4 * 2 = 8
+</code></pre><p>n=10时：</p>
+<pre><code>i=1  i = 1 * 2 = 2
+i=2  i = 2 * 2 = 4
+i=4  i = 4 * 2 = 8
+i=8  i = 8 * 2 = 16     
+</code></pre><p>我们会发现i的取值范围是个等比数列：2 2² 2³ … 2的x次方 ，当2的x次方 &gt; N 时停止循环 ， 那么我们就可以得到：f(n) = log2n.</p>
+<p>通过换底公式我们可以继续推算： f(n) = log2n = logn/log2 =&gt; logn</p>
+<p>我们把对数形式的时间复杂度的底数都换为以10为底，那么就会得到logn除以某个对数常数 ，而大O复杂度表示法中我们忽略常数部分的影响，最终所有的对数复杂度都为 T(n) = O(logn)</p>
+<ul>
+<li><strong>线性对数阶 O(nlogn)</strong></li>
+</ul>
+<p>如果前面的对数阶你已经了解，那么我在对数阶的外层再加一层for循环遍历n次，利用乘法法则它的时间复杂度便是：T(n) = O(n) * O(logn) = O(nlogn)，后续的归并排序，快速排序复杂度都是O(nlogn)，到对应章节时再细说。</p>
+<ul>
+<li>指数阶(2的n次方) &amp; 阶乘阶(n!)</li>
+</ul>
+<p>这两个一般称之为<strong>非多项式量级</strong>，其它的称之为<strong>多项式量级</strong>。<br>我们只需要知道随着n的增大，非多项式量级的算法执行时间会急剧增加，求解结果的时间会无限增加。所以非多项式是非常低效的算法，实际开发中需劲量避免出现这种代码。</p>
+<ul>
+<li>O(m+n)</li>
+</ul>
+<p>这里在说一种特殊的时间复杂度表示形式，之前的示例代码都很理想，一个算法中只有一个数据n在影响代码的时间复杂度，但往往我们代码可能是这样的：</p>
+<pre><code>public int fun7(int n, int m) {
+    int sum1 = 0;
+    int i = 1;
+    for (; i &lt; n; i++) {
+        sum1 = sum1 + i;
+    }
+
+    int sum2 = 0;
+    int j = 1;
+    for (; i &lt; m; j++) {
+        sum2 = sum2 + j;
+    }
+    return sum1 + sum2;
+}
+</code></pre><p>出现了两个量级：T1(n) = O(n)、T2(m) = O(m)，这种情况下我们不能利用加法法则省略掉一个低阶量级，所以它的时间复杂度就为：T(n) = T1(n) + T2（m） = O(n)+O(m) = O(n+m)</p>
+<p>但如果是嵌套关系，乘法法则依旧是可用的，记作：O(m*n)</p>
+<h2 id="空间复杂度"><a href="#空间复杂度" class="headerlink" title="空间复杂度"></a>空间复杂度</h2><p>前面长篇大论讲解时间复杂度，其实只要你能牢牢掌握它，那么空间复杂度学起来就非常简单了，因为无论是空间复杂度分析，还是常见的空间复杂度，它们的分析方式都是类似的。</p>
+<p>重温下<strong>时间复杂度</strong>的概念：<strong>时间复杂度并不表示代码的实际执行时间，而是代码执行时间与数据规模发生增长的变化趋势</strong>； </p>
+<p>类比一下，总结出<strong>空间复杂度</strong>的概念：<strong>空间复杂度也并不是实际的内存存储大小，而是内存空间与数据规模增长的变化趋势</strong>。</p>
+<p>写个简单例子就明白了：</p>
+<pre><code>public void fun8(int n) {
+    int[] arr = new int[n]; // n * unitSize
+    int i = 0;                // 1 * unitSize
+    for (; i &lt; n; i++) {
+        arr[i] = i;
+    }
+}
+</code></pre><p>分析方法跟之前是大致相同的，我们只关注内存趋势发生改变最大的代码，以它的阶量作为控件复杂度，即：S(n)=O(n).</p>
+<h3 id="常见的空间复杂度"><a href="#常见的空间复杂度" class="headerlink" title="常见的空间复杂度"></a>常见的空间复杂度</h3><p>常见的空间复杂度一般有：</p>
+<ul>
+<li>O(1)</li>
+<li>O(n)</li>
+<li>O(n²)</li>
+</ul>
+<p>像对数阶，线性对数阶空间复杂度基本都用不到。</p>
+<p>空间复杂度的内容就不再一一举例了，只要多加练习，真正理解了时间复杂度，空间复杂度自然迎刃而解。</p>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>复杂度也叫渐进复杂度，可分为时间复杂度和空间复杂度，使用大O复杂度表示法来表示。可以粗略的认为，越高阶的复杂度算法，性能越低。常见的复杂度由低到高：O(1)、O(logn)、O(n)、O(nlogn)、O(n²)，我们要学的数据结构与算法基本都在这几个复杂度里。</p>
+<p><strong>复杂度分析并不难，贵在勤于练习！</strong></p>
+
       
     </div>
     
@@ -383,8 +584,8 @@ $ hexo clean 清除本地 public 文件
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/05/17/hello-world/" rel="next" title="Hello World">
-                <i class="fa fa-chevron-left"></i> Hello World
+              <a href="/2019/05/18/PageStateLayout-Android页面管理组件/" rel="next" title="PageStateLayout-Android页面管理组件">
+                <i class="fa fa-chevron-left"></i> PageStateLayout-Android页面管理组件
               </a>
             
           </div>
@@ -393,8 +594,8 @@ $ hexo clean 清除本地 public 文件
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/05/17/RxJava背压/" rel="prev" title="RxJava背压">
-                RxJava背压 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/05/19/数据结构与算法-02复杂度分析（二）/" rel="prev" title="数据结构与算法之美 - 02复杂度分析(二)">
+                数据结构与算法之美 - 02复杂度分析(二) <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -509,7 +710,7 @@ $ hexo clean 清除本地 public 文件
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#目录介绍"><span class="nav-number">1.</span> <span class="nav-text">目录介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常用命令"><span class="nav-number">2.</span> <span class="nav-text">常用命令</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#事后分析法"><span class="nav-number">1.</span> <span class="nav-text">事后分析法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#大O复杂度表示法"><span class="nav-number">2.</span> <span class="nav-text">大O复杂度表示法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#时间复杂度"><span class="nav-number">3.</span> <span class="nav-text">时间复杂度</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#复杂度分析"><span class="nav-number">3.1.</span> <span class="nav-text">复杂度分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常见的时间复杂度"><span class="nav-number">3.2.</span> <span class="nav-text">常见的时间复杂度</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#空间复杂度"><span class="nav-number">4.</span> <span class="nav-text">空间复杂度</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#常见的空间复杂度"><span class="nav-number">4.1.</span> <span class="nav-text">常见的空间复杂度</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小结"><span class="nav-number">5.</span> <span class="nav-text">小结</span></a></li></ol></div>
             
 
           </div>

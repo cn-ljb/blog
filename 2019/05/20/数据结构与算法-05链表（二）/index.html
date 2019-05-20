@@ -79,20 +79,19 @@
 
 
 
-<meta name="description" content="源码地址：https://github.com/cn-ljb/KotlinBlogs 基本类型与运算符本章主要学习Kotlin为我们提供好的基本类型，以及它们之间的运算操作（主要讲解与Java不同的地方） 基本类型类似Java中基本数据类型，Kotlin对Java中8种基本数据类型都做了对应的封装类，我们看看哪些不同部分 1、数值类型进制：不支持8进制 Kotlin官网中说提供了6种数值类的基本类">
+<meta name="description" content="链表操作练习这篇主要编写几道单向链表操作练习：  单链表Node class Node {     public int data;     public Node next;      public Node(int data) {         this.data = data;     }      public Node(int data, Node next) {         th">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Kotlin-Android世界的一股清流-基本类型&amp;运算符">
-<meta property="og:url" content="http://yoursite.com/2019/05/17/Kotlin-Android世界的一股清流-基本类型与运算符/index.html">
+<meta property="og:title" content="数据结构与算法-05链表（二）">
+<meta property="og:url" content="http://yoursite.com/2019/05/20/数据结构与算法-05链表（二）/index.html">
 <meta property="og:site_name" content="雷小歪的博客">
-<meta property="og:description" content="源码地址：https://github.com/cn-ljb/KotlinBlogs 基本类型与运算符本章主要学习Kotlin为我们提供好的基本类型，以及它们之间的运算操作（主要讲解与Java不同的地方） 基本类型类似Java中基本数据类型，Kotlin对Java中8种基本数据类型都做了对应的封装类，我们看看哪些不同部分 1、数值类型进制：不支持8进制 Kotlin官网中说提供了6种数值类的基本类">
+<meta property="og:description" content="链表操作练习这篇主要编写几道单向链表操作练习：  单链表Node class Node {     public int data;     public Node next;      public Node(int data) {         this.data = data;     }      public Node(int data, Node next) {         th">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://i.imgur.com/7CKGZtr.png">
-<meta property="og:image" content="http://i.imgur.com/NkBcv0G.png">
-<meta property="og:updated_time" content="2019-05-17T06:59:32.554Z">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/6656959-b9d2c18bc518dfbe.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-05-20T10:09:01.459Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Kotlin-Android世界的一股清流-基本类型&amp;运算符">
-<meta name="twitter:description" content="源码地址：https://github.com/cn-ljb/KotlinBlogs 基本类型与运算符本章主要学习Kotlin为我们提供好的基本类型，以及它们之间的运算操作（主要讲解与Java不同的地方） 基本类型类似Java中基本数据类型，Kotlin对Java中8种基本数据类型都做了对应的封装类，我们看看哪些不同部分 1、数值类型进制：不支持8进制 Kotlin官网中说提供了6种数值类的基本类">
-<meta name="twitter:image" content="http://i.imgur.com/7CKGZtr.png">
+<meta name="twitter:title" content="数据结构与算法-05链表（二）">
+<meta name="twitter:description" content="链表操作练习这篇主要编写几道单向链表操作练习：  单链表Node class Node {     public int data;     public Node next;      public Node(int data) {         this.data = data;     }      public Node(int data, Node next) {         th">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/6656959-b9d2c18bc518dfbe.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
 
@@ -122,13 +121,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/05/17/Kotlin-Android世界的一股清流-基本类型与运算符/">
+  <link rel="canonical" href="http://yoursite.com/2019/05/20/数据结构与算法-05链表（二）/">
 
 
 
 
 
-  <title>Kotlin-Android世界的一股清流-基本类型&运算符 | 雷小歪的博客</title>
+  <title>数据结构与算法-05链表（二） | 雷小歪的博客</title>
   
 
 
@@ -277,7 +276,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/17/Kotlin-Android世界的一股清流-基本类型与运算符/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/20/数据结构与算法-05链表（二）/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="cn-ljb">
@@ -294,7 +293,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Kotlin-Android世界的一股清流-基本类型&运算符</h1>
+          <h1 class="post-title" itemprop="name headline">数据结构与算法-05链表（二）</h1>
         
 
         <div class="post-meta">
@@ -306,8 +305,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-17T14:48:30+08:00">
-                2019-05-17
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-20T14:57:38+08:00">
+                2019-05-20
               </time>
             
 
@@ -344,198 +343,193 @@
       
 
       
-        <p>源码地址：<a href="https://github.com/cn-ljb/KotlinBlogs" target="_blank" rel="noopener">https://github.com/cn-ljb/KotlinBlogs</a></p>
-<h1 id="基本类型与运算符"><a href="#基本类型与运算符" class="headerlink" title="基本类型与运算符"></a>基本类型与运算符</h1><p>本章主要学习Kotlin为我们提供好的基本类型，以及它们之间的运算操作（主要讲解与Java不同的地方）</p>
-<h2 id="基本类型"><a href="#基本类型" class="headerlink" title="基本类型"></a>基本类型</h2><p>类似Java中基本数据类型，Kotlin对Java中8种基本数据类型都做了对应的封装类，我们看看哪些不同部分</p>
-<h3 id="1、数值类型"><a href="#1、数值类型" class="headerlink" title="1、数值类型"></a>1、数值类型</h3><p>进制：不支持8进制</p>
-<p>Kotlin官网中说提供了6种数值类的基本类型</p>
-<pre><code>类型        位宽
+        <h2 id="链表操作练习"><a href="#链表操作练习" class="headerlink" title="链表操作练习"></a>链表操作练习</h2><p>这篇主要编写几道单向链表操作练习：</p>
+<ul>
+<li><p>单链表Node</p>
+<pre><code>class Node {
+    public int data;
+    public Node next;
 
-Double    64
-Float    32
-Long    64
-Int        32
-Short    16
-Byte    8
-</code></pre><p>！！！What? </p>
-<p>Char既然不是数值类型？Char不是可以通过ASCII码直接转换成数值，然后进行运算吗？</p>
-<p>是的，Char在Kotlin中不能直接当作数值使用</p>
-<h3 id="2、字符类型"><a href="#2、字符类型" class="headerlink" title="2、字符类型"></a>2、字符类型</h3><pre><code>//java代码
-char c = &apos;a&apos;;
-System.out.println(c == 97);
-</code></pre><p>也就是说上面的Java代码，在Kotlin里是会报错的，Why？</p>
-<p>查看官方这一章节时，并没有看到详细的解释这个问题</p>
-<p>那么如果我就是想进行数值判断操作呢，那你必须手动调用toInt()方法才行</p>
-<pre><code>//kotlin
- val c: Char = &apos;a&apos;
-println(c.toInt() == 97)
-</code></pre><p>那Kotlin中能否直接使用Char类型直接进行运算，很神奇，他既然能…</p>
-<p>只是得到的结果类型与Java不同：</p>
-<pre><code>System.out.println(c + 1);    //java      返回 98
-println(c + 1)                //kotlin 返回 b
-</code></pre><ul>
-<li>java中 c+1 返回的是int类型，因为int（32位）大于char(16位)，所以精度由小转为大，最终为int型。</li>
-<li>Kotlin中 Char类型由于不是直接当数值用，所以最后返回依旧是char型（…尼玛，我都不知道怎么解释，望高手赐教）。</li>
+    public Node(int data) {
+        this.data = data;
+    }
+
+    public Node(int data, Node next) {
+        this.data = data;
+        this.next = next;
+    }
+}
+</code></pre></li>
 </ul>
-<h3 id="3、布尔类型"><a href="#3、布尔类型" class="headerlink" title="3、布尔类型"></a>3、布尔类型</h3><p>跟Java一样</p>
-<h3 id="4、类型推导"><a href="#4、类型推导" class="headerlink" title="4、类型推导"></a>4、类型推导</h3><p>Kotlin中对于定义的变量，如果能通过初始化的字面值推断出它的类型，那么定义变量时，可以省略声明类型的语句</p>
-<pre><code>//通过后面的1可以推导出是Int型数据，所以可以写成num2的形式
- val num1 : Int = 1  
-val num2 = 2
-</code></pre><h3 id="5、数值类型装箱"><a href="#5、数值类型装箱" class="headerlink" title="5、数值类型装箱"></a>5、数值类型装箱</h3><p>首先，Java中的装箱指，将基本数据类型转换为对应的引用数据类型（int -&gt; Integer）,Kotlin中并没有什么Integer等装箱后的类，那么Kotlin中数据类型装箱又指的是什么？</p>
-<pre><code> val num1：Int = 128
-val num2: Int = num1
-val num3: Int = num1
-
-println(num2 == num3)   //true
-println(num2 === num3)  //true
-</code></pre><p>（ == 比较值是否相等  ， === 比较内存地址是否相等）</p>
-<p>到现在为止，貌似一切都正常，赋值时是以内存地址的形式直接进行操作的，内存地址相同，里面的值自然相同。那么，我们稍微改动下：</p>
-<pre><code>val num1: Int = 128
-val num2: Int? = num1
-val num3: Int? = num1
-
-println(num2 == num3)   //true
-println(num2 === num3)  //false
-</code></pre><p>我们在num2、num3的定义后面加上了？号，该符号表示当前定义的对象可以为null，显然Int类型只是用来存储数值的，null这种非数值类型的值需要支持，那么就需要装箱操作</p>
-<p>装箱后的数据类型除了值之外，内存地值会重新开辟(官方用语：不保留特征)，所以当比较num2 === num3时返回的是false。</p>
-<p>对于学习过Java的同学来说，我们可以这样理解，没加？号是java里的int，加上？号就成了java里的Integer</p>
-<p>(可能有同学在这里测试时使用了小于128的数字，导致===返回的也是true，这并不是Kotlin语言的问题，而是JVM虚拟机中维护着有符号整形常量池（-128,127），在这个范围里的数值都会直接使用常量池的内存地址，所以这个范围内的数值装箱后比较内存地址依旧是相等的，想更详细了解JVM中的常量池，可自行百度，点到为止（跑题了）。</p>
-<h3 id="6、高精度转型问题"><a href="#6、高精度转型问题" class="headerlink" title="6、高精度转型问题"></a>6、高精度转型问题</h3><p>Java中精度低的数据赋值给精度高的数据是支持的（隐式转换）</p>
-<pre><code>//java 支持
- int numInt =  1;
-long numLong = numInt;
-</code></pre><p>而Kotlin中不支持这种隐式转换形式的</p>
-<p><img src="http://i.imgur.com/7CKGZtr.png" alt></p>
-<p>如果你确定可以转换，需要你手动去显示的调用.toLong()进行转型</p>
-<pre><code> val numInt: Int = 1
-val numLong: Long = numInt.toLong() 
-</code></pre><p>Why? Kotlin不是更高效、更优雅吗？怎么连隐式转换都不支持</p>
-<p>官方给出了解释，大概意思是：</p>
-<pre><code>//如果Kotlin支持隐式转换会怎么样（伪代码，实际会报错）
-val a : Int？  = 1
-val b : Long？ = a
-
-println(a == b) //false
-</code></pre><p>为什么a==b会是false？前面说了Kotlin中的双等于是比较值是否相等，这句话说的并不严谨，其实Kotlin里的双等于在这里实际调用的是Java中Long中equals()方法，我们看看Java中Long方法的实现：</p>
-<p><img src="http://i.imgur.com/NkBcv0G.png" alt></p>
-<p>原来如果传入比较的参数不是Long类型，那么直接返回false，这样明显违反了我们对==号的定义（比较值是否相等），所以Kotlin认为这种情况是不对的，即禁止了隐式转换这个特性。</p>
-<p>最后，每个数值类型都支持下面显示的类型转换：</p>
-<pre><code>toByte(): Byte
-toShort(): Short
-toInt(): Int
-toLong(): Long
-toFloat(): Float
-toDouble(): Double
-toChar(): Char
-</code></pre><h3 id="7、字符串类型（String）"><a href="#7、字符串类型（String）" class="headerlink" title="7、字符串类型（String）"></a>7、字符串类型（String）</h3><p>与Java相同的部分我们就不说了，说说不同处</p>
-<p>1、支持索引访问</p>
-<pre><code>val str = &quot;abcdef&quot;
-
-println(str[0])
-</code></pre><p>2、支持索引了，当然支持直接遍历，索引遍历就不提了，你可以这样写：（类似Java里的迭代器for循环）</p>
-<pre><code>for (c in str) {
-    println(c)
-}
-</code></pre><p>3、支持段落字符串，在java里字符串中换行必须使用\n或者\r\n，Kotlin直接提供了段落字符串的书写格式</p>
-<pre><code>val lines = &quot;&quot;&quot;
-line1
-line2
-line3
-&quot;&quot;&quot;
-println(lines)
-</code></pre><p>4、字符串模版（Java拼接字符串的繁琐想必大家都有体会吧）</p>
-<pre><code>val a = 1
-val b = 2.5
-val c = true
-println(&quot;a=$a , b=$b , c=$c&quot;)
-</code></pre><p>这里是直接打印对象，如果想打印对象里的属性或者方法的返回值，使用模版表达式即可：</p>
-<pre><code>val s = &quot;123456&quot;
-println(&quot;size=${s.length}&quot;)
-</code></pre><h2 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h2><p>Kotlin支持标准的算数运算表达式，并且这些运算符被声明为相应类的成员（函数）。</p>
-<p>也就是说Kotlin不光支持算数运算符，并且为每种算数运算符都提供一个相应的函数，例如下面的代码：</p>
-<pre><code>// plus就是 + 运算对应的函数
-val num : Int  = 10
-println(num +1)
-println(num.plus(1))
-</code></pre><p>那么常用的运算符对应函数有哪些呢？</p>
-<pre><code>a + b    a.plus(b)
-a - b    a.minus(b)
-a * b    a.times(b)
-a / b    a.div(b)
-a % b    a.rem(b), a.mod(b) (deprecated)
-a..b    a.rangeTo(b)
-</code></pre><p>其他的运算符函数，建议直接<a href="http://kotlinlang.org/docs/reference/operator-overloading.html" target="_blank" rel="noopener">查看官网</a></p>
-<p>值得注意的是Kotlin并没有向java那样提供一种特殊符号来表示<strong>位运算</strong>，取而代之的是一种名为<strong>中缀运算符</strong>的形式</p>
-<pre><code> //java 位运算符（有符号右移）
-System.out.println(2&gt;&gt;1);
-
-//Kotlin位运算符（有符号右移）
-println(2 shr 1)
-</code></pre><p>位运算符对照表：</p>
-<pre><code>shl(bits) – 有符号左移 (相当于 Java’s &lt;&lt;) 
-shr(bits) – 有符号右移 (相当于 Java’s &gt;&gt;) 
-ushr(bits) – 无符号右移 (相当于 Java’s &gt;&gt;&gt;) 
-and(bits) – 按位与 
-or(bits) – 按位或 
-xor(bits) – 按位异或 
-inv(bits) – 按位翻转
-</code></pre><h3 id="中缀运算符究竟是什么？"><a href="#中缀运算符究竟是什么？" class="headerlink" title="中缀运算符究竟是什么？"></a>中缀运算符究竟是什么？</h3><p>前面我们说普通的算数运算符都有对应的函数，那中缀运算符呢？</p>
-<p>其实，中缀运算符就是函数，一种特殊的函数，并且我们还可以自定义中缀符</p>
-<p>满足以下条件的函数就可以使用中缀符调用：</p>
-<blockquote>
-<p><strong>它们是成员函数或者是扩展函数，只有一个参数，使用infix关键词进行标记</strong></p>
+<h3 id="1、单向链表反转"><a href="#1、单向链表反转" class="headerlink" title="1、单向链表反转"></a>1、单向链表反转</h3><blockquote>
+<p><strong>思路：</strong> 遍历所有结点，将当前结点的next指针指向前一个结点，操作完成后原尾节点作为反转后的头结点即可。</p>
 </blockquote>
-<p>扩展函数，到函数里我们再进行讲解。</p>
-<p>现在，我们尝试模拟一种坐标的数据类型，并且支持同类型之间添加操作，添加操作结果为对应x,y累加，例如：</p>
-<pre><code>//伪代码
-Point(1,2) add Point(2,2)  得到 Point（3，4）
-</code></pre><p>开始创建这个类型：</p>
-<pre><code>package com.ljb.blogs.base.point
-/**
- * 坐标数据类
- */
-data class Point(val x: Int, val y: Int)
-</code></pre><p>是的，Kotlin定义一个数据类就是这么简单，初学者看到这里多多少少会有些蒙圈，没事我们后面再细讲。</p>
-<p>数据类有了，为了满足累加功能，我们为它提供一个add()函数</p>
-<pre><code>/**
- * 累加方法，返回累加后的Potint
- */
-fun add(other: Point): Point {
-    return Point(this.x+ other.x , this.y+other.y)
+<p><img src="https://upload-images.jianshu.io/upload_images/6656959-b9d2c18bc518dfbe.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="单向链表反转.png"></p>
+<p>代码实现：</p>
+<pre><code>public static Node reverse(Node list) {
+    Node tempNode = list;
+    Node preNode = null;
+    while (tempNode != null) {
+        Node next = tempNode.next;
+        tempNode.next = preNode;
+        preNode = tempNode;
+        tempNode = next;
+    }
+    return preNode;
 }
-</code></pre><p>方法添加好后，我们测试也没有问题</p>
-<pre><code>val point1 = Point(1, 2)
-val point2 = Point(2, 2)
-val result = point1.add(point2)
-println(result)      //输出：Point(3,4)
-</code></pre><p>但是并不是我们想要的中缀运算符的形式，那我们还差什么？ <strong>infix关键词</strong></p>
-<p>加上infix关键词后，我们再试试</p>
-<pre><code> val point1 = Point(1, 2)
-val point2 = Point(2, 2)
-val result = point1 add point2
-println(result)        //输出：Point(3,4)
-</code></pre><p>到这里，中缀运算符的由来也就介绍完了，贴上Point完整代码，或者在博客头部的GitHub地址里下载最新源码</p>
-<pre><code>package com.ljb.blogs.base.point
+</code></pre><p>测试：</p>
+<pre><code>//测试数据
+public Node getNodeList() {
+    Node node1 = new Node(1);
+    Node node2 = new Node(2);
+    Node node3 = new Node(3);
+    Node node4 = new Node(4);
+    Node node5 = new Node(5);
+    node1.next = node2;
+    node2.next = node3;
+    node3.next = node4;
+    node4.next = node5;
+    node5.next = null;
+    return node1;
+}
 
-/**
- * 坐标数据类
- */
-data class Point(val x: Int, val y: Int) {
 
-    /**
-     * 累加方法，返回累加后的Potint
-     */
-    infix fun add(other: Point): Point {
-        return Point(this.x + other.x, this.y + other.y)
+//测试代码
+Node list = getNodeList();
+printAll(list);
+Node reverseList = reverse(list);
+printAll(reverseList);
+</code></pre><p>输出：</p>
+<pre><code>1 2 3 4 5 
+5 4 3 2 1 
+</code></pre><h3 id="2、循环链表检测"><a href="#2、循环链表检测" class="headerlink" title="2、循环链表检测"></a>2、循环链表检测</h3><p>检查一个链表是否是循环链表</p>
+<blockquote>
+<p><strong>思路：</strong> 通过快、慢指针同时遍历链表，快指针步长为2，慢指针步长为1，当快指针追上慢指针就是循环链表，否则快指针遍历到尾节点（next-&gt;null）就非循环链表。</p>
+</blockquote>
+<p>代码实现：</p>
+<pre><code>public static boolean checkCircle(Node list) {
+    if (list == null) return false;
+    Node fast = list.next;
+    Node slow = list;
+    while (fast != null &amp;&amp; fast.next != null) {
+        if (fast == slow) return true;
+        fast = fast.next.next;
+        slow = slow.next;
+    }
+    return false;
+}
+</code></pre><p>测试：</p>
+<pre><code>//测试数据
+public Node getNodeList() {
+    Node node1 = new Node(1);
+    Node node2 = new Node(2);
+    Node node3 = new Node(3);
+    Node node4 = new Node(4);
+    Node node5 = new Node(5);
+    node1.next = node2;
+    node2.next = node3;
+    node3.next = node4;
+    node4.next = node5;
+    node5.next = node1;
+    return node1;
+}
+
+
+//测试代码
+Node list = getNodeList();
+System.out.println(&quot;循环链表：&quot; + checkCircle(list));
+</code></pre><p>输出：</p>
+<pre><code>循环链表：true
+</code></pre><h3 id="3、两个有序的链表合并"><a href="#3、两个有序的链表合并" class="headerlink" title="3、两个有序的链表合并"></a>3、两个有序的链表合并</h3><p>将两个有序链表，合并成一个有序链表</p>
+<blockquote>
+<p><strong>思路：</strong> </p>
+<ul>
+<li>1、比较两者头结点、以最小的作为头结点</li>
+<li>2、定义两个指针p,q，分别指向该链表，定义一个临时指针temp指向头结点</li>
+<li>3、同时开始遍历这两个链表，如果有一个链表到达尾部，则停止循环</li>
+<li>4、循环中，如果p指针取内容小于q，则temp.next-&gt;p，反之temp.next-&gt;q</li>
+<li>5、循环结束，temp拼接剩余未遍历的p或者q（两链表程度可能不等）</li>
+<li>6、返回第1步时确认的head结点</li>
+</ul>
+</blockquote>
+<p>代码实现：</p>
+<pre><code>public static Node mergeSortedLists(Node list1, Node list2) {
+    if (list1 == null) return list2;
+    if (list2 == null) return list1;
+
+    Node p = list1;
+    Node q = list2;
+
+    //确认首节点
+    Node head;
+    if (p.data &lt;= q.data) {
+        head = p;
+        p = p.next;
+    } else {
+        head = q;
+        q = q.next;
     }
 
-    override fun toString(): String {
-        return &quot;Point($x, $y)&quot;
+    //开始排序
+    Node tempNode = head;
+    while (p != null &amp;&amp; q != null) {
+        if (p.data &lt;= q.data) {
+            tempNode.next = p;
+            p = p.next;
+        } else {
+            tempNode.next = q;
+            q = q.next;
+        }
+        tempNode = tempNode.next;
     }
 
+    //确认剩余尾部
+    if (p == null) {
+        tempNode.next = q;
+    } else {
+        tempNode.next = p;
+    }
+    return head;
 }
-</code></pre>
+</code></pre><p>测试：</p>
+<pre><code>//测试数据
+public Node getNodeList() {
+    Node node1 = new Node(1);
+    Node node2 = new Node(3);
+    Node node3 = new Node(5);
+    Node node4 = new Node(7);
+    Node node5 = new Node(9);
+    node1.next = node2;
+    node2.next = node3;
+    node3.next = node4;
+    node4.next = node5;
+    node5.next = null;
+    return node1;
+}
+
+public Node getNodeList2() {
+    Node node1 = new Node(2);
+    Node node2 = new Node(4);
+    Node node3 = new Node(6);
+    Node node4 = new Node(8);
+    Node node5 = new Node(10);
+    node1.next = node2;
+    node2.next = node3;
+    node3.next = node4;
+    node4.next = node5;
+    node5.next = null;
+    return node1;
+}
+
+//测试代码
+Node list1 = getNodeList();
+Node list2 = getNodeList2();
+Node mergeNode = mergeSortedLists(list1, list2);
+printAll(mergeNode);
+</code></pre><p>输出：</p>
+<pre><code>1 2 3 4 5 6 7 8 9 10 
+</code></pre><h3 id="4、删除链表倒数第-n-个结点"><a href="#4、删除链表倒数第-n-个结点" class="headerlink" title="4、删除链表倒数第 n 个结点"></a>4、删除链表倒数第 n 个结点</h3><p>//TODO </p>
+
       
     </div>
     
@@ -559,8 +553,8 @@ data class Point(val x: Int, val y: Int) {
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/05/17/Kotlin-Android世界的一股清流-Package/" rel="next" title="Kotlin-Android世界的一股清流-Package">
-                <i class="fa fa-chevron-left"></i> Kotlin-Android世界的一股清流-Package
+              <a href="/2019/05/19/数据结构与算法-04链表（一）/" rel="next" title="数据结构与算法之美 - 链表（一）">
+                <i class="fa fa-chevron-left"></i> 数据结构与算法之美 - 链表（一）
               </a>
             
           </div>
@@ -568,10 +562,6 @@ data class Point(val x: Int, val y: Int) {
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/05/17/Kotlin-Android世界的一股清流-流程控制/" rel="prev" title="Kotlin-Android世界的一股清流-流程控制">
-                Kotlin-Android世界的一股清流-流程控制 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -685,7 +675,7 @@ data class Point(val x: Int, val y: Int) {
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#基本类型与运算符"><span class="nav-number">1.</span> <span class="nav-text">基本类型与运算符</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本类型"><span class="nav-number">1.1.</span> <span class="nav-text">基本类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、数值类型"><span class="nav-number">1.1.1.</span> <span class="nav-text">1、数值类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、字符类型"><span class="nav-number">1.1.2.</span> <span class="nav-text">2、字符类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、布尔类型"><span class="nav-number">1.1.3.</span> <span class="nav-text">3、布尔类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4、类型推导"><span class="nav-number">1.1.4.</span> <span class="nav-text">4、类型推导</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5、数值类型装箱"><span class="nav-number">1.1.5.</span> <span class="nav-text">5、数值类型装箱</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6、高精度转型问题"><span class="nav-number">1.1.6.</span> <span class="nav-text">6、高精度转型问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7、字符串类型（String）"><span class="nav-number">1.1.7.</span> <span class="nav-text">7、字符串类型（String）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#运算符"><span class="nav-number">1.2.</span> <span class="nav-text">运算符</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#中缀运算符究竟是什么？"><span class="nav-number">1.2.1.</span> <span class="nav-text">中缀运算符究竟是什么？</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#链表操作练习"><span class="nav-number">1.</span> <span class="nav-text">链表操作练习</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、单向链表反转"><span class="nav-number">1.1.</span> <span class="nav-text">1、单向链表反转</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、循环链表检测"><span class="nav-number">1.2.</span> <span class="nav-text">2、循环链表检测</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、两个有序的链表合并"><span class="nav-number">1.3.</span> <span class="nav-text">3、两个有序的链表合并</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4、删除链表倒数第-n-个结点"><span class="nav-number">1.4.</span> <span class="nav-text">4、删除链表倒数第 n 个结点</span></a></li></ol></li></ol></div>
             
 
           </div>

@@ -86,13 +86,13 @@
 <meta property="og:site_name" content="雷小歪的博客">
 <meta property="og:description" content="数据结构与算法之美-学习大纲 前面章节提到：为了选择正确的数据结构与算法，这就需要考量代码的执行效率和资源消耗这两个方面。 如何考量执行效率（时间）、资源消耗（空间）呢？ 事后分析法首先，性能测试、时间统计、内存监控等方案可以直观的让我们看到时间与空间的使用情况，并且得到确切值。 但以上方案都有以下局限性：  1、测试结果依赖测试环境   随着测试环境的硬件不同，得到的测试结果差距也就越大。举个例">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://cn-ljb.github.io/images/数据结构与算法之美 - 01复杂度分析(一">
-<meta property="og:image" content="https://cn-ljb.github.io/images/数据结构与算法之美 - 01复杂度分析(一">
-<meta property="og:updated_time" content="2019-06-06T01:57:06.060Z">
+<meta property="og:image" content="https://cn-ljb.github.io/images/数据结构与算法之美 - 01复杂度分析/例子1.png">
+<meta property="og:image" content="https://cn-ljb.github.io/images/数据结构与算法之美 - 01复杂度分析/大O公式.png">
+<meta property="og:updated_time" content="2019-06-06T02:01:29.219Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据结构与算法之美 - 01复杂度分析(一)">
 <meta name="twitter:description" content="数据结构与算法之美-学习大纲 前面章节提到：为了选择正确的数据结构与算法，这就需要考量代码的执行效率和资源消耗这两个方面。 如何考量执行效率（时间）、资源消耗（空间）呢？ 事后分析法首先，性能测试、时间统计、内存监控等方案可以直观的让我们看到时间与空间的使用情况，并且得到确切值。 但以上方案都有以下局限性：  1、测试结果依赖测试环境   随着测试环境的硬件不同，得到的测试结果差距也就越大。举个例">
-<meta name="twitter:image" content="https://cn-ljb.github.io/images/数据结构与算法之美 - 01复杂度分析(一">
+<meta name="twitter:image" content="https://cn-ljb.github.io/images/数据结构与算法之美 - 01复杂度分析/例子1.png">
 
 
 
@@ -370,7 +370,7 @@
 <p>所以有没有一种方法可以在不需要测试数据的情况下，就能<strong>粗略估算</strong>出当前算法的执行效率、资源消耗？</p>
 <h2 id="大O复杂度表示法"><a href="#大O复杂度表示法" class="headerlink" title="大O复杂度表示法"></a>大O复杂度表示法</h2><p>我们把算法的执行效率，粗略的比作代码的执行时间。</p>
 <p>举一个例子，尝试以“肉眼”的形式来估算出它的执行时间：</p>
-<p><img src="https://cn-ljb.github.io/images/数据结构与算法之美 - 01复杂度分析(一" alt="例子1.png">/例子1.png)</p>
+<p><img src="https://cn-ljb.github.io/images/数据结构与算法之美 - 01复杂度分析/例子1.png" alt="例子1.png"></p>
 <p>想必这段代码大家并不陌生，求1+2+3+…+n的和。</p>
 <p>我们假设每一行代码的运行时间是一样的，记作<strong>unitTime</strong>，那么上面这段代码的每行代码时间表示为：</p>
 <pre><code>int sum = 0;            // 1 * unitTime
@@ -388,7 +388,7 @@ for (; i &lt;= n; i++) {   // n * unitTime
 <p>那么上面的例子可以写作f(n)=2+2n.</p>
 <p>这里我们引入一个概念，<strong>当n取值趋近于无穷大时，f(n)的常数项和系数项相比于n的取值规模对整个函数的影响可以忽略不计，我们仅关注函数的最大阶</strong>，则得到：f(n)=n.</p>
 <p>这种概念称之为<strong>“大O复杂度表示法”</strong>，有专门的公式来表示：</p>
-<p><img src="https://cn-ljb.github.io/images/数据结构与算法之美 - 01复杂度分析(一" alt="大O公式.png">/大O公式.png)</p>
+<p><img src="https://cn-ljb.github.io/images/数据结构与算法之美 - 01复杂度分析/大O公式.png" alt="大O公式.png"></p>
 <p>上面求和的例子以大O复杂度表示法表示为:T(n) = O(2n+2) = O(n)</p>
 <h2 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h2><p>还是以上面求和代码为例，我们最后得到的O(n)就是它的<strong>大O时间复杂度</strong>。所有我们总结出以下概念：<strong>大O时间复杂度并不表示代码的实际执行时间，而是代码执行时间与数据规模发生增长的变化趋势</strong>，叫作 <strong>渐进时间复杂度</strong>，简称<strong>时间复杂度</strong>。</p>
 <p>知道了什么是时间复杂度，那么怎么进行时间复杂度分析，或者说复杂度分析有哪些技巧？</p>

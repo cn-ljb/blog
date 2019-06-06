@@ -86,12 +86,12 @@
 <meta property="og:site_name" content="雷小歪的博客">
 <meta property="og:description" content="链表操作练习这篇主要编写几道单向链表操作练习：  单链表Node class Node {     public int data;     public Node next;      public Node(int data) {         this.data = data;     }      public Node(int data, Node next) {         th">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/6656959-b9d2c18bc518dfbe.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-05-27T07:13:57.340Z">
+<meta property="og:image" content="https://cn-ljb.github.io/images/数据结构与算法-05链表/单向链表反转.png">
+<meta property="og:updated_time" content="2019-06-06T02:36:13.598Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据结构与算法之美 - 05链表（二）">
 <meta name="twitter:description" content="链表操作练习这篇主要编写几道单向链表操作练习：  单链表Node class Node {     public int data;     public Node next;      public Node(int data) {         this.data = data;     }      public Node(int data, Node next) {         th">
-<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/6656959-b9d2c18bc518dfbe.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:image" content="https://cn-ljb.github.io/images/数据结构与算法-05链表/单向链表反转.png">
 
 
 
@@ -364,7 +364,7 @@
 <h3 id="1、单向链表反转"><a href="#1、单向链表反转" class="headerlink" title="1、单向链表反转"></a>1、单向链表反转</h3><blockquote>
 <p><strong>思路：</strong> 遍历所有结点，将当前结点的next指针指向前一个结点，操作完成后原尾节点作为反转后的头结点即可。</p>
 </blockquote>
-<p><img src="https://upload-images.jianshu.io/upload_images/6656959-b9d2c18bc518dfbe.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="单向链表反转.png"></p>
+<p><img src="https://cn-ljb.github.io/images/数据结构与算法-05链表/单向链表反转.png" alt="单向链表反转.png"></p>
 <p>代码实现：</p>
 <pre><code>public static Node reverse(Node list) {
     Node tempNode = list;

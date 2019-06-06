@@ -86,16 +86,16 @@
 <meta property="og:site_name" content="雷小歪的博客">
 <meta property="og:description" content="数据结构与算法之美-学习大纲 什么数组？ 数组是一种 线性表 数据结构。它用一组 连续的内存空间，来存储一组 相同类型 的数据。  线性表数据排成一条线一样的数据结构。除了数组，还有链表、队列、栈等都是线性表结构。  而与之对立的概念称为非线性表，属于这类数据结构的有：树、图、堆等。  连续的内存空间和相同类型相同类型：很好理解，存储的数据都属于某一种类。 连续的内存空间：  拿上面大小为10整型">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://cn-ljb.github.io/images/数据结构与算法之美-03数组/线性表数据结构.jpg">
-<meta property="og:image" content="https://cn-ljb.github.io/images/数据结构与算法之美-03数组/非线性表数据结构.jpg">
-<meta property="og:image" content="https://cn-ljb.github.io/images/数据结构与算法之美-03数组/数据内存图.jpg">
-<meta property="og:image" content="https://cn-ljb.github.io/images/数据结构与算法之美-03数组/无序插入.jpg">
-<meta property="og:image" content="https://cn-ljb.github.io/images/数据结构与算法之美-03数组/标记删除.jpg">
-<meta property="og:updated_time" content="2019-06-06T02:18:18.999Z">
+<meta property="og:image" content="https://cn-ljb.github.io/images/数据结构与算法-03数组/线性表数据结构.jpg">
+<meta property="og:image" content="https://cn-ljb.github.io/images/数据结构与算法-03数组/非线性表数据结构.jpg">
+<meta property="og:image" content="https://cn-ljb.github.io/images/数据结构与算法-03数组/数据内存图.jpg">
+<meta property="og:image" content="https://cn-ljb.github.io/images/数据结构与算法-03数组/无序插入.jpg">
+<meta property="og:image" content="https://cn-ljb.github.io/images/数据结构与算法-03数组/标记删除.jpg">
+<meta property="og:updated_time" content="2019-06-06T02:27:45.291Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据结构与算法之美 - 03数组">
 <meta name="twitter:description" content="数据结构与算法之美-学习大纲 什么数组？ 数组是一种 线性表 数据结构。它用一组 连续的内存空间，来存储一组 相同类型 的数据。  线性表数据排成一条线一样的数据结构。除了数组，还有链表、队列、栈等都是线性表结构。  而与之对立的概念称为非线性表，属于这类数据结构的有：树、图、堆等。  连续的内存空间和相同类型相同类型：很好理解，存储的数据都属于某一种类。 连续的内存空间：  拿上面大小为10整型">
-<meta name="twitter:image" content="https://cn-ljb.github.io/images/数据结构与算法之美-03数组/线性表数据结构.jpg">
+<meta name="twitter:image" content="https://cn-ljb.github.io/images/数据结构与算法-03数组/线性表数据结构.jpg">
 
 
 
@@ -352,12 +352,12 @@
 <p>数组是一种 <strong>线性表</strong> 数据结构。它用一组 <strong>连续的内存空间</strong>，来存储一组 <strong>相同类型</strong> 的数据。</p>
 </blockquote>
 <h3 id="线性表"><a href="#线性表" class="headerlink" title="线性表"></a>线性表</h3><p><strong>数据排成一条线一样的数据结构。</strong>除了数组，还有链表、队列、栈等都是线性表结构。</p>
-<p><img src="https://cn-ljb.github.io/images/数据结构与算法之美-03数组/线性表数据结构.jpg" alt="线性表数据结构.jpg"></p>
+<p><img src="https://cn-ljb.github.io/images/数据结构与算法-03数组/线性表数据结构.jpg" alt="线性表数据结构.jpg"></p>
 <p>而与之对立的概念称为<strong>非线性表</strong>，属于这类数据结构的有：树、图、堆等。</p>
-<p><img src="https://cn-ljb.github.io/images/数据结构与算法之美-03数组/非线性表数据结构.jpg" alt="非线性表数据结构.jpg"></p>
+<p><img src="https://cn-ljb.github.io/images/数据结构与算法-03数组/非线性表数据结构.jpg" alt="非线性表数据结构.jpg"></p>
 <h3 id="连续的内存空间和相同类型"><a href="#连续的内存空间和相同类型" class="headerlink" title="连续的内存空间和相同类型"></a>连续的内存空间和相同类型</h3><p><strong>相同类型</strong>：很好理解，存储的数据都属于某一种类。</p>
 <p><strong>连续的内存空间</strong>：</p>
-<p><img src="https://cn-ljb.github.io/images/数据结构与算法之美-03数组/数据内存图.jpg" alt="数据内存图.jpg"></p>
+<p><img src="https://cn-ljb.github.io/images/数据结构与算法-03数组/数据内存图.jpg" alt="数据内存图.jpg"></p>
 <p>拿上面大小为10整型数组内存图举例，假设分配的内存地址从1000开始，那么第一个元素内存地址就是1000-1003的位置（整型数据占4个字节），总共有10个元素，最后的结束位置就是1039,这就是连续的内存。</p>
 <h2 id="高效的查询"><a href="#高效的查询" class="headerlink" title="高效的查询"></a>高效的查询</h2><p>试想想，已知数组a的首地址是1000，我们怎么最快的读取到a[1]内存中的数据？</p>
 <blockquote>
@@ -397,7 +397,7 @@
 <p>有没有别的方法？</p>
 <p>如果插入前提需保证数组的数据是有序的，那么就必须按照上面的方法来搬移k之后的元素。</p>
 <p>但如果仅是将某个元素插入到指定位置，而不考虑元素中原有的顺序，我们可以先将原k元素放到数组末尾，再将新元素插入到k的位置，如图：</p>
-<p><img src="https://cn-ljb.github.io/images/数据结构与算法之美-03数组/无序插入.jpg" alt="无序插入.jpg"></p>
+<p><img src="https://cn-ljb.github.io/images/数据结构与算法-03数组/无序插入.jpg" alt="无序插入.jpg"></p>
 <p>利用上面这种方式，在特定场景中，它的时间复杂度为：O(1)</p>
 <h3 id="删除操作"><a href="#删除操作" class="headerlink" title="删除操作"></a>删除操作</h3><p>与插入类似，要删除数组中k的元素，就需要把k-n都向前移动1位，从而保证数组的内存连续性，那么删除末尾元素移动为0，删除第1个元素移动为n，所以删除操作的时间复杂度和插入是一样的：</p>
 <ul>
@@ -406,7 +406,7 @@
 <li>平均情况时间复杂度为：O(n)</li>
 </ul>
 <p>当然在某些特定的场景下，我们也可以对删除操作进行优化，例如我们有a,b,c,d,e,f,g,h组成的一个数组，我们依次删除a，b,c时，位移操作就要进行3n遍；如果现在的场景并不要求数组中实时的连续性，我们就可以分别将a、b、c先标记成删除状态，当数组没有多余的存储空间时，再做统一的实际删除。</p>
-<p><img src="https://cn-ljb.github.io/images/数据结构与算法之美-03数组/标记删除.jpg" alt="标记删除.jpg"></p>
+<p><img src="https://cn-ljb.github.io/images/数据结构与算法-03数组/标记删除.jpg" alt="标记删除.jpg"></p>
 <p>这样就大大减少了每次删除元素所需的位移操作。</p>
 <blockquote>
 <p>这种标记删除状态的思想，也是JVM GC垃圾回收机制的核心思想。</p>

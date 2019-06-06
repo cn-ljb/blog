@@ -86,20 +86,20 @@
 <meta property="og:site_name" content="雷小歪的博客">
 <meta property="og:description" content="数据结构与算法之美-学习大纲 前篇提到了链表也属于线性表结构。那么可想而知，链表在内存中存储的形式肯定也是类似于一条直线进行延伸的。  从内存图中我们可以看出，链表数据结构的内存分配情况并不是连续，作为线性表结构的关键就在于每个数据节点都是由数据块和“指针”块组成。   数据块 ： 存储真正的数据 指针块 ： 存储下一个节点的内存首地址  例如上图Node1节点中的指针块存储的就是Node2的首地">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://cn-ljb.github.io/images/数据结构与算法之美 - 02复杂度分析/等差数列求和公式.png">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/6656959-c0e65672d2d51692.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/6656959-4e01700378c96fab.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/6656959-da8299efbf2eb3e9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/6656959-21ceef5e5be2197c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/6656959-3eca799c6f16317b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/6656959-6afe2d18e77b3805.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/6656959-267be959b50053be.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/6656959-b19cc6a8a5f54d39.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2019-06-06T02:13:40.883Z">
+<meta property="og:image" content="https://cn-ljb.github.io/images/数据结构与算法-04链表/链表内存结构.png">
+<meta property="og:image" content="https://cn-ljb.github.io/images/数据结构与算法-04链表/Node节点.png">
+<meta property="og:image" content="https://cn-ljb.github.io/images/数据结构与算法-04链表/内存分配举例.png">
+<meta property="og:image" content="https://cn-ljb.github.io/images/数据结构与算法-04链表/插入操作.png">
+<meta property="og:image" content="https://cn-ljb.github.io/images/数据结构与算法-04链表/删除操作.png">
+<meta property="og:image" content="https://cn-ljb.github.io/images/数据结构与算法-04链表/查询操作.png">
+<meta property="og:image" content="https://cn-ljb.github.io/images/数据结构与算法-04链表/循环链表.png">
+<meta property="og:image" content="https://cn-ljb.github.io/images/数据结构与算法-04链表/双向链表.png">
+<meta property="og:image" content="https://cn-ljb.github.io/images/数据结构与算法-04链表/双向循环链表.png">
+<meta property="og:updated_time" content="2019-06-06T02:32:11.276Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据结构与算法之美 - 04链表（一）">
 <meta name="twitter:description" content="数据结构与算法之美-学习大纲 前篇提到了链表也属于线性表结构。那么可想而知，链表在内存中存储的形式肯定也是类似于一条直线进行延伸的。  从内存图中我们可以看出，链表数据结构的内存分配情况并不是连续，作为线性表结构的关键就在于每个数据节点都是由数据块和“指针”块组成。   数据块 ： 存储真正的数据 指针块 ： 存储下一个节点的内存首地址  例如上图Node1节点中的指针块存储的就是Node2的首地">
-<meta name="twitter:image" content="https://cn-ljb.github.io/images/数据结构与算法之美 - 02复杂度分析/等差数列求和公式.png">
+<meta name="twitter:image" content="https://cn-ljb.github.io/images/数据结构与算法-04链表/链表内存结构.png">
 
 
 
@@ -353,15 +353,15 @@
       
         <p><a href="https://www.jianshu.com/p/86166a1048a3" target="_blank" rel="noopener">数据结构与算法之美-学习大纲</a></p>
 <p>前篇提到了链表也属于<strong>线性表结构</strong>。那么可想而知，链表在内存中存储的形式肯定也是类似于一条直线进行延伸的。</p>
-<p><img src="https://cn-ljb.github.io/images/数据结构与算法之美 - 02复杂度分析/等差数列求和公式.png" alt="链表内存结构.png"></p>
+<p><img src="https://cn-ljb.github.io/images/数据结构与算法-04链表/链表内存结构.png" alt="链表内存结构.png"></p>
 <p>从内存图中我们可以看出，链表数据结构的内存分配情况并不是连续，作为线性表结构的关键就在于每个数据节点都是由数据块和“指针”块组成。</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/6656959-c0e65672d2d51692.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Node节点.png"></p>
+<p><img src="https://cn-ljb.github.io/images/数据结构与算法-04链表/Node节点.png" alt="Node节点.png"></p>
 <ul>
 <li>数据块 ： 存储真正的数据</li>
 <li>指针块 ： 存储下一个节点的内存首地址</li>
 </ul>
 <p>例如上图Node1节点中的指针块存储的就是Node2的首地址1003（这里假设一个节点占用1个字节）</p>
-<h2 id="单向链表"><a href="#单向链表" class="headerlink" title="单向链表"></a>单向链表</h2><p><img src="https://upload-images.jianshu.io/upload_images/6656959-4e01700378c96fab.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="内存分配举例.png"></p>
+<h2 id="单向链表"><a href="#单向链表" class="headerlink" title="单向链表"></a>单向链表</h2><p><img src="https://cn-ljb.github.io/images/数据结构与算法-04链表/内存分配举例.png" alt="内存分配举例.png"></p>
 <p>可以看出单链表的方向是固定的，数据块的指针始终指向下一个节点，当没有下一个节点时，最后一个节点称之为<strong>尾节点</strong>，它的指针块存储null，表示没有下一个节点；而第一个节点称之为<strong>首节点</strong>，只要知道首节点，就可以获取到该链表中的任意节点数据。</p>
 <h3 id="链表的插入与删除"><a href="#链表的插入与删除" class="headerlink" title="链表的插入与删除"></a>链表的插入与删除</h3><p>与数组一样，链表也支持插入、删除、查询操作。我们知道数组的插入、删除操作需要大量的数据迁移工作，时间复杂度为：O(n)。而在链表中插入和删除造作就非常简单。</p>
 <h4 id="插入操作"><a href="#插入操作" class="headerlink" title="插入操作"></a>插入操作</h4><p>还是开篇之前的例子，现在需要在Node1和Node2中间插入Node8节点，我们只需要两步：</p>
@@ -370,18 +370,18 @@
 <li>②再让Node8的指针块存储原Node1指针块地址。</li>
 </ul>
 <p>可以看出它的时间复杂度为O(1)。</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/6656959-da8299efbf2eb3e9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="插入操作.png"></p>
+<p><img src="https://cn-ljb.github.io/images/数据结构与算法-04链表/插入操作.png" alt="插入操作.png"></p>
 <h4 id="删除操作"><a href="#删除操作" class="headerlink" title="删除操作"></a>删除操作</h4><p>同理，删除Node2节点也只需只需两步：</p>
 <ul>
 <li>①修改Node1的指针块存储Node3的首地址；</li>
 <li>②清空Node2的指针块。</li>
 </ul>
-<p><img src="https://upload-images.jianshu.io/upload_images/6656959-21ceef5e5be2197c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="删除操作.png"></p>
+<p><img src="https://cn-ljb.github.io/images/数据结构与算法-04链表/删除操作.png" alt="删除操作.png"></p>
 <p>删除操作的时间复杂度也是O(1)。</p>
 <h3 id="查询操作"><a href="#查询操作" class="headerlink" title="查询操作"></a>查询操作</h3><p>有利就有弊，与数组恰恰相反，链表因为不是连续的内存块，就无法通过寻址公式计算每个节点的首地址，所以查询一个节点就必须从首节点挨个查询下去，知道找到位置，即时间复杂度O(n)。</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/6656959-3eca799c6f16317b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="查询操作.png"></p>
+<p><img src="https://cn-ljb.github.io/images/数据结构与算法-04链表/查询操作.png" alt="查询操作.png"></p>
 <h2 id="循环链表"><a href="#循环链表" class="headerlink" title="循环链表"></a>循环链表</h2><p>循环列表是一种特殊单向列表，它的<strong>尾节点</strong>指针块不在存储的是null，而是<strong>首节点</strong>的首地址。</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/6656959-6afe2d18e77b3805.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="循环链表.png"></p>
+<p><img src="https://cn-ljb.github.io/images/数据结构与算法-04链表/循环链表.png" alt="循环链表.png"></p>
 <p>这种链表的优点在某些特殊场合处理环型数据更加合适，比如著名的<strong><a href="https://baike.baidu.com/item/%E7%BA%A6%E7%91%9F%E5%A4%AB%E9%97%AE%E9%A2%98/3857719?fr=aladdin" target="_blank" rel="noopener">约瑟夫问题</a></strong>。</p>
 <h3 id="约瑟夫环"><a href="#约瑟夫环" class="headerlink" title="约瑟夫环"></a>约瑟夫环</h3><p>N个人围成一圈，从第一个开始报数，第M个将被杀掉，最后剩下一个，其余人都将被杀掉。</p>
 <p>例如N=6，M=5，被杀掉的顺序是：5，4，6，2，3，1。</p>
@@ -429,7 +429,7 @@ while (node != node.next) {
 }
 System.out.println(&quot;\n幸运者：&quot; + node.data);
 </code></pre><h2 id="双向链表"><a href="#双向链表" class="headerlink" title="双向链表"></a>双向链表</h2><p>和单向链表不同，双向链表有两个指针块，一个和单向链表一样指向下一个节点的next指针，一个是指向上一个节点的pre指针。</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/6656959-267be959b50053be.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="双向链表.png"></p>
+<p><img src="https://cn-ljb.github.io/images/数据结构与算法-04链表/双向链表.png" alt="双向链表.png"></p>
 <p>有了之前单链表的数据结构认识，双向链表数据结构不难理解，但这样设计又带来什么好处？</p>
 <h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><p>首先，由于每个节点比单向链表都多一个指针块，内存方面的占用肯定是大于单向链表。</p>
 <h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><p>由于多了一个前驱指针，当出现需要获取前节点需求是，复杂度就仅仅O(1)，而单向链表就不得不重新从首节点遍历，时间复杂度（O2）,这种设计我们称之为：<strong>用空间换时间</strong>。</p>
@@ -439,7 +439,7 @@ System.out.println(&quot;\n幸运者：&quot; + node.data);
 <p><strong>LinkedHashMap底层就是通过双向链表实现。</strong> </p>
 <h2 id="双向循环链表"><a href="#双向循环链表" class="headerlink" title="双向循环链表"></a>双向循环链表</h2><p>这个概念想必不用多说，跟循环链表一样，把首尾相连即可。</p>
 <p>它的特性就不多说了，将双向和循环的优缺点结合起来。</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/6656959-b19cc6a8a5f54d39.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="双向循环链表.png"></p>
+<p><img src="https://cn-ljb.github.io/images/数据结构与算法-04链表/双向循环链表.png" alt="双向循环链表.png"></p>
 <h2 id="链表-VS-数组"><a href="#链表-VS-数组" class="headerlink" title="链表 VS 数组"></a>链表 VS 数组</h2><h3 id="时间复杂度对比"><a href="#时间复杂度对比" class="headerlink" title="时间复杂度对比"></a>时间复杂度对比</h3><ul>
 <li>数组 插入 O(n)</li>
 <li>链表 插入 O(1)</li>

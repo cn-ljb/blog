@@ -79,17 +79,19 @@
 
 
 
-<meta name="description" content="There is a lot of misery in life. Be sure to keep learning.">
+<meta name="description" content="一、什么是队列也是一种“操作受限”的线性表结构，只支持数据的添加（入队-enqueue）和删除（出队dequeue）操作，并具备先进先出特性。  使用场景： 资源有限时，例如线程池、数据库连接池、消息池。 二、队列的实现 数组实现 - 顺序队列 链表实现 - 链式队列  定义队列接口： interface Queue&amp;lt;T&amp;gt; {     //入队     boolean enqueue(">
 <meta property="og:type" content="article">
 <meta property="og:title" content="数据结构与算法之美-07队列">
 <meta property="og:url" content="http://yoursite.com/2019/05/31/数据结构与算法-07队列/index.html">
 <meta property="og:site_name" content="雷小歪的博客">
-<meta property="og:description" content="There is a lot of misery in life. Be sure to keep learning.">
+<meta property="og:description" content="一、什么是队列也是一种“操作受限”的线性表结构，只支持数据的添加（入队-enqueue）和删除（出队dequeue）操作，并具备先进先出特性。  使用场景： 资源有限时，例如线程池、数据库连接池、消息池。 二、队列的实现 数组实现 - 顺序队列 链表实现 - 链式队列  定义队列接口： interface Queue&amp;lt;T&amp;gt; {     //入队     boolean enqueue(">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-05-31T07:58:26.702Z">
+<meta property="og:image" content="https://cn-ljb.github.io/images/数据结构与算法-07队列/队列.png">
+<meta property="og:updated_time" content="2019-06-10T10:31:26.499Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据结构与算法之美-07队列">
-<meta name="twitter:description" content="There is a lot of misery in life. Be sure to keep learning.">
+<meta name="twitter:description" content="一、什么是队列也是一种“操作受限”的线性表结构，只支持数据的添加（入队-enqueue）和删除（出队dequeue）操作，并具备先进先出特性。  使用场景： 资源有限时，例如线程池、数据库连接池、消息池。 二、队列的实现 数组实现 - 顺序队列 链表实现 - 链式队列  定义队列接口： interface Queue&amp;lt;T&amp;gt; {     //入队     boolean enqueue(">
+<meta name="twitter:image" content="https://cn-ljb.github.io/images/数据结构与算法-07队列/队列.png">
 
 
 
@@ -341,7 +343,177 @@
       
 
       
-        
+        <h2 id="一、什么是队列"><a href="#一、什么是队列" class="headerlink" title="一、什么是队列"></a>一、什么是队列</h2><p><strong>也是一种“操作受限”的线性表结构，只支持数据的添加（入队-enqueue）和删除（出队dequeue）操作，并具备先进先出特性。</strong></p>
+<p><img src="https://cn-ljb.github.io/images/数据结构与算法-07队列/队列.png" alt="线性表数据结构.jpg"></p>
+<p>使用场景： <strong>资源有限时</strong>，例如线程池、数据库连接池、消息池。</p>
+<h2 id="二、队列的实现"><a href="#二、队列的实现" class="headerlink" title="二、队列的实现"></a>二、队列的实现</h2><ul>
+<li>数组实现 - <strong>顺序队列</strong></li>
+<li>链表实现 - <strong>链式队列</strong></li>
+</ul>
+<p>定义队列接口：</p>
+<pre><code>interface Queue&lt;T&gt; {
+    //入队
+    boolean enqueue(T item);
+
+    //出队
+    T dequeue();
+
+    //是否为空
+    boolean isEmpty();
+
+    //数据的数量
+    int size();
+
+}
+</code></pre><h3 id="1、数组实现"><a href="#1、数组实现" class="headerlink" title="1、数组实现"></a>1、数组实现</h3><p><strong>思路：</strong></p>
+<ul>
+<li>① 初始化一个数组用于存储队列数据；</li>
+<li>② 定义两个指针head、tail（元素下标）,head用于指向第一个数据位置，fail用于指向最后一个元素位置，两者初始时都指向首元素；</li>
+<li>③ 每入队一个数据，tail便向后移一位，指向该元素；</li>
+<li>④ 每出队一个数据，返回head数据后，向后移一位，指向下一个元素（先进先出）；</li>
+<li>⑤ 当head==tail时，表示队列已清空。</li>
+</ul>
+<p>代码实现：</p>
+<pre><code>class StringArrQueue implements Queue&lt;String&gt; {
+
+    private String[] arr;
+    private int count;
+    private int maxSize;
+    private int head = 0;
+    private int tail = 0;
+
+
+    public StringArrQueue(int initSize) {
+        maxSize = initSize;
+        arr = new String[maxSize];
+    }
+
+
+    @Override
+    public boolean enqueue(String item) {
+        if (tail == maxSize) return false;  //队列已满
+        arr[tail] = item;
+        ++tail;
+        ++count;
+        return true;
+    }
+
+    @Override
+    public String dequeue() {
+        if (head == tail) return null;  //队列已空
+        String item = arr[head];
+        ++head;
+        --count;
+        return item;
+    }
+
+    @Override
+    public boolean isEmpty() {
+        return head == tail;
+    }
+
+    @Override
+    public int size() {
+        return count;
+    }
+
+
+    public void printAll() {
+        int tempHead = head;
+        while (tempHead != tail) {
+            System.out.print(arr[tempHead] + &quot;\t&quot;);
+            ++tempHead;
+        }
+        System.out.println();
+    }
+}
+</code></pre><p>测试：</p>
+<pre><code>//测试数据
+public static StringArrQueue getQueueData() {
+    StringArrQueue queue = new StringArrQueue(5);
+    queue.enqueue(&quot;1&quot;);
+    queue.enqueue(&quot;2&quot;);
+    queue.enqueue(&quot;3&quot;);
+    queue.enqueue(&quot;4&quot;);
+    queue.enqueue(&quot;5&quot;);
+    return queue;
+}
+
+//测试代码
+StringArrQueue queue = getQueueData();
+queue.printAll();
+queue.dequeue();    //出队
+queue.dequeue();    //出队
+queue.dequeue();    //出队
+queue.printAll();
+</code></pre><p>输出：</p>
+<pre><code>1    2    3    4    5    
+4    5    
+</code></pre><h4 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h4><p>上面的代码当队列满后，即便我们有3次出队操作，这时候再入队数据依旧是失败的。</p>
+<pre><code>//测试代码
+StringArrQueue queue = getQueueData();
+queue.printAll();
+queue.dequeue();    //出队
+queue.dequeue();    //出队
+queue.dequeue();    //出队
+queue.printAll();
+
+queue.enqueue(&quot;6&quot;); //继续入队
+queue.enqueue(&quot;7&quot;); //继续入队
+queue.printAll();
+</code></pre><p>输出：</p>
+<pre><code>1    2    3    4    5    
+4    5    
+4    5    //入队的6、7失败
+</code></pre><p>原因：因为当tail指针达到尾部后，不会再重新使用之前的内存空间。</p>
+<h4 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h4><ul>
+<li>方案一：出队时，将所有数据向前搬移一位，始终出队下标为0的元素。</li>
+<li>方案二：入队时，检查tail指针是否已经直到末尾，并且head前是否还有空闲内存空间，有则触发数据搬移</li>
+</ul>
+<p>显然方案一不太可取，每次出队都会触发数据搬移，该方案出队的时间复杂度为：O(n)</p>
+<p>继续看方案二，修改入队方法：</p>
+<pre><code>public boolean enqueue(String item) {
+    if (tail == maxSize) {
+        if (head == 0) {
+            return false;  //队列已满
+        }
+
+        //数据搬移
+        for (int i = head; i &lt; tail; i++) {
+            arr[i - head] = arr[i];
+        }
+        //计算新指针位置
+        tail -= head;
+        head = 0;
+    }
+
+    //入队
+    arr[tail] = item;
+    ++tail;
+    ++count;
+    return true;
+}
+</code></pre><p> 重新运行，输出：</p>
+<pre><code>1    2    3    4    5    
+4    5    
+4    5    6    7    // 继续入队成功
+</code></pre><h5 id="为什么方案二优于方案一？"><a href="#为什么方案二优于方案一？" class="headerlink" title="为什么方案二优于方案一？"></a>为什么方案二优于方案一？</h5><p>方案二的入队时间复杂度分析：</p>
+<ul>
+<li>最好时间复杂度O(1)： tail没有到达末尾，直接入队</li>
+<li>最坏时间复杂度O(n)： tail达到末尾、且head前有内存空间，位移数据n次，再入队</li>
+<li>均摊平均时间复杂度（不适用）： 乍一看，好像一次O(n)可以均摊到之前的n次O(1)上，但均摊平均时间复杂度的先天条件需要规律性出现n次O(1)，常量次O(n)，才可以使用该方法。这个例子由于需要依赖出栈函数，才可能触发位移操作，而出栈函数何时调用是不可控的。</li>
+<li>加权平均时间复杂度O(n)： <ul>
+<li>直接插入操作次数：1</li>
+<li>满了无法插入操作次数：1</li>
+<li>满了可搬移插入操作次数：(n-1)+…+2+1</li>
+<li>假设上面3种情况发生概率相同：1+1+(n-1)</li>
+<li>计算：f(n) = 1+1+(n-1)+…+2+1 / 1+1+(n-1)  = 2+ n²/2(n+1) = n</li>
+</ul>
+</li>
+</ul>
+<p>虽然，方案二平均时间复杂度是O(n),但存在最好时间复杂度O(1)以及不确定概率性的最坏时间复杂度O(n)，比起方案一的百分百时间复杂度O(n)要好很多。</p>
+<h3 id="2、链表实现"><a href="#2、链表实现" class="headerlink" title="2、链表实现"></a>2、链表实现</h3><p>//TODO </p>
+
       
     </div>
     
@@ -425,8 +597,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -468,6 +649,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、什么是队列"><span class="nav-number">1.</span> <span class="nav-text">一、什么是队列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、队列的实现"><span class="nav-number">2.</span> <span class="nav-text">二、队列的实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、数组实现"><span class="nav-number">2.1.</span> <span class="nav-text">1、数组实现</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#问题"><span class="nav-number">2.1.1.</span> <span class="nav-text">问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#解决方案"><span class="nav-number">2.1.2.</span> <span class="nav-text">解决方案</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#为什么方案二优于方案一？"><span class="nav-number">2.1.2.1.</span> <span class="nav-text">为什么方案二优于方案一？</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、链表实现"><span class="nav-number">2.2.</span> <span class="nav-text">2、链表实现</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

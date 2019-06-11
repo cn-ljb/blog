@@ -87,7 +87,8 @@
 <meta property="og:description" content="一、什么是队列也是一种“操作受限”的线性表结构，只支持数据的添加（入队-enqueue）和删除（出队dequeue）操作，并具备先进先出特性。  使用场景： 资源有限时，例如线程池、数据库连接池、消息池。 二、队列的实现 数组实现 - 顺序队列 链表实现 - 链式队列  定义队列接口： interface Queue&amp;lt;T&amp;gt; {     //入队     boolean enqueue(">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://cn-ljb.github.io/images/数据结构与算法-07队列/队列.png">
-<meta property="og:updated_time" content="2019-06-10T10:31:26.499Z">
+<meta property="og:image" content="https://cn-ljb.github.io/images/数据结构与算法-07队列/循环队列对比.png">
+<meta property="og:updated_time" content="2019-06-11T03:50:00.117Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据结构与算法之美-07队列">
 <meta name="twitter:description" content="一、什么是队列也是一种“操作受限”的线性表结构，只支持数据的添加（入队-enqueue）和删除（出队dequeue）操作，并具备先进先出特性。  使用场景： 资源有限时，例如线程池、数据库连接池、消息池。 二、队列的实现 数组实现 - 顺序队列 链表实现 - 链式队列  定义队列接口： interface Queue&amp;lt;T&amp;gt; {     //入队     boolean enqueue(">
@@ -368,7 +369,7 @@
 </code></pre><h3 id="1、数组实现"><a href="#1、数组实现" class="headerlink" title="1、数组实现"></a>1、数组实现</h3><p><strong>思路：</strong></p>
 <ul>
 <li>① 初始化一个数组用于存储队列数据；</li>
-<li>② 定义两个指针head、tail（元素下标）,head用于指向第一个数据位置，fail用于指向最后一个元素位置，两者初始时都指向首元素；</li>
+<li>② 定义两个指针head、tail（元素下标）,head用于指向第一个元素位置，fail用于指向最后一个元素位置，两者初始时都指向首元素；</li>
 <li>③ 每入队一个数据，tail便向后移一位，指向该元素；</li>
 <li>④ 每出队一个数据，返回head数据后，向后移一位，指向下一个元素（先进先出）；</li>
 <li>⑤ 当head==tail时，表示队列已清空。</li>
@@ -507,12 +508,236 @@ queue.printAll();
 <li>满了无法插入操作次数：1</li>
 <li>满了可搬移插入操作次数：(n-1)+…+2+1</li>
 <li>假设上面3种情况发生概率相同：1+1+(n-1)</li>
-<li>计算：f(n) = 1+1+(n-1)+…+2+1 / 1+1+(n-1)  = 2+ n²/2(n+1) = n</li>
+<li>计算：f(n) = (1+1+(n-1)+…+2+1) / (1+1+(n-1))  = 2+ n²/2(n+1) = n</li>
 </ul>
 </li>
 </ul>
 <p>虽然，方案二平均时间复杂度是O(n),但存在最好时间复杂度O(1)以及不确定概率性的最坏时间复杂度O(n)，比起方案一的百分百时间复杂度O(n)要好很多。</p>
-<h3 id="2、链表实现"><a href="#2、链表实现" class="headerlink" title="2、链表实现"></a>2、链表实现</h3><p>//TODO </p>
+<h3 id="2、链表实现"><a href="#2、链表实现" class="headerlink" title="2、链表实现"></a>2、链表实现</h3><p>基于链表的实现，原理同数组实现，head指针指向首元素，tail指针指向尾元素。</p>
+<p><strong>思路：</strong>与数组实现类似，但无需考虑内存碎片问题。</p>
+<pre><code>class StringLinkedQueue implements Queue&lt;String&gt; {
+
+    private int count;
+    private Node&lt;String&gt; head, tail;
+
+    @Override
+    public boolean enqueue(String item) {
+        //入队
+        if (head == null) {
+            head = new Node&lt;&gt;(item, null);
+            tail = head;
+        } else {
+            tail.next = new Node&lt;&gt;(item, null);
+            tail = tail.next;
+        }
+        ++count;
+        return true;
+    }
+
+    @Override
+    public String dequeue() {
+        if (head == null) return null;
+        //出队
+        Node&lt;String&gt; item = head;
+        head = head.next;
+        if (head == null) tail = null;
+        --count;
+        return item.data;
+    }
+
+    @Override
+    public boolean isEmpty() {
+        return head == null;
+    }
+
+    @Override
+    public int size() {
+        return count;
+    }
+
+    public void printAll() {
+        Node temp = head;
+        while (temp != null) {
+            System.out.print(temp.data + &quot;\t&quot;);
+            temp = temp.next;
+        }
+        System.out.println();
+    }
+}
+</code></pre><p>测试：</p>
+<pre><code>//测试数据
+public static StringLinkedQueue getQueueData() {
+    StringLinkedQueue queue = new StringLinkedQueue();
+    queue.enqueue(&quot;1&quot;);
+    queue.enqueue(&quot;2&quot;);
+    queue.enqueue(&quot;3&quot;);
+    queue.enqueue(&quot;4&quot;);
+    queue.enqueue(&quot;5&quot;);
+    return queue;
+}
+
+//测试代码
+StringLinkedQueue queue = getQueueData();
+queue.printAll();
+queue.dequeue();    //出队
+queue.dequeue();    //出队
+queue.dequeue();    //出队
+queue.printAll();
+
+queue.enqueue(&quot;6&quot;); //继续入队
+queue.enqueue(&quot;7&quot;); //继续入队
+queue.printAll();
+</code></pre><p>输出：</p>
+<pre><code>1    2    3    4    5    
+4    5    
+4    5    6    7    
+</code></pre><h3 id="3、循环队列"><a href="#3、循环队列" class="headerlink" title="3、循环队列"></a>3、循环队列</h3><p>比起之前的数组和链表实现的队列，循环队列实现就较为复杂，需<strong>注意队空和队满的判定条件</strong>。</p>
+<p>将循环队列和普通数组队列以画图形式表示如下：</p>
+<p><img src="https://cn-ljb.github.io/images/数据结构与算法-07队列/循环队列对比.png" alt="线性表数据结构.jpg"></p>
+<p><strong>思路：</strong></p>
+<p>核心思想：计算数组最后一个元素和第一个元素的边界，由于head、tail指针始终是向后移动1位，我们只需要计算head+1、tail+1对maxSize取余的值作为新的head、tail，当达到边界时，取余余数自然为0。</p>
+<ul>
+<li>指针计算公式：<ul>
+<li>入队： tail = (tail+1)%maxSize</li>
+<li>出队： head = (head+1)%maxSize</li>
+</ul>
+</li>
+<li>队空条件不变：head == tail</li>
+<li>队满条件：head == (tail+1)%maxSize</li>
+</ul>
+<p>代码实现：</p>
+<pre><code>class CircularQueue implements Queue&lt;String&gt; {
+
+    private String[] arr;
+    private int count;
+    private int maxSize;
+    private int head = 0;
+    private int tail = 0;
+
+
+    public CircularQueue(int initSize) {
+        maxSize = initSize;
+        arr = new String[maxSize];
+    }
+
+
+    @Override
+    public boolean enqueue(String item) {
+        if ((tail + 1) % maxSize == head) return false; 
+        //入队
+        arr[tail] = item;
+        tail = (tail + 1) % maxSize;
+        ++count;
+        return true;
+    }
+
+    @Override
+    public String dequeue() {
+        if (head == tail) return null;  //队列已空
+        String item = arr[head];
+        head = (head + 1) % maxSize;
+        --count;
+        return item;
+    }
+
+    @Override
+    public boolean isEmpty() {
+        return head == tail;
+    }
+
+    @Override
+    public int size() {
+        return count;
+    }
+
+
+    public void printAll() {
+        int tempHead = head;
+        while (tempHead != tail) {
+            System.out.print(arr[tempHead] + &quot;\t&quot;);
+            tempHead = (tempHead + 1) % maxSize;
+        }
+        System.out.println();
+    }
+}
+</code></pre><p>测试：</p>
+<pre><code>//测试数据
+public static CircularQueue getQueueData() {
+    CircularQueue queue = new CircularQueue(6);
+    queue.enqueue(&quot;1&quot;);
+    queue.enqueue(&quot;2&quot;);
+    queue.enqueue(&quot;3&quot;);
+    queue.enqueue(&quot;4&quot;);
+    queue.enqueue(&quot;5&quot;);
+    queue.enqueue(&quot;6&quot;);
+    return queue;
+}
+
+//测试代码
+CircularQueue queue = getQueueData();
+queue.printAll();
+queue.dequeue();    //出队
+queue.dequeue();    //出队
+queue.dequeue();    //出队
+queue.printAll();
+
+queue.enqueue(&quot;7&quot;); //继续入队
+queue.enqueue(&quot;8&quot;); //继续入队
+queue.printAll();
+</code></pre><p>输出：</p>
+<pre><code>1    2    3    4    5    //6入栈失败
+4    5    
+4    5    7    8    
+</code></pre><h4 id="问题-1"><a href="#问题-1" class="headerlink" title="问题"></a>问题</h4><p>显然，通过循环队列我们优化了入队时间复杂度O(n) -&gt; O(1)，随之又产生一个新的问题，我们实际使用的内存空间总是比初始化大小少1。</p>
+<p>原因就在于，我们在入队时，(tail + 1) % maxSize == head队满判断，导致tail指向n-1时，计算得出tail==head，所以无法入队。</p>
+<h4 id="解决方案-1"><a href="#解决方案-1" class="headerlink" title="解决方案"></a>解决方案</h4><p>利用count计数变量来判断空队（coun==0）满队（count==maxSize）情况，修改enqueue()、dequeue（）、praintAll()方法如下：</p>
+<pre><code>public boolean enqueue(String item) {
+    if (count == maxSize) return false;
+    //入队
+    arr[tail] = item;
+    tail = (tail + 1) % maxSize;
+    ++count;
+    return true;
+}
+
+public String dequeue() {
+    if (count == 0) return null;  //队列已空
+    String item = arr[head];
+    head = (head + 1) % maxSize;
+    --count;
+    return item;
+}
+
+
+public void printAll() {
+    int tempHead = head;
+    int tempCount = count;
+    while (tempCount != 0) {
+        String item = arr[tempHead];
+        System.out.print(item + &quot;\t&quot;);
+        tempHead = (tempHead + 1) % maxSize;
+        --tempCount;
+    }
+    System.out.println();
+}
+</code></pre><p>测试：</p>
+<pre><code>CircularQueue queue = getQueueData();
+queue.printAll();
+queue.dequeue();    //出队
+queue.dequeue();    //出队
+queue.dequeue();    //出队
+queue.printAll();
+
+queue.enqueue(&quot;7&quot;); //继续入队
+queue.enqueue(&quot;8&quot;); //继续入队
+queue.enqueue(&quot;9&quot;); //继续入队
+queue.enqueue(&quot;10&quot;); //继续入队，空间不足入队失败
+queue.printAll();
+</code></pre><p>输出：</p>
+<pre><code>1    2    3    4    5    6    
+4    5    6    
+4    5    6    7    8    9
+</code></pre><h4 id="阻塞队列和并发队列"><a href="#阻塞队列和并发队列" class="headerlink" title="阻塞队列和并发队列"></a>阻塞队列和并发队列</h4><p>// TODO</p>
 
       
     </div>
@@ -659,7 +884,7 @@ queue.printAll();
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、什么是队列"><span class="nav-number">1.</span> <span class="nav-text">一、什么是队列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、队列的实现"><span class="nav-number">2.</span> <span class="nav-text">二、队列的实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、数组实现"><span class="nav-number">2.1.</span> <span class="nav-text">1、数组实现</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#问题"><span class="nav-number">2.1.1.</span> <span class="nav-text">问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#解决方案"><span class="nav-number">2.1.2.</span> <span class="nav-text">解决方案</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#为什么方案二优于方案一？"><span class="nav-number">2.1.2.1.</span> <span class="nav-text">为什么方案二优于方案一？</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、链表实现"><span class="nav-number">2.2.</span> <span class="nav-text">2、链表实现</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、什么是队列"><span class="nav-number">1.</span> <span class="nav-text">一、什么是队列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、队列的实现"><span class="nav-number">2.</span> <span class="nav-text">二、队列的实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、数组实现"><span class="nav-number">2.1.</span> <span class="nav-text">1、数组实现</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#问题"><span class="nav-number">2.1.1.</span> <span class="nav-text">问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#解决方案"><span class="nav-number">2.1.2.</span> <span class="nav-text">解决方案</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#为什么方案二优于方案一？"><span class="nav-number">2.1.2.1.</span> <span class="nav-text">为什么方案二优于方案一？</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、链表实现"><span class="nav-number">2.2.</span> <span class="nav-text">2、链表实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、循环队列"><span class="nav-number">2.3.</span> <span class="nav-text">3、循环队列</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#问题-1"><span class="nav-number">2.3.1.</span> <span class="nav-text">问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#解决方案-1"><span class="nav-number">2.3.2.</span> <span class="nav-text">解决方案</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#阻塞队列和并发队列"><span class="nav-number">2.3.3.</span> <span class="nav-text">阻塞队列和并发队列</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>

@@ -79,19 +79,17 @@
 
 
 
-<meta name="description" content="版本 ： org.greenrobot:eventbus:3.1.1 ![EventBus-Publish-Subscribe.png](  https://cn-ljb.github.io/images/EventBus源码分析/EventBus.png)  简介Android或者Java平台下的一款高效的事件总线框架。 特点：  简洁的组件通信机制 发布者、订阅者完全分离 线程安全 内存安全">
+<meta name="description" content="什么是递归？斐波那契数列在讲解递归前，还是聊聊经典的斐波那契数列。 1, 1, 2, 3, 5, 8, 13, 21, 34, ... 这个数列从第3项开始，每一项都等于前两项之和。 求解数列中第n个数是多少？ 分析： n=1 -&amp;gt; 1 n=2 -&amp;gt; 1 n=3 -&amp;gt; 1+1 = 2 n=4 -&amp;gt; 2+1 = 3 n=5 -&amp;gt; 3+2 = 5 假设f(n)为求解函数，">
 <meta property="og:type" content="article">
-<meta property="og:title" content="EventBus源码分析">
-<meta property="og:url" content="http://yoursite.com/2019/05/17/EventBus源码分析/index.html">
+<meta property="og:title" content="数据结构与算法-08递归">
+<meta property="og:url" content="http://yoursite.com/2019/06/13/数据结构与算法-08递归/index.html">
 <meta property="og:site_name" content="雷小歪的博客">
-<meta property="og:description" content="版本 ： org.greenrobot:eventbus:3.1.1 ![EventBus-Publish-Subscribe.png](  https://cn-ljb.github.io/images/EventBus源码分析/EventBus.png)  简介Android或者Java平台下的一款高效的事件总线框架。 特点：  简洁的组件通信机制 发布者、订阅者完全分离 线程安全 内存安全">
+<meta property="og:description" content="什么是递归？斐波那契数列在讲解递归前，还是聊聊经典的斐波那契数列。 1, 1, 2, 3, 5, 8, 13, 21, 34, ... 这个数列从第3项开始，每一项都等于前两项之和。 求解数列中第n个数是多少？ 分析： n=1 -&amp;gt; 1 n=2 -&amp;gt; 1 n=3 -&amp;gt; 1+1 = 2 n=4 -&amp;gt; 2+1 = 3 n=5 -&amp;gt; 3+2 = 5 假设f(n)为求解函数，">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://i.imgur.com/9VZwpyO.png">
-<meta property="og:updated_time" content="2019-06-06T02:13:37.634Z">
+<meta property="og:updated_time" content="2019-06-13T10:23:01.336Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="EventBus源码分析">
-<meta name="twitter:description" content="版本 ： org.greenrobot:eventbus:3.1.1 ![EventBus-Publish-Subscribe.png](  https://cn-ljb.github.io/images/EventBus源码分析/EventBus.png)  简介Android或者Java平台下的一款高效的事件总线框架。 特点：  简洁的组件通信机制 发布者、订阅者完全分离 线程安全 内存安全">
-<meta name="twitter:image" content="https://i.imgur.com/9VZwpyO.png">
+<meta name="twitter:title" content="数据结构与算法-08递归">
+<meta name="twitter:description" content="什么是递归？斐波那契数列在讲解递归前，还是聊聊经典的斐波那契数列。 1, 1, 2, 3, 5, 8, 13, 21, 34, ... 这个数列从第3项开始，每一项都等于前两项之和。 求解数列中第n个数是多少？ 分析： n=1 -&amp;gt; 1 n=2 -&amp;gt; 1 n=3 -&amp;gt; 1+1 = 2 n=4 -&amp;gt; 2+1 = 3 n=5 -&amp;gt; 3+2 = 5 假设f(n)为求解函数，">
 
 
 
@@ -121,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/05/17/EventBus源码分析/">
+  <link rel="canonical" href="http://yoursite.com/2019/06/13/数据结构与算法-08递归/">
 
 
 
 
 
-  <title>EventBus源码分析 | 雷小歪的博客</title>
+  <title>数据结构与算法-08递归 | 雷小歪的博客</title>
   
 
 
@@ -276,7 +274,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/17/EventBus源码分析/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/13/数据结构与算法-08递归/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="cn-ljb">
@@ -293,7 +291,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">EventBus源码分析</h1>
+          <h1 class="post-title" itemprop="name headline">数据结构与算法-08递归</h1>
         
 
         <div class="post-meta">
@@ -305,8 +303,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-17T14:55:51+08:00">
-                2019-05-17
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-13T14:47:28+08:00">
+                2019-06-13
               </time>
             
 
@@ -343,387 +341,135 @@
       
 
       
-        <p>版本 ： org.greenrobot:eventbus:3.1.1</p>
-<p>![EventBus-Publish-Subscribe.png](</p>
-<blockquote>
-<p><a href="https://cn-ljb.github.io/images/EventBus源码分析/EventBus.png" target="_blank" rel="noopener">https://cn-ljb.github.io/images/EventBus源码分析/EventBus.png</a>)</p>
-</blockquote>
-<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>Android或者Java平台下的一款高效的事件总线框架。</p>
-<p>特点：</p>
+        <h2 id="什么是递归？"><a href="#什么是递归？" class="headerlink" title="什么是递归？"></a>什么是递归？</h2><h3 id="斐波那契数列"><a href="#斐波那契数列" class="headerlink" title="斐波那契数列"></a>斐波那契数列</h3><p>在讲解递归前，还是聊聊经典的<strong>斐波那契数列</strong>。</p>
+<pre><code>1, 1, 2, 3, 5, 8, 13, 21, 34, ...
+</code></pre><p>这个数列从第3项开始，每一项都等于前两项之和。</p>
+<p>求解数列中第n个数是多少？</p>
+<p>分析：</p>
+<pre><code>n=1 -&gt; 1
+n=2 -&gt; 1
+n=3 -&gt; 1+1 = 2
+n=4 -&gt; 2+1 = 3
+n=5 -&gt; 3+2 = 5
+</code></pre><p>假设f(n)为求解函数，那么可以得到以下推倒公式：</p>
+<pre><code>f(1)=1
+f(2)=1 
+f(n)=f(n-1)+f(n-2)（n&gt;=3，n∈N*）
+</code></pre><p>用程序实现它：</p>
+<pre><code>private static int getFSNum(int n) {
+    if (n == 1 || n == 2) return 1;
+    return getFSNum(n-1) + getFSNum(n-2);
+}
+</code></pre><p>测试：</p>
+<pre><code>System.out.println(getFSNum(1) + &quot;&quot;);
+System.out.println(getFSNum(2) + &quot;&quot;);
+System.out.println(getFSNum(3) + &quot;&quot;);
+System.out.println(getFSNum(4) + &quot;&quot;);
+System.out.println(getFSNum(5) + &quot;&quot;);
+</code></pre><p>输出：</p>
+<pre><code>1
+1
+2
+3
+5
+</code></pre><p>上面这个求解过程是一个典型递归算法实现，那究竟什么是递归？</p>
+<h3 id="递归的概念"><a href="#递归的概念" class="headerlink" title="递归的概念"></a>递归的概念</h3><p>递归是一种应用非常广泛的算法（或者编程技巧）。很多数据结构和算法的编码实现都要用到递归，比如回溯、DFS 深度优先搜索等</p>
+<h3 id="递归算法的三要素"><a href="#递归算法的三要素" class="headerlink" title="递归算法的三要素"></a>递归算法的三要素</h3><ul>
+<li>1、一个问题的解可以拆解为一个或多个子问题的解</li>
+<li>2、这个问题解题思路与拆解后的子问题解题思路完全一致</li>
+<li>3、必须存在终止条件</li>
+</ul>
+<p>只有满足以上三点的解题思路才能使用递归算法。</p>
+<p>拿上面斐波那契数列的解题思路来说：</p>
 <ul>
-<li>简洁的组件通信机制<ul>
-<li>发布者、订阅者完全分离</li>
-<li>线程安全</li>
-<li>内存安全</li>
+<li>1、f(n) 问题可以拆解为 f(n-1)、f(n-2)问题</li>
+<li>2、无论是f(n)还是子问题f(n-1)、f(n-2)问题，他们的求解思路是一样的</li>
+<li>3、当n=2或者n==1时，结束“递”，开始“归”</li>
+</ul>
+<h2 id="如何判断问题是否适合递归算法"><a href="#如何判断问题是否适合递归算法" class="headerlink" title="如何判断问题是否适合递归算法"></a>如何判断问题是否适合递归算法</h2><p>虽然我们知道了递归的三要素，但实际工作中我们很难一眼看出问题是否满足三要素，在这种情况下直接编写递归代码很容易出错，而且为了找到错误，你可能脑子里或者debug形式一步一步去跟踪递归的每一次嵌套调用，相信大多数情况下你还没有摸清出错原因就已经晕了。</p>
+<p>其实，就像上面求解斐波那契数列一样，我们尽可能<strong>先分析出递推公式，并找到终止条件</strong>，最后编写代码。</p>
+<p>利用这种思路，试着解下面这个问题：</p>
+<blockquote>
+<p>有n个台阶,每次只能跨1步或者2步，走到第n个台阶有多少种走法？</p>
+</blockquote>
+<p>分析：</p>
+<pre><code>n=1 -&gt; 1    -&gt; 1种
+n=2 -&gt; 11、2    -&gt; 2种
+n=3 -&gt; 111、12、21    -&gt; 3种
+n=4 -&gt; 1111、112、121、211、22 -&gt; 5种
+</code></pre><p>假设f(n)为求解函数：</p>
+<ul>
+<li>n=1时，只有1个解； </li>
+<li>n=2时，只有2个解；</li>
+<li>n&gt;2时，分两种情况，这两种情况的总和就是f(n)的解：<ul>
+<li>当第一次走1步时，就需求剩余n-1个台阶的解f(n-1)； </li>
+<li>当第一次走的是2步时，需求剩余n-2个台阶的解f(n-2)。</li>
 </ul>
 </li>
-<li>调用者代码简洁</li>
-<li>快捷迅速</li>
-<li>包小</li>
-<li>经过了100,000,000+App安装量验证</li>
-<li>支持优先级</li>
 </ul>
-<h2 id="源码分析"><a href="#源码分析" class="headerlink" title="源码分析"></a>源码分析</h2><p>我们以一个最简单的示例作为分析的突破口（以下代码均以Kotlin编写）。</p>
-<p>第1步：编写一个事件类</p>
-<pre><code>class MessageEvent(val data: String)
-</code></pre><p>第2步：订阅者</p>
-<pre><code>class MainActivity : AppCompatActivity() {
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        //1、注册
-        EventBus.getDefault().register(this)
-    }
-
-    //2、定义订阅触发方法
-    @Subscribe(threadMode = ThreadMode.MAIN)
-    fun onMessageEvent(event: MessageEvent) {
-        Log.i(&quot;test&quot;, &quot;MessageEvent事件被触发&quot;)
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        //3、注销
-        EventBus.getDefault().unregister(this)
-    }
+<p>得到公式：</p>
+<pre><code>f(1)=1
+f(2)=2
+f(n)=f(n-1)+f(n-2)（n&gt;2，n∈N*）
+</code></pre><p>有了公式，写代码就简单了：</p>
+<pre><code>private static int getStepNum(int n) {
+    if (n == 1) return 1;
+    if (n == 2) return 2;
+    return getStepNum(n - 1) + getStepNum(n - 2);
 }
-</code></pre><p>第3步：发布者</p>
-<pre><code>EventBus.getDefault().post(MessageEvent(&quot;123456&quot;))
-</code></pre><p>显然第1步没什么好分析的，怎么看它都是一个普普通通的类。</p>
-<h3 id="EventBus-getDefault-register-this-源码"><a href="#EventBus-getDefault-register-this-源码" class="headerlink" title="EventBus.getDefault().register(this) 源码"></a>EventBus.getDefault().register(this) 源码</h3><p>而第2步中大致又可以分为三部分：<strong>注册</strong>、<strong>定义触发方法</strong>、<strong>注销</strong>。我们看看<strong>注册</strong>的源码都执行了哪些逻辑：</p>
-<pre><code>// EventBus.getDefault().register(this)方法源码
-public void register(Object subscriber) {
-    //1
-    Class&lt;?&gt; subscriberClass = subscriber.getClass();
-    //2
-    List&lt;SubscriberMethod&gt; subscriberMethods = subscriberMethodFinder.findSubscriberMethods(subscriberClass);
-    synchronized (this) {
-        //3
-        for (SubscriberMethod subscriberMethod : subscriberMethods) {
-            subscribe(subscriber, subscriberMethod);
-        }
-    }
-}
-</code></pre><p>register()方法内部实现大致可看为3行代码：</p>
-<ul>
-<li>1、获取传入subscriber对象的字节码对象</li>
-<li>2、通过字节码对象获取到一个List<subscribermethod>集合</subscribermethod></li>
-<li>3、遍历这个集合，调用subscribe()方法 ，把当前subscriber和item subscriberMethod以形参形式传入</li>
-</ul>
-<p>字节码对象不必多讲，我们看看subscriberMethodFinder.findSubscriberMethods()这个方法返回的集合究竟是什么：</p>
-<pre><code>List&lt;SubscriberMethod&gt; findSubscriberMethods(Class&lt;?&gt; subscriberClass) {
-    缓存机制...
-
-    if (ignoreGeneratedIndex) {
-        subscriberMethods = findUsingReflection(subscriberClass);
-    } else {
-        subscriberMethods = findUsingInfo(subscriberClass);
-    }
-
-      缓存机制...
-    return subscriberMethods;
-}
-</code></pre><p>便于阅读，这里省掉部分不影响核心功能的的代码，重点放到这个if判断上，通过源码的查看ignoreGeneratedIndex我们并没有进行过修改操作，这里走的是默认值false,再看看findUsingInfo()方法做了什么：</p>
-<pre><code>private List&lt;SubscriberMethod&gt; findUsingInfo(Class&lt;?&gt; subscriberClass) {
-    //1、
-    FindState findState = prepareFindState();
-    findState.initForSubscriber(subscriberClass);
-    //2、
-    while (findState.clazz != null) {
-        findState.subscriberInfo = getSubscriberInfo(findState);
-        if (findState.subscriberInfo != null) {
-           缓存机制...
-        } else {
-            findUsingReflectionInSingleClass(findState);
-        }
-        //3、
-        findState.moveToSuperclass();
-    }
-    //4、
-    return getMethodsAndRelease(findState);
-}
-</code></pre><p>这里又出现了一个新类FindState：</p>
-<pre><code>static class FindState {
-    final List&lt;SubscriberMethod&gt; subscriberMethods = new ArrayList&lt;&gt;();
-    final Map&lt;Class, Object&gt; anyMethodByEventType = new HashMap&lt;&gt;();
-    final Map&lt;String, Class&gt; subscriberClassByMethodKey = new HashMap&lt;&gt;();
-    final StringBuilder methodKeyBuilder = new StringBuilder(128);
-
-    Class&lt;?&gt; subscriberClass;
-    Class&lt;?&gt; clazz;
-    boolean skipSuperClasses;
-    SubscriberInfo subscriberInfo;
-
-    void initForSubscriber(Class&lt;?&gt; subscriberClass) {
-        this.subscriberClass = clazz = subscriberClass;
-        skipSuperClasses = false;
-        subscriberInfo = null;
-    }
-
+</code></pre><p>测试：</p>
+<pre><code>System.out.println(getStepNum(1) + &quot;&quot;);
+System.out.println(getStepNum(2) + &quot;&quot;);
+System.out.println(getStepNum(3) + &quot;&quot;);
+System.out.println(getStepNum(4) + &quot;&quot;);
+</code></pre><p>输出：</p>
+<pre><code>1
+2
+3
+5
+</code></pre><h2 id="递归算法的堆栈溢出问题"><a href="#递归算法的堆栈溢出问题" class="headerlink" title="递归算法的堆栈溢出问题"></a>递归算法的堆栈溢出问题</h2><p>通过上面的两个例子，发现递归算法写出的代码都很清爽简洁，易于理解。</p>
+<p>但实际开发中递归算法很容易导致堆栈溢出，从而有很多人都不推荐写递归算法。比如上面的台阶问题，当我改成5000个台阶时，运行在我的编译器上就抛出了StackOverflowError.</p>
+<pre><code>System.out.println(getStepNum(5000) + &quot;&quot;);
+</code></pre><p>运行，抛出StackOverflowError异常：</p>
+<pre><code>Exception in thread &quot;main&quot; java.lang.StackOverflowError
+    at com.ljb.aljs.Text08.getStepNum(Text08.java:29)
     ...
-｝
-</code></pre><p>可以看出来FindState是一个容器管理类，貌似存放了一些跟这个订阅者Class字节码对象相关的数据，顺便看下initForSubscriber()方法将我们的订阅者Class对象赋值给了该容器的subscriberClass和class.</p>
-<p>再看这里的while循环肯定为true了，if语句我们看else部分，其他部分属于缓存机制，findUsingReflectionInSingleClass()方法如下：</p>
-<pre><code>private void findUsingReflectionInSingleClass(FindState findState) {
-    //1、
-    Method[] methods;
-    try {
-        // This is faster than getMethods, especially when subscribers are fat classes like Activities
-        methods = findState.clazz.getDeclaredMethods();
-    } catch (Throwable th) {
-        // Workaround for java.lang.NoClassDefFoundError, see https://github.com/greenrobot/EventBus/issues/149
-        methods = findState.clazz.getMethods();
-        findState.skipSuperClasses = true;
+</code></pre><p>这又是为什么？</p>
+<p>在<a href="https://cn-ljb.github.io/2019/05/27/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95-06%E6%A0%88/" target="_blank" rel="noopener">“栈的章节-栈的使用场景”</a>有提到函数的调用在内存中是以栈的形式把函数域中的临时变量全部压栈，只有函数调用完毕后才会出栈释放这些资源。而由于递归算法的特殊性，每一次调用都会压入该栈中，层次越深的递归算法所需的栈空间也就越大，然而系统或者JVM虚拟机的函数调用栈一般都不大，从而越深的递归算法越容易堆栈溢出。</p>
+<h3 id="如何避免堆栈溢出"><a href="#如何避免堆栈溢出" class="headerlink" title="如何避免堆栈溢出"></a>如何避免堆栈溢出</h3><h4 id="1、限制递归深度"><a href="#1、限制递归深度" class="headerlink" title="1、限制递归深度"></a>1、限制递归深度</h4><p>顾名思义，从代码层面上增加递归深度的计数器，当达到指定深度直接停止递归（thorw Exception）。</p>
+<p>显然这种方法不能根本解决问题，只适用于明确规定计算深度的业务场景。</p>
+<h4 id="2、优化重复计算"><a href="#2、优化重复计算" class="headerlink" title="2、优化重复计算"></a>2、优化重复计算</h4><p>拿上面台阶的例子来说，当要求f(5)=f(4)+<strong>f(3)</strong>，需要先求f(4)=<strong>f(3)</strong>+f(2)，可以发现在f(4)中已经计算过f(3)，在f(5)中又要重新计算。</p>
+<p>对于递归中这种重复计算的问题，我们可以进行优化,<strong>先将已经计算过的解保存起来（例如：散列表），在下次计算是检查是否已经计算过，从而避免重复计算。</strong></p>
+<p>优化后的5000个台阶问题，代码如下：</p>
+<pre><code>private static int getStepNum(int n) {
+    if (n == 1) return 1;
+    if (n == 2) return 2;
+    if (cache.containsKey(n)) {
+        return cache.get(n);
+    }
+    int result = getStepNum(n - 1) + getStepNum(n - 2);
+    cache.put(n, result);
+    return result;
+}
+</code></pre><p>虽然我们优化了重复计算问题，并且可以计算出5000个台阶的结果了，但是这也仅仅是优化，当n足够大时依旧会堆栈溢出。</p>
+<h4 id="3、改为循环语句"><a href="#3、改为循环语句" class="headerlink" title="3、改为循环语句"></a>3、改为循环语句</h4><p>基本上所有的代码都可以改为循环语句。改写台阶问题：</p>
+<pre><code>private static int getStepNum(int n) {
+    if (n == 1) return 1;
+    if (n == 2) return 2;
+    int result = 0, pre = 2, prepre = 1;
+
+    for (int i = 3; i &lt;= n; i++) {
+        result = pre + prepre;
+        prepre = pre;
+        pre = result;
     }
 
-    //2、
-    for (Method method : methods) {
-        int modifiers = method.getModifiers();
-        if ((modifiers &amp; Modifier.PUBLIC) != 0 &amp;&amp; (modifiers &amp; MODIFIERS_IGNORE) == 0) {
-            Class&lt;?&gt;[] parameterTypes = method.getParameterTypes();
-            if (parameterTypes.length == 1) {
-                Subscribe subscribeAnnotation = method.getAnnotation(Subscribe.class);
-                if (subscribeAnnotation != null) {
-                    Class&lt;?&gt; eventType = parameterTypes[0];
-                    if (findState.checkAdd(method, eventType)) {
-                        ThreadMode threadMode = subscribeAnnotation.threadMode();
-                        //3、
-                        findState.subscriberMethods.add(new SubscriberMethod(method, eventType, threadMode,
-                                subscribeAnnotation.priority(), subscribeAnnotation.sticky()));
-                    }
-                }
-            } else if (strictMethodVerification &amp;&amp; method.isAnnotationPresent(Subscribe.class)) {
-              ...
-            }
-        } else if (strictMethodVerification &amp;&amp; method.isAnnotationPresent(Subscribe.class)) {
-            ...
-        }
-    }
+    return result;
 }
-</code></pre><p>首先通过反射获取到了当前订阅者Class中的所有Method对象，接下来遍历这些Method对象，最终把我们编写订阅触发方法的Method找了出来（@Subscribe注解标识的方法），一个订阅者可以有多个订阅触发方法，都将它们存储到findState.subscriberMethods集合里。</p>
-<p>让我们findUsingInfo()，至于findState.moveToSuperclass()我们就不看了，这里就是获取当前订阅者Class的superClass通过while再去查询它里面的订阅事件，重走刚刚所分析的逻辑，最后看getMethodsAndRelease(findState)返回了什么东西：</p>
-<pre><code>private List&lt;SubscriberMethod&gt; getMethodsAndRelease(FindState findState) {
-    List&lt;SubscriberMethod&gt; subscriberMethods = new ArrayList&lt;&gt;(findState.subscriberMethods);
-    findState.recycle();
-       缓存机制...
-    return subscriberMethods;
-}
-</code></pre><p>原来就是将findState.subscriberMethods返回了回去，通过一层层的返回最终subscriberMethods返回到了register()方法中，那么register()方法中就剩最后遍历调用的subscribe()方法，看看它都做了什么：</p>
-<pre><code>private void subscribe(Object subscriber, SubscriberMethod subscriberMethod) {
-    Class&lt;?&gt; eventType = subscriberMethod.eventType;
-    //1、
-    Subscription newSubscription = new Subscription(subscriber, subscriberMethod);
-    CopyOnWriteArrayList&lt;Subscription&gt; subscriptions = subscriptionsByEventType.get(eventType);
-    if (subscriptions == null) {
-        subscriptions = new CopyOnWriteArrayList&lt;&gt;();
-        //2、
-        subscriptionsByEventType.put(eventType, subscriptions);
-    } else {
-        if (subscriptions.contains(newSubscription)) {
-            throw new EventBusException(&quot;Subscriber &quot; + subscriber.getClass() + &quot; already registered to event &quot;
-                    + eventType);
-        }
-    }
-
-    int size = subscriptions.size();
-    for (int i = 0; i &lt;= size; i++) {
-        if (i == size || subscriberMethod.priority &gt; subscriptions.get(i).subscriberMethod.priority) {
-            //2、
-            subscriptions.add(i, newSubscription);
-            break;
-        }
-    }
-
-    List&lt;Class&lt;?&gt;&gt; subscribedEvents = typesBySubscriber.get(subscriber);
-    if (subscribedEvents == null) {
-        subscribedEvents = new ArrayList&lt;&gt;();
-        typesBySubscriber.put(subscriber, subscribedEvents);
-    }
-    subscribedEvents.add(eventType);
-
-    粘性事件处理...
-}
-</code></pre><p>这里代码看似很多，大家只需记住1个对象、2个容器即可：</p>
-<ul>
-<li>对象：<strong>Subscription</strong> <ul>
-<li>存储了注册时传入的订阅者subscriber 和 某个订阅方法（@Subscribe注解标注的方法）</li>
-</ul>
-</li>
-<li>容器1：Map&lt;Class,List&lt; Subscription &gt;&gt; <strong>subscriptionsByEventType</strong> <ul>
-<li>存储了某个事件类型（eg:MessageEvent） -&gt; 对应的所有的<strong>Subscription</strong>（小对象）</li>
-</ul>
-</li>
-<li>容器2：Map&lt;Object, List&lt; Class &gt;&gt; <strong>typesBySubscriber</strong> <ul>
-<li>存储了某个订阅者 -&gt; 对应订阅的所有事件类型（eg:MessageEvent…）</li>
-</ul>
-</li>
-</ul>
-<p><img src="https://i.imgur.com/9VZwpyO.png" alt></p>
-<p>到此整个register()的源码已经走了一遍，小结一句话：</p>
-<blockquote>
-<p>register()方法，通过反射将订阅者中@Subscribe注解标注的所有方法、订阅对象、订阅事件类型分别存储到了两个容器中。</p>
-</blockquote>
-<h3 id="EventBus-getDefault-unregister-this-源码"><a href="#EventBus-getDefault-unregister-this-源码" class="headerlink" title="EventBus.getDefault().unregister(this) 源码"></a>EventBus.getDefault().unregister(this) 源码</h3><p>想想，register()方法是将订阅者拆解出来存储到不同容器中，那么unregister()用来做什么？<br>那肯定是将当前订阅者相关的存储数据从容器中remove喽：</p>
-<pre><code>public synchronized void unregister(Object subscriber) {
-    //1、
-    List&lt;Class&lt;?&gt;&gt; subscribedTypes = typesBySubscriber.get(subscriber);
-    if (subscribedTypes != null) {
-        //2、
-        for (Class&lt;?&gt; eventType : subscribedTypes) {
-            unsubscribeByEventType(subscriber, eventType);
-        }
-        typesBySubscriber.remove(subscriber);
-    } else {
-        logger.log(Level.WARNING, &quot;Subscriber to unregister was not registered before: &quot; + subscriber.getClass());
-    }
-}
-
-private void unsubscribeByEventType(Object subscriber, Class&lt;?&gt; eventType) {
-    List&lt;Subscription&gt; subscriptions = subscriptionsByEventType.get(eventType);
-    if (subscriptions != null) {
-        int size = subscriptions.size();
-        for (int i = 0; i &lt; size; i++) {
-            Subscription subscription = subscriptions.get(i);
-            if (subscription.subscriber == subscriber) {
-                subscription.active = false;
-                subscriptions.remove(i);
-                i--;
-                size--;
-            }
-        }
-    }
-}
-</code></pre><p>可以看到先通过容器typesBySubscriber获取到当前订阅者订阅的所有事件类型，并从该容器中清除，再通过unsubscribeByEventType()方法清除subscriptionsByEventType容器中跟这个订阅者相关的数据。</p>
-<h3 id="EventBus-getDefault-post-源码"><a href="#EventBus-getDefault-post-源码" class="headerlink" title="EventBus.getDefault().post() 源码"></a>EventBus.getDefault().post() 源码</h3><p>还剩最后一个问题，我们在订阅者中定义的订阅方法（@Subscribe注解标注的）什么时候会被调用？</p>
-<blockquote>
-<p>EventBus.getDefault().post()</p>
-</blockquote>
-<p>从最上面的例子代码，我们也可以看到发布者代码只有一行，说明所有的类在任意地方都可以成为发布者发布事件，从而触发订阅者的订阅方法。其实，订阅者也可以是任意类，只是Android中常见的界面是Activity和Fragment，并且为了保证内存安全所以一定要在销毁的生命周期里调用注销api，只要任意类中在合理的位置进行注册和注销也是可以安全的使用EventBus的。</p>
-<p>来看看post()源码吧：</p>
-<pre><code>public void post(Object event) {
-    //1、
-    PostingThreadState postingState = currentPostingThreadState.get();
-    List&lt;Object&gt; eventQueue = postingState.eventQueue;
-    eventQueue.add(event);
-
-    if (!postingState.isPosting) {
-        postingState.isMainThread = isMainThread();
-        postingState.isPosting = true;
-        if (postingState.canceled) {
-            throw new EventBusException(&quot;Internal error. Abort state was not reset&quot;);
-        }
-        try {
-            //2、
-            while (!eventQueue.isEmpty()) {
-                postSingleEvent(eventQueue.remove(0), postingState);
-            }
-        } finally {
-            postingState.isPosting = false;
-            postingState.isMainThread = false;
-        }
-    }
-}
-</code></pre><p>一目了然，将当前要出发的事件类型添加到队列中，在while循环中调用postSingleEvent()方法发布事件：</p>
-<pre><code>private void postSingleEvent(Object event, PostingThreadState postingState) throws Error {
-    Class&lt;?&gt; eventClass = event.getClass();
-    boolean subscriptionFound = false;
-    if (eventInheritance) {
-        List&lt;Class&lt;?&gt;&gt; eventTypes = lookupAllEventTypes(eventClass);
-        int countTypes = eventTypes.size();
-        for (int h = 0; h &lt; countTypes; h++) {
-            Class&lt;?&gt; clazz = eventTypes.get(h);
-            subscriptionFound |= postSingleEventForEventType(event, postingState, clazz);
-        }
-    } else {
-        subscriptionFound = postSingleEventForEventType(event, postingState, eventClass);
-    }
-
-    可以忽略...
-}
-</code></pre><p>发现最后都会调用postSingleEventForEventType()方法：</p>
-<pre><code>private boolean postSingleEventForEventType(Object event, PostingThreadState postingState, Class&lt;?&gt; eventClass) {
-    CopyOnWriteArrayList&lt;Subscription&gt; subscriptions;
-    synchronized (this) {
-        //1、
-        subscriptions = subscriptionsByEventType.get(eventClass);
-    }
-    if (subscriptions != null &amp;&amp; !subscriptions.isEmpty()) {
-        //2、
-        for (Subscription subscription : subscriptions) {
-            postingState.event = event;
-            postingState.subscription = subscription;
-            boolean aborted = false;
-            try {
-                //3、
-                postToSubscription(subscription, event, postingState.isMainThread);
-                aborted = postingState.canceled;
-            } finally {
-                postingState.event = null;
-                postingState.subscription = null;
-                postingState.canceled = false;
-            }
-            if (aborted) {
-                break;
-            }
-        }
-        return true;
-    }
-    return false;
-}
-</code></pre><p>通过subscriptionsByEventType容器获取到了所有跟当前订阅事件类型关联的Subscription对象集合，遍历调用postToSubscription()方法：</p>
-<pre><code>private void postToSubscription(Subscription subscription, Object event, boolean isMainThread) {
-    switch (subscription.subscriberMethod.threadMode) {
-        case POSTING:
-            invokeSubscriber(subscription, event);
-            break;
-        case MAIN:
-            if (isMainThread) {
-                invokeSubscriber(subscription, event);
-            } else {
-                mainThreadPoster.enqueue(subscription, event);
-            }
-            break;
-        case MAIN_ORDERED:
-            if (mainThreadPoster != null) {
-                mainThreadPoster.enqueue(subscription, event);
-            } else {
-                // temporary: technically not correct as poster not decoupled from subscriber
-                invokeSubscriber(subscription, event);
-            }
-            break;
-        case BACKGROUND:
-            if (isMainThread) {
-                backgroundPoster.enqueue(subscription, event);
-            } else {
-                invokeSubscriber(subscription, event);
-            }
-            break;
-        case ASYNC:
-            asyncPoster.enqueue(subscription, event);
-            break;
-        default:
-            throw new IllegalStateException(&quot;Unknown thread mode: &quot; + subscription.subscriberMethod.threadMode);
-    }
-}
-</code></pre><p>该方法主要负责线程调度的过程，我们仅关注invokeSubscriber()即可：</p>
-<pre><code>void invokeSubscriber(Subscription subscription, Object event) {
-    try {
-        //1、
-        subscription.subscriberMethod.method.invoke(subscription.subscriber, event);
-    } catch (InvocationTargetException e) {
-        handleSubscriberException(subscription, event, e.getCause());
-    } catch (IllegalAccessException e) {
-        throw new IllegalStateException(&quot;Unexpected exception&quot;, e);
-    }
-}
-</code></pre><p>通过我们之前在Subscription对象里保存的method对象和它的订阅者对象，以及当前事件类型对象以反射调用的形式触发了我们在订阅者中编写的订阅方法。</p>
-<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>通过以上的源码追踪，EventBus的内部实现我们已经有了一个清晰的认识，乘热打铁总结一下：</p>
-<ul>
-<li>register()方法通过反射将当前订阅者中的订阅方法、订阅类型、订阅者进行了拆解存储到了两个容器中；</li>
-<li>unregister()方法负责将当前的订阅者数据从那两个容器中移除；</li>
-<li>post（）方法在容器中找到跟当前订阅事件类型相关联的订阅方法、订阅者，并通过反射进行调用。</li>
-</ul>
+</code></pre><p>这也是为什么有人提出不要使用递归算法的原因，但我个人认为，在明确知道递归深度不高的情况下优先使用递归，往往使用循环改写后的代码不易于阅读和维护，递归写法的代码阅读性要好很多。</p>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>递归算法是一种简洁高效的代码书写方式，只要问题满足三要素都可以使用递归来解决，在无法确定是否满足三要素的情况下，可以先推导出递推公式后再进行编码。</p>
+<p>递归算法虽然简洁高效，但也会带来堆栈溢出、重复计算、函数调用耗时、空间复杂度高等弊端。</p>
+<p>注：文中提到debug跟进计算递归问题，不是指递归不可以进行debug调试，一般情况下有两种调试方式：1、在递归过程中对特定数据加判断，在此处打断点；2、输出日志，定位错误数据。</p>
 
       
     </div>
@@ -748,8 +494,8 @@ private void unsubscribeByEventType(Object subscriber, Class&lt;?&gt; eventType)
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/05/17/Kotlin-Android世界的一股清流-开发中的优点与槽点/" rel="next" title="Kotlin-Android世界的一股清流-优点&缺点">
-                <i class="fa fa-chevron-left"></i> Kotlin-Android世界的一股清流-优点&缺点
+              <a href="/2019/05/31/数据结构与算法-07队列/" rel="next" title="数据结构与算法之美-07队列">
+                <i class="fa fa-chevron-left"></i> 数据结构与算法之美-07队列
               </a>
             
           </div>
@@ -757,10 +503,6 @@ private void unsubscribeByEventType(Object subscriber, Class&lt;?&gt; eventType)
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/05/18/Android Kotlin-MVP架构搭建/" rel="prev" title="Android Kotlin MVP 架构搭建">
-                Android Kotlin MVP 架构搭建 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -890,7 +632,7 @@ private void unsubscribeByEventType(Object subscriber, Class&lt;?&gt; eventType)
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#源码分析"><span class="nav-number">2.</span> <span class="nav-text">源码分析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#EventBus-getDefault-register-this-源码"><span class="nav-number">2.1.</span> <span class="nav-text">EventBus.getDefault().register(this) 源码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#EventBus-getDefault-unregister-this-源码"><span class="nav-number">2.2.</span> <span class="nav-text">EventBus.getDefault().unregister(this) 源码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#EventBus-getDefault-post-源码"><span class="nav-number">2.3.</span> <span class="nav-text">EventBus.getDefault().post() 源码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小结"><span class="nav-number">3.</span> <span class="nav-text">小结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是递归？"><span class="nav-number">1.</span> <span class="nav-text">什么是递归？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#斐波那契数列"><span class="nav-number">1.1.</span> <span class="nav-text">斐波那契数列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#递归的概念"><span class="nav-number">1.2.</span> <span class="nav-text">递归的概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#递归算法的三要素"><span class="nav-number">1.3.</span> <span class="nav-text">递归算法的三要素</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何判断问题是否适合递归算法"><span class="nav-number">2.</span> <span class="nav-text">如何判断问题是否适合递归算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#递归算法的堆栈溢出问题"><span class="nav-number">3.</span> <span class="nav-text">递归算法的堆栈溢出问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#如何避免堆栈溢出"><span class="nav-number">3.1.</span> <span class="nav-text">如何避免堆栈溢出</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、限制递归深度"><span class="nav-number">3.1.1.</span> <span class="nav-text">1、限制递归深度</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、优化重复计算"><span class="nav-number">3.1.2.</span> <span class="nav-text">2、优化重复计算</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3、改为循环语句"><span class="nav-number">3.1.3.</span> <span class="nav-text">3、改为循环语句</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小结"><span class="nav-number">4.</span> <span class="nav-text">小结</span></a></li></ol></div>
             
 
           </div>

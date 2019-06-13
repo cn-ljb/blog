@@ -2,10 +2,8 @@
 
 
 
-  
 
-
-<html class="theme-next muse use-motion" lang="zh-Hans">
+<html class="theme-next muse" lang="zh-Hans">
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -86,7 +84,7 @@
 <meta property="og:site_name" content="雷小歪的博客">
 <meta property="og:description" content="什么是递归？斐波那契数列在讲解递归前，还是聊聊经典的斐波那契数列。 1, 1, 2, 3, 5, 8, 13, 21, 34, ... 这个数列从第3项开始，每一项都等于前两项之和。 求解数列中第n个数是多少？ 分析： n=1 -&amp;gt; 1 n=2 -&amp;gt; 1 n=3 -&amp;gt; 1+1 = 2 n=4 -&amp;gt; 2+1 = 3 n=5 -&amp;gt; 3+2 = 5 假设f(n)为求解函数，">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-06-13T10:23:01.336Z">
+<meta property="og:updated_time" content="2019-06-13T10:33:50.052Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据结构与算法-08递归">
 <meta name="twitter:description" content="什么是递归？斐波那契数列在讲解递归前，还是聊聊经典的斐波那契数列。 1, 1, 2, 3, 5, 8, 13, 21, 34, ... 这个数列从第3项开始，每一项都等于前两项之和。 求解数列中第n个数是多少？ 分析： n=1 -&amp;gt; 1 n=2 -&amp;gt; 1 n=3 -&amp;gt; 1+1 = 2 n=4 -&amp;gt; 2+1 = 3 n=5 -&amp;gt; 3+2 = 5 假设f(n)为求解函数，">
@@ -102,7 +100,7 @@
     sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
     tabs: true,
-    motion: {"enable":true,"async":true,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    motion: {"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     duoshuo: {
       userId: '0',
       author: '博主'
@@ -149,7 +147,13 @@
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
+  <div class="site-meta custom-logo">
+    
+      <div class="site-meta-headline">
+        <a>
+          <img class="custom-logo-image" src="https://raw.githubusercontent.com/cn-ljb/mvp-kotlin/master/app/src/main/res/drawable-hdpi/icon_app.png" alt="雷小歪的博客">
+        </a>
+      </div>
     
 
     <div class="custom-logo-site-title">
@@ -436,10 +440,10 @@ System.out.println(getStepNum(4) + &quot;&quot;);
     ...
 </code></pre><p>这又是为什么？</p>
 <p>在<a href="https://cn-ljb.github.io/2019/05/27/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95-06%E6%A0%88/" target="_blank" rel="noopener">“栈的章节-栈的使用场景”</a>有提到函数的调用在内存中是以栈的形式把函数域中的临时变量全部压栈，只有函数调用完毕后才会出栈释放这些资源。而由于递归算法的特殊性，每一次调用都会压入该栈中，层次越深的递归算法所需的栈空间也就越大，然而系统或者JVM虚拟机的函数调用栈一般都不大，从而越深的递归算法越容易堆栈溢出。</p>
-<h3 id="如何避免堆栈溢出"><a href="#如何避免堆栈溢出" class="headerlink" title="如何避免堆栈溢出"></a>如何避免堆栈溢出</h3><h4 id="1、限制递归深度"><a href="#1、限制递归深度" class="headerlink" title="1、限制递归深度"></a>1、限制递归深度</h4><p>顾名思义，从代码层面上增加递归深度的计数器，当达到指定深度直接停止递归（thorw Exception）。</p>
+<h3 id="如何避免堆栈溢出"><a href="#如何避免堆栈溢出" class="headerlink" title="如何避免堆栈溢出"></a>如何避免堆栈溢出</h3><h4 id="1、限制递归深度"><a href="#1、限制递归深度" class="headerlink" title="1、限制递归深度"></a>1、限制递归深度</h4><p>顾名思义，从代码层面上增加递归深度的计数器，当达到指定深度直接停止递归（throw Exception）。</p>
 <p>显然这种方法不能根本解决问题，只适用于明确规定计算深度的业务场景。</p>
 <h4 id="2、优化重复计算"><a href="#2、优化重复计算" class="headerlink" title="2、优化重复计算"></a>2、优化重复计算</h4><p>拿上面台阶的例子来说，当要求f(5)=f(4)+<strong>f(3)</strong>，需要先求f(4)=<strong>f(3)</strong>+f(2)，可以发现在f(4)中已经计算过f(3)，在f(5)中又要重新计算。</p>
-<p>对于递归中这种重复计算的问题，我们可以进行优化,<strong>先将已经计算过的解保存起来（例如：散列表），在下次计算是检查是否已经计算过，从而避免重复计算。</strong></p>
+<p>对于递归中这种重复计算的问题，我们可以进行优化,<strong>先将已经计算过的解保存起来（例如：散列表），在下次计算时检查是否已经计算过，从而避免重复计算。</strong></p>
 <p>优化后的5000个台阶问题，代码如下：</p>
 <pre><code>private static int getStepNum(int n) {
     if (n == 1) return 1;
@@ -469,7 +473,7 @@ System.out.println(getStepNum(4) + &quot;&quot;);
 </code></pre><p>这也是为什么有人提出不要使用递归算法的原因，但我个人认为，在明确知道递归深度不高的情况下优先使用递归，往往使用循环改写后的代码不易于阅读和维护，递归写法的代码阅读性要好很多。</p>
 <h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>递归算法是一种简洁高效的代码书写方式，只要问题满足三要素都可以使用递归来解决，在无法确定是否满足三要素的情况下，可以先推导出递推公式后再进行编码。</p>
 <p>递归算法虽然简洁高效，但也会带来堆栈溢出、重复计算、函数调用耗时、空间复杂度高等弊端。</p>
-<p>注：文中提到debug跟进计算递归问题，不是指递归不可以进行debug调试，一般情况下有两种调试方式：1、在递归过程中对特定数据加判断，在此处打断点；2、输出日志，定位错误数据。</p>
+<p>注：文中提到debug不要一步一步跟进代码，不是指递归不可以进行debug调试，一般情况下调试递归代码有两种方式：1、在递归过程中对特定数据加判断，在此处打断点；2、输出日志，定位错误数据。</p>
 
       
     </div>

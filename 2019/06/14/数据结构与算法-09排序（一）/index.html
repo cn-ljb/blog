@@ -77,17 +77,19 @@
 
 
 
-<meta name="description" content="什么是递归？斐波那契数列在讲解递归前，还是聊聊经典的斐波那契数列。 1, 1, 2, 3, 5, 8, 13, 21, 34, ... 这个数列从第3项开始，每一项都等于前两项之和。 求解数列中第n个数是多少？ 分析： n=1 -&amp;gt; 1 n=2 -&amp;gt; 1 n=3 -&amp;gt; 1+1 = 2 n=4 -&amp;gt; 2+1 = 3 n=5 -&amp;gt; 3+2 = 5 假设f(n)为求解函数，">
+<meta name="description" content="常见的排序算法常见的排序算法有很多，例如：  冒泡排序 插入排序 快速排序 选择排序 归并排序 计数排序 桶排序 …  疑问：这么多排序，开发中怎么选择？它们各自有什么特点？ 排序算法的对比方法要想解决上面的疑问，就需要知道每种排序背后的原理，从而比较出什么样的排序适合什么样的场景。 在开始比较之前，对于排序算法来说一般都比较以下几个方面：  1、时间复杂度： 列举出排序算法的最好、最坏、平均时间">
 <meta property="og:type" content="article">
-<meta property="og:title" content="数据结构与算法之美-08递归">
-<meta property="og:url" content="http://yoursite.com/2019/06/13/数据结构与算法-08递归/index.html">
+<meta property="og:title" content="数据结构与算法之美-09排序（一）">
+<meta property="og:url" content="http://yoursite.com/2019/06/14/数据结构与算法-09排序（一）/index.html">
 <meta property="og:site_name" content="雷小歪的博客">
-<meta property="og:description" content="什么是递归？斐波那契数列在讲解递归前，还是聊聊经典的斐波那契数列。 1, 1, 2, 3, 5, 8, 13, 21, 34, ... 这个数列从第3项开始，每一项都等于前两项之和。 求解数列中第n个数是多少？ 分析： n=1 -&amp;gt; 1 n=2 -&amp;gt; 1 n=3 -&amp;gt; 1+1 = 2 n=4 -&amp;gt; 2+1 = 3 n=5 -&amp;gt; 3+2 = 5 假设f(n)为求解函数，">
+<meta property="og:description" content="常见的排序算法常见的排序算法有很多，例如：  冒泡排序 插入排序 快速排序 选择排序 归并排序 计数排序 桶排序 …  疑问：这么多排序，开发中怎么选择？它们各自有什么特点？ 排序算法的对比方法要想解决上面的疑问，就需要知道每种排序背后的原理，从而比较出什么样的排序适合什么样的场景。 在开始比较之前，对于排序算法来说一般都比较以下几个方面：  1、时间复杂度： 列举出排序算法的最好、最坏、平均时间">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-06-15T06:31:42.524Z">
+<meta property="og:image" content="https://cn-ljb.github.io/images/数据结构与算法-09排序/冒泡排序.png">
+<meta property="og:updated_time" content="2019-06-15T14:40:03.942Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="数据结构与算法之美-08递归">
-<meta name="twitter:description" content="什么是递归？斐波那契数列在讲解递归前，还是聊聊经典的斐波那契数列。 1, 1, 2, 3, 5, 8, 13, 21, 34, ... 这个数列从第3项开始，每一项都等于前两项之和。 求解数列中第n个数是多少？ 分析： n=1 -&amp;gt; 1 n=2 -&amp;gt; 1 n=3 -&amp;gt; 1+1 = 2 n=4 -&amp;gt; 2+1 = 3 n=5 -&amp;gt; 3+2 = 5 假设f(n)为求解函数，">
+<meta name="twitter:title" content="数据结构与算法之美-09排序（一）">
+<meta name="twitter:description" content="常见的排序算法常见的排序算法有很多，例如：  冒泡排序 插入排序 快速排序 选择排序 归并排序 计数排序 桶排序 …  疑问：这么多排序，开发中怎么选择？它们各自有什么特点？ 排序算法的对比方法要想解决上面的疑问，就需要知道每种排序背后的原理，从而比较出什么样的排序适合什么样的场景。 在开始比较之前，对于排序算法来说一般都比较以下几个方面：  1、时间复杂度： 列举出排序算法的最好、最坏、平均时间">
+<meta name="twitter:image" content="https://cn-ljb.github.io/images/数据结构与算法-09排序/冒泡排序.png">
 
 
 
@@ -117,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/06/13/数据结构与算法-08递归/">
+  <link rel="canonical" href="http://yoursite.com/2019/06/14/数据结构与算法-09排序（一）/">
 
 
 
 
 
-  <title>数据结构与算法之美-08递归 | 雷小歪的博客</title>
+  <title>数据结构与算法之美-09排序（一） | 雷小歪的博客</title>
   
 
 
@@ -278,7 +280,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/13/数据结构与算法-08递归/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/14/数据结构与算法-09排序（一）/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="cn-ljb">
@@ -295,7 +297,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">数据结构与算法之美-08递归</h1>
+          <h1 class="post-title" itemprop="name headline">数据结构与算法之美-09排序（一）</h1>
         
 
         <div class="post-meta">
@@ -307,8 +309,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-13T14:47:28+08:00">
-                2019-06-13
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-06-14T11:22:05+08:00">
+                2019-06-14
               </time>
             
 
@@ -345,137 +347,115 @@
       
 
       
-        <h2 id="什么是递归？"><a href="#什么是递归？" class="headerlink" title="什么是递归？"></a>什么是递归？</h2><h3 id="斐波那契数列"><a href="#斐波那契数列" class="headerlink" title="斐波那契数列"></a>斐波那契数列</h3><p>在讲解递归前，还是聊聊经典的<strong>斐波那契数列</strong>。</p>
-<pre><code>1, 1, 2, 3, 5, 8, 13, 21, 34, ...
-</code></pre><p>这个数列从第3项开始，每一项都等于前两项之和。</p>
-<p>求解数列中第n个数是多少？</p>
-<p>分析：</p>
-<pre><code>n=1 -&gt; 1
-n=2 -&gt; 1
-n=3 -&gt; 1+1 = 2
-n=4 -&gt; 2+1 = 3
-n=5 -&gt; 3+2 = 5
-</code></pre><p>假设f(n)为求解函数，那么可以得到以下推倒公式：</p>
-<pre><code>f(1)=1
-f(2)=1 
-f(n)=f(n-1)+f(n-2)（n&gt;=3，n∈N*）
-</code></pre><p>用程序实现它：</p>
-<pre><code>private static int getFSNum(int n) {
-    if (n == 1 || n == 2) return 1;
-    return getFSNum(n-1) + getFSNum(n-2);
-}
-</code></pre><p>测试：</p>
-<pre><code>System.out.println(getFSNum(1) + &quot;&quot;);
-System.out.println(getFSNum(2) + &quot;&quot;);
-System.out.println(getFSNum(3) + &quot;&quot;);
-System.out.println(getFSNum(4) + &quot;&quot;);
-System.out.println(getFSNum(5) + &quot;&quot;);
-</code></pre><p>输出：</p>
-<pre><code>1
-1
-2
-3
-5
-</code></pre><p>上面这个求解过程是一个典型递归算法实现，那究竟什么是递归？</p>
-<h3 id="递归的概念"><a href="#递归的概念" class="headerlink" title="递归的概念"></a>递归的概念</h3><p>递归是一种应用非常广泛的算法（或者编程技巧）。很多数据结构和算法的编码实现都要用到递归，比如回溯、DFS 深度优先搜索等</p>
-<h3 id="递归算法的三要素"><a href="#递归算法的三要素" class="headerlink" title="递归算法的三要素"></a>递归算法的三要素</h3><ul>
-<li>1、一个问题的解可以拆解为一个或多个子问题的解</li>
-<li>2、这个问题解题思路与拆解后的子问题解题思路完全一致</li>
-<li>3、必须存在终止条件</li>
-</ul>
-<p>只有满足以上三点的解题思路才能使用递归算法。</p>
-<p>拿上面斐波那契数列的解题思路来说：</p>
+        <h2 id="常见的排序算法"><a href="#常见的排序算法" class="headerlink" title="常见的排序算法"></a>常见的排序算法</h2><p>常见的排序算法有很多，例如：</p>
 <ul>
-<li>1、f(n) 问题可以拆解为 f(n-1)、f(n-2)问题</li>
-<li>2、无论是f(n)还是子问题f(n-1)、f(n-2)问题，他们的求解思路是一样的</li>
-<li>3、当n=2或者n==1时，结束“递”，开始“归”</li>
+<li>冒泡排序</li>
+<li>插入排序</li>
+<li>快速排序</li>
+<li>选择排序</li>
+<li>归并排序</li>
+<li>计数排序</li>
+<li>桶排序</li>
+<li>…</li>
 </ul>
-<h2 id="如何判断问题是否适合递归算法"><a href="#如何判断问题是否适合递归算法" class="headerlink" title="如何判断问题是否适合递归算法"></a>如何判断问题是否适合递归算法</h2><p>虽然我们知道了递归的三要素，但实际工作中我们很难一眼看出问题是否满足三要素，在这种情况下直接编写递归代码很容易出错，而且为了找到错误，你可能脑子里或者debug形式一步一步去跟踪递归的每一次嵌套调用，相信大多数情况下你还没有摸清出错原因就已经晕了。</p>
-<p>其实，就像上面求解斐波那契数列一样，我们尽可能<strong>先分析出递推公式，并找到终止条件</strong>，最后编写代码。</p>
-<p>利用这种思路，试着解下面这个问题：</p>
-<blockquote>
-<p>有n个台阶,每次只能跨1步或者2步，走到第n个台阶有多少种走法？</p>
-</blockquote>
-<p>分析：</p>
-<pre><code>n=1 -&gt; 1    -&gt; 1种
-n=2 -&gt; 11、2    -&gt; 2种
-n=3 -&gt; 111、12、21    -&gt; 3种
-n=4 -&gt; 1111、112、121、211、22 -&gt; 5种
-</code></pre><p>假设f(n)为求解函数：</p>
+<p>疑问：这么多排序，开发中怎么选择？它们各自有什么特点？</p>
+<h3 id="排序算法的对比方法"><a href="#排序算法的对比方法" class="headerlink" title="排序算法的对比方法"></a>排序算法的对比方法</h3><p>要想解决上面的疑问，就需要知道每种排序背后的原理，从而比较出什么样的排序适合什么样的场景。</p>
+<p>在开始比较之前，对于排序算法来说一般都比较以下几个方面：</p>
 <ul>
-<li>n=1时，只有1个解； </li>
-<li>n=2时，只有2个解；</li>
-<li>n&gt;2时，分两种情况，这两种情况的总和就是f(n)的解：<ul>
-<li>当第一次走1步时，就需求剩余n-1个台阶的解f(n-1)； </li>
-<li>当第一次走的是2步时，需求剩余n-2个台阶的解f(n-2)。</li>
+<li><strong>1、时间复杂度：</strong><ul>
+<li>列举出排序算法的最好、最坏、平均时间复杂度，并且知道发生最好、最坏情况下数据状态。</li>
+</ul>
+</li>
+<li><strong>2、空间复杂度：</strong><ul>
+<li>排序过程中是否需要开辟新的内存空间。我们把排序过程中无需开辟新内存空间的算法，统称为<strong>原地排序</strong>；反之<br>称为<strong>非原地排序</strong>。</li>
+</ul>
+</li>
+<li><strong>3、常量阶、系数阶、低阶：</strong><ul>
+<li>在复杂度分析篇章我们说过，大O表示法舍去常量阶、系数阶、低阶以最高阶作为当前算法的时间复杂度。但在比较排序算法时，同量级的数据条件下两种算法的复杂度有可能是一样的，这时候就需要把低阶考虑进来进行比较。</li>
+</ul>
+</li>
+<li><strong>4、判断次数、位移次数：</strong><ul>
+<li>顾名思义，排序算法中数据大小判断、交互位移的执行次数。</li>
+</ul>
+</li>
+<li><strong>5、稳定性：</strong><ul>
+<li>数据中如果存在等值数据，算法排完序后能否保证等值数据的先后顺序不发生改变。</li>
 </ul>
 </li>
 </ul>
-<p>得到公式：</p>
-<pre><code>f(1)=1
-f(2)=2
-f(n)=f(n-1)+f(n-2)（n&gt;2，n∈N*）
-</code></pre><p>有了公式，写代码就简单了：</p>
-<pre><code>private static int getStepNum(int n) {
-    if (n == 1) return 1;
-    if (n == 2) return 2;
-    return getStepNum(n - 1) + getStepNum(n - 2);
+<h3 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h3><p>了解完排序算法有哪些比较维度后，开始学习第一个排序算法：<strong>冒泡排序</strong>。</p>
+<blockquote>
+<p><strong>思路：</strong>从第一个元素开始，依次比较两个相邻数据大小，前者大于后者就进行交换操作，每一轮循环确定一个最大值存放到数据最右端，n轮循环后数据就由小到大排序完成。</p>
+</blockquote>
+<p><img src="https://cn-ljb.github.io/images/数据结构与算法-09排序/冒泡排序.png" alt="冒泡排序.jpg"></p>
+<p>代码实现：</p>
+<pre><code> public static int[] sortBubbleSort(int[] arr) {
+    if (arr.length &lt;= 1) return arr;
+    for (int i = 0; i &lt; arr.length; i++) { // 循环轮数
+        boolean hasSort = false;     
+        for (int j = 0; j &lt; arr.length - i - 1; j++) {  //每一轮确定一个最大数
+            if (arr[j] &gt; arr[j + 1]) {
+                int temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
+                hasSort = true;
+            }
+        }
+        if(!hasSort) break;  //当某一轮已经无交换操作就无需再排序
+    }
+    return arr;
 }
 </code></pre><p>测试：</p>
-<pre><code>System.out.println(getStepNum(1) + &quot;&quot;);
-System.out.println(getStepNum(2) + &quot;&quot;);
-System.out.println(getStepNum(3) + &quot;&quot;);
-System.out.println(getStepNum(4) + &quot;&quot;);
+<pre><code>int[] arr = new int[]{2, 1, 8, 6, 7, 0, 4, 3, 9, 5};
+printArr(sortBubbleSort(arr));
 </code></pre><p>输出：</p>
-<pre><code>1
-2
-3
-5
-</code></pre><h2 id="递归算法的堆栈溢出问题"><a href="#递归算法的堆栈溢出问题" class="headerlink" title="递归算法的堆栈溢出问题"></a>递归算法的堆栈溢出问题</h2><p>通过上面的两个例子，发现递归算法写出的代码都很清爽简洁，易于理解。</p>
-<p>但实际开发中递归算法很容易导致堆栈溢出，从而有很多人都不推荐写递归算法。比如上面的台阶问题，当我改成5000个台阶时，运行在我的编译器上就抛出了StackOverflowError.</p>
-<pre><code>System.out.println(getStepNum(5000) + &quot;&quot;);
-</code></pre><p>运行，抛出StackOverflowError异常：</p>
-<pre><code>Exception in thread &quot;main&quot; java.lang.StackOverflowError
-    at com.ljb.aljs.Text08.getStepNum(Text08.java:29)
-    ...
-</code></pre><p>这又是为什么？</p>
-<p>在<a href="https://cn-ljb.github.io/2019/05/27/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95-06%E6%A0%88/" target="_blank" rel="noopener">“栈的章节-栈的使用场景”</a>有提到函数的调用在内存中是以栈的形式把函数域中的临时变量全部压栈，只有函数调用完毕后才会出栈释放这些资源。而由于递归算法的特殊性，每一次调用都会压入该栈中，层次越深的递归算法所需的栈空间也就越大，然而系统或者JVM虚拟机的函数调用栈一般都不大，从而越深的递归算法越容易堆栈溢出。</p>
-<h3 id="如何避免堆栈溢出"><a href="#如何避免堆栈溢出" class="headerlink" title="如何避免堆栈溢出"></a>如何避免堆栈溢出</h3><h4 id="1、限制递归深度"><a href="#1、限制递归深度" class="headerlink" title="1、限制递归深度"></a>1、限制递归深度</h4><p>顾名思义，从代码层面上增加递归深度的计数器，当达到指定深度直接停止递归（throw Exception）。</p>
-<p>显然这种方法不能根本解决问题，只适用于明确规定计算深度的业务场景。</p>
-<h4 id="2、优化重复计算"><a href="#2、优化重复计算" class="headerlink" title="2、优化重复计算"></a>2、优化重复计算</h4><p>拿上面台阶的例子来说，当要求f(5)=f(4)+<strong>f(3)</strong>，需要先求f(4)=<strong>f(3)</strong>+f(2)，可以发现在f(4)中已经计算过f(3)，在f(5)中又要重新计算。</p>
-<p>对于递归中这种重复计算的问题，我们可以进行优化,<strong>先将已经计算过的解保存起来（例如：散列表），在下次计算时检查是否已经计算过，从而避免重复计算。</strong></p>
-<p>优化后的5000个台阶问题，代码如下：</p>
-<pre><code>private static int getStepNum(int n) {
-    if (n == 1) return 1;
-    if (n == 2) return 2;
-    if (cache.containsKey(n)) {
-        return cache.get(n);
-    }
-    int result = getStepNum(n - 1) + getStepNum(n - 2);
-    cache.put(n, result);
-    return result;
-}
-</code></pre><p>虽然我们优化了重复计算问题，并且可以计算出5000个台阶的结果了，但是这也仅仅是优化，当n足够大时依旧会堆栈溢出。</p>
-<h4 id="3、改为循环语句"><a href="#3、改为循环语句" class="headerlink" title="3、改为循环语句"></a>3、改为循环语句</h4><p>基本上所有的递归代码都可以改为循环语句。</p>
-<p>改写台阶问题：</p>
-<pre><code>private static int getStepNum(int n) {
-    if (n == 1) return 1;
-    if (n == 2) return 2;
-    int result = 0, pre = 2, prepre = 1;
+<pre><code>0 1 2 3 4 5 6 7 8 9
+</code></pre><h4 id="时间复杂度：O-n²"><a href="#时间复杂度：O-n²" class="headerlink" title="时间复杂度：O(n²)"></a>时间复杂度：O(n²)</h4><ul>
+<li>最好时间复杂度O(n)：数据本身就有序，轮询一轮后退出循环；</li>
+<li>最坏时间复杂度O(n²)：倒序，两层嵌套循环，内循环执行(n)*(n-1)次，舍去系数：n²；</li>
+<li>平均时间复杂度O(n²)：<ul>
+<li>在<a href="https://cn-ljb.github.io/2019/05/19/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95-02%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90%EF%BC%88%E4%BA%8C%EF%BC%89/" target="_blank" rel="noopener">数据结构与算法之美 - 02复杂度分析(二)篇章</a>提到过，如果数据源的改变会导致算法执行效率不同，就需要把每一种情况发生的概率一起考虑在内，从而计算加权平均时间复杂度。</li>
+<li>显然冒泡排序，随着数据源的不同，内循环的执行次数是不固定的，可能执行到n-x次内循环后数据就有序，从而break出去。我们很难将所有情况的概率考虑进去，或者说这个求解过程很复杂。这时候我对于排序算法的平价时间复杂度我们引入一个新的概念：“<strong>有序度、逆序度、满序度</strong>”。</li>
+</ul>
+</li>
+</ul>
+<h5 id="有序度、逆序度、满序度"><a href="#有序度、逆序度、满序度" class="headerlink" title="有序度、逆序度、满序度"></a>有序度、逆序度、满序度</h5><p>我们还是以例子的形式来说明什么是有序度、逆序度、满序度：</p>
+<pre><code>1 3 2 4
+</code></pre><p>上面是一组已经有序的数据源</p>
+<ul>
+<li>它的有序度是：5</li>
+<li>它的逆序度是：1</li>
+<li>它的满序度也是：6</li>
+</ul>
+<p>什么意思呢？</p>
+<p><strong>有序度：</strong> 数据源中，当下标i&lt;j，且满足arr[i]&lt;=arr[j]的两个数称为<strong>有序对</strong> ，这组数中有序对个数的总和称为这组数的<strong>有序度</strong>。</p>
+<p><strong>逆序度：</strong> 与有序度相反，当下标i&lt;j，且满足arr[i]&gt;arr[j]的两个数称为 <strong>逆序对</strong> ，这组数中逆序对个数的总和称为这组数的<strong>逆序度</strong>。</p>
+<p><strong>满序度：</strong> 有序度与逆序度的和，也就是所有对的总和，称为<strong>满序度</strong>。</p>
+<p>上面这个例子中：</p>
+<pre><code>n=4
 
-    for (int i = 3; i &lt;= n; i++) {
-        result = pre + prepre;
-        prepre = pre;
-        pre = result;
-    }
-
-    return result;
-}
-</code></pre><p>这也是为什么有人提出不要使用递归算法的原因，但我个人认为，在明确知道递归深度不高的情况下优先使用递归，往往使用循环改写后的代码不易于阅读和维护，递归写法的代码阅读性要好很多。</p>
-<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>递归算法是一种简洁高效的代码书写方式，只要问题满足三要素都可以使用递归来解决，在无法确定是否满足三要素的情况下，可以先推导出递推公式后再进行编码。</p>
-<p>递归算法虽然简洁高效，但也会带来堆栈溢出、重复计算、函数调用耗时、空间复杂度高等弊端。</p>
-<p>注：文中提到debug不要一步一步跟进代码，不是指递归不可以进行debug调试，一般情况下调试递归代码有两种方式：1、在递归过程中对特定数据加判断，在此处打断点；2、输出日志，定位错误数据。</p>
-
+i=0时 j++ 得到 13(有序对) 12(有序对) 14（有序对）    有序3对    逆序0对    共3对
+i=1时 j++ 得到 32(逆序对) 34(有序对)                有序1对    逆序1对    共2对
+i=2时 j++ 得到 34(有序对)                            有序1对    逆序0对    共1对
+</code></pre><p>可以看到总对数的累加过程是一个等差数列，我们套如等差数列求和公式反向推导出满序度公式：</p>
+<ul>
+<li>满序度 = 3 + 2 + 1 = 3(3+1)/2 = 6 =&gt; (n-1)n/2 =&gt; n(n-1)/2    </li>
+</ul>
+<p>有了这个公式，无论n的量级是多大，我们都可以求出它的满序度。</p>
+<ul>
+<li><p>有序度 = 3+1+1 = 5</p>
+</li>
+<li><p>逆序度 = 满序度 - 有序度 = 6-5 = 1</p>
+</li>
+</ul>
+<p>回过头来看冒泡排序，内层循环中的比较交换操作就是一次将逆序对变为有序对过程，无论怎么优化，交换操作总次数都是固定的（有多少逆序对就交换多少次）。</p>
+<blockquote>
+<p><strong>交换总次数 = 逆序度 = n(n-1)/2 - 初始数据的有序度。</strong></p>
+</blockquote>
+<p>我们开始计算冒泡排序的平均时间复杂度：最坏情况下，完全倒序，有序度为0，需要n(n-1)/2次交换操作；最好情况下，已有序，有序度为n(n-1)/2，交换操作为0；我们取一个中间值作为<strong>平均交换次数=(n(n-1)/2+0)/2=n(n-1)/4</strong> ，及平均时间复杂度为O(n²)</p>
+<h4 id="空间复杂度：O-1"><a href="#空间复杂度：O-1" class="headerlink" title="空间复杂度：O(1)"></a>空间复杂度：O(1)</h4><p>整个算法过程没有开辟新的内存空间。</p>
+<h4 id="稳定性：稳定"><a href="#稳定性：稳定" class="headerlink" title="稳定性：稳定"></a>稳定性：稳定</h4><p>冒泡排序中只有前者大于后者才会进行交换操作，相等的情况下不进行交换，所以冒泡排序是稳定的排序算法。</p>
+<h3 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h3>
       
     </div>
     
@@ -499,8 +479,8 @@ System.out.println(getStepNum(4) + &quot;&quot;);
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/05/31/数据结构与算法-07队列/" rel="next" title="数据结构与算法之美-07队列">
-                <i class="fa fa-chevron-left"></i> 数据结构与算法之美-07队列
+              <a href="/2019/06/13/数据结构与算法-08递归/" rel="next" title="数据结构与算法之美-08递归">
+                <i class="fa fa-chevron-left"></i> 数据结构与算法之美-08递归
               </a>
             
           </div>
@@ -508,10 +488,6 @@ System.out.println(getStepNum(4) + &quot;&quot;);
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/06/14/数据结构与算法-09排序（一）/" rel="prev" title="数据结构与算法之美-09排序（一）">
-                数据结构与算法之美-09排序（一） <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -641,7 +617,7 @@ System.out.println(getStepNum(4) + &quot;&quot;);
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是递归？"><span class="nav-number">1.</span> <span class="nav-text">什么是递归？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#斐波那契数列"><span class="nav-number">1.1.</span> <span class="nav-text">斐波那契数列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#递归的概念"><span class="nav-number">1.2.</span> <span class="nav-text">递归的概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#递归算法的三要素"><span class="nav-number">1.3.</span> <span class="nav-text">递归算法的三要素</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何判断问题是否适合递归算法"><span class="nav-number">2.</span> <span class="nav-text">如何判断问题是否适合递归算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#递归算法的堆栈溢出问题"><span class="nav-number">3.</span> <span class="nav-text">递归算法的堆栈溢出问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#如何避免堆栈溢出"><span class="nav-number">3.1.</span> <span class="nav-text">如何避免堆栈溢出</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、限制递归深度"><span class="nav-number">3.1.1.</span> <span class="nav-text">1、限制递归深度</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、优化重复计算"><span class="nav-number">3.1.2.</span> <span class="nav-text">2、优化重复计算</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3、改为循环语句"><span class="nav-number">3.1.3.</span> <span class="nav-text">3、改为循环语句</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小结"><span class="nav-number">4.</span> <span class="nav-text">小结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#常见的排序算法"><span class="nav-number">1.</span> <span class="nav-text">常见的排序算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#排序算法的对比方法"><span class="nav-number">1.1.</span> <span class="nav-text">排序算法的对比方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#冒泡排序"><span class="nav-number">1.2.</span> <span class="nav-text">冒泡排序</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#时间复杂度：O-n²"><span class="nav-number">1.2.1.</span> <span class="nav-text">时间复杂度：O(n²)</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#有序度、逆序度、满序度"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">有序度、逆序度、满序度</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#空间复杂度：O-1"><span class="nav-number">1.2.2.</span> <span class="nav-text">空间复杂度：O(1)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#稳定性：稳定"><span class="nav-number">1.2.3.</span> <span class="nav-text">稳定性：稳定</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#插入排序"><span class="nav-number">1.3.</span> <span class="nav-text">插入排序</span></a></li></ol></li></ol></div>
             
 
           </div>

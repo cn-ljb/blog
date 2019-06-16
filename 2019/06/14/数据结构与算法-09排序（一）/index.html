@@ -85,7 +85,9 @@
 <meta property="og:description" content="常见的排序算法常见的排序算法有很多，例如：  冒泡排序 插入排序 快速排序 选择排序 归并排序 计数排序 桶排序 …  疑问：这么多排序，开发中怎么选择？它们各自有什么特点？ 排序算法的对比方法要想解决上面的疑问，就需要知道每种排序背后的原理，从而比较出什么样的排序适合什么样的场景。 在开始比较之前，对于排序算法来说一般都比较以下几个方面：  1、时间复杂度： 列举出排序算法的最好、最坏、平均时间">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://cn-ljb.github.io/images/数据结构与算法-09排序/冒泡排序.png">
-<meta property="og:updated_time" content="2019-06-15T14:40:03.942Z">
+<meta property="og:image" content="https://cn-ljb.github.io/images/数据结构与算法-09排序/插入排序.png">
+<meta property="og:image" content="https://cn-ljb.github.io/images/数据结构与算法-09排序/选择排序.png">
+<meta property="og:updated_time" content="2019-06-16T16:29:27.122Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据结构与算法之美-09排序（一）">
 <meta name="twitter:description" content="常见的排序算法常见的排序算法有很多，例如：  冒泡排序 插入排序 快速排序 选择排序 归并排序 计数排序 桶排序 …  疑问：这么多排序，开发中怎么选择？它们各自有什么特点？ 排序算法的对比方法要想解决上面的疑问，就需要知道每种排序背后的原理，从而比较出什么样的排序适合什么样的场景。 在开始比较之前，对于排序算法来说一般都比较以下几个方面：  1、时间复杂度： 列举出排序算法的最好、最坏、平均时间">
@@ -383,13 +385,13 @@
 </ul>
 </li>
 </ul>
-<h3 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h3><p>了解完排序算法有哪些比较维度后，开始学习第一个排序算法：<strong>冒泡排序</strong>。</p>
+<h2 id="一、冒泡排序"><a href="#一、冒泡排序" class="headerlink" title="一、冒泡排序"></a>一、冒泡排序</h2><p>了解完排序算法有哪些比较维度后，开始学习第一个排序算法：<strong>冒泡排序</strong>。</p>
 <blockquote>
 <p><strong>思路：</strong>从第一个元素开始，依次比较两个相邻数据大小，前者大于后者就进行交换操作，每一轮循环确定一个最大值存放到数据最右端，n轮循环后数据就由小到大排序完成。</p>
 </blockquote>
 <p><img src="https://cn-ljb.github.io/images/数据结构与算法-09排序/冒泡排序.png" alt="冒泡排序.jpg"></p>
 <p>代码实现：</p>
-<pre><code> public static int[] sortBubbleSort(int[] arr) {
+<pre><code> public static int[] bubbleSort(int[] arr) {
     if (arr.length &lt;= 1) return arr;
     for (int i = 0; i &lt; arr.length; i++) { // 循环轮数
         boolean hasSort = false;     
@@ -407,19 +409,19 @@
 }
 </code></pre><p>测试：</p>
 <pre><code>int[] arr = new int[]{2, 1, 8, 6, 7, 0, 4, 3, 9, 5};
-printArr(sortBubbleSort(arr));
+printArr(bubbleSort(arr));
 </code></pre><p>输出：</p>
 <pre><code>0 1 2 3 4 5 6 7 8 9
-</code></pre><h4 id="时间复杂度：O-n²"><a href="#时间复杂度：O-n²" class="headerlink" title="时间复杂度：O(n²)"></a>时间复杂度：O(n²)</h4><ul>
-<li>最好时间复杂度O(n)：数据本身就有序，轮询一轮后退出循环；</li>
-<li>最坏时间复杂度O(n²)：倒序，两层嵌套循环，内循环执行(n)*(n-1)次，舍去系数：n²；</li>
+</code></pre><h3 id="时间复杂度：O-n²"><a href="#时间复杂度：O-n²" class="headerlink" title="时间复杂度：O(n²)"></a>时间复杂度：O(n²)</h3><ul>
+<li>最好时间复杂度O(n)：数据本身就有序，内循环只走n次；</li>
+<li>最坏时间复杂度O(n²)：倒序，内循环执行(n)*(n-1)次，舍去系数：n²；</li>
 <li>平均时间复杂度O(n²)：<ul>
 <li>在<a href="https://cn-ljb.github.io/2019/05/19/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95-02%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90%EF%BC%88%E4%BA%8C%EF%BC%89/" target="_blank" rel="noopener">数据结构与算法之美 - 02复杂度分析(二)篇章</a>提到过，如果数据源的改变会导致算法执行效率不同，就需要把每一种情况发生的概率一起考虑在内，从而计算加权平均时间复杂度。</li>
 <li>显然冒泡排序，随着数据源的不同，内循环的执行次数是不固定的，可能执行到n-x次内循环后数据就有序，从而break出去。我们很难将所有情况的概率考虑进去，或者说这个求解过程很复杂。这时候我对于排序算法的平价时间复杂度我们引入一个新的概念：“<strong>有序度、逆序度、满序度</strong>”。</li>
 </ul>
 </li>
 </ul>
-<h5 id="有序度、逆序度、满序度"><a href="#有序度、逆序度、满序度" class="headerlink" title="有序度、逆序度、满序度"></a>有序度、逆序度、满序度</h5><p>我们还是以例子的形式来说明什么是有序度、逆序度、满序度：</p>
+<h4 id="有序度、逆序度、满序度"><a href="#有序度、逆序度、满序度" class="headerlink" title="有序度、逆序度、满序度"></a>有序度、逆序度、满序度</h4><p>我们还是以例子的形式来说明什么是有序度、逆序度、满序度：</p>
 <pre><code>1 3 2 4
 </code></pre><p>上面是一组已经有序的数据源</p>
 <ul>
@@ -453,9 +455,116 @@ i=2时 j++ 得到 34(有序对)                            有序1对    逆序0
 <p><strong>交换总次数 = 逆序度 = n(n-1)/2 - 初始数据的有序度。</strong></p>
 </blockquote>
 <p>我们开始计算冒泡排序的平均时间复杂度：最坏情况下，完全倒序，有序度为0，需要n(n-1)/2次交换操作；最好情况下，已有序，有序度为n(n-1)/2，交换操作为0；我们取一个中间值作为<strong>平均交换次数=(n(n-1)/2+0)/2=n(n-1)/4</strong> ，及平均时间复杂度为O(n²)</p>
-<h4 id="空间复杂度：O-1"><a href="#空间复杂度：O-1" class="headerlink" title="空间复杂度：O(1)"></a>空间复杂度：O(1)</h4><p>整个算法过程没有开辟新的内存空间。</p>
-<h4 id="稳定性：稳定"><a href="#稳定性：稳定" class="headerlink" title="稳定性：稳定"></a>稳定性：稳定</h4><p>冒泡排序中只有前者大于后者才会进行交换操作，相等的情况下不进行交换，所以冒泡排序是稳定的排序算法。</p>
-<h3 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h3>
+<h3 id="空间复杂度：O-1"><a href="#空间复杂度：O-1" class="headerlink" title="空间复杂度：O(1)"></a>空间复杂度：O(1)</h3><p>整个算法过程没有开辟新的内存空间。</p>
+<h3 id="稳定性：稳定"><a href="#稳定性：稳定" class="headerlink" title="稳定性：稳定"></a>稳定性：稳定</h3><p>冒泡排序中只有前者大于后者才会进行交换操作，相等的情况下不进行交换，所以冒泡排序是稳定的排序算法。</p>
+<h2 id="二、插入排序"><a href="#二、插入排序" class="headerlink" title="二、插入排序"></a>二、插入排序</h2><blockquote>
+<p><strong>思路：</strong> 把要排序的数据源分为两块区域：<strong>已排序区</strong>，<strong>未排序区</strong>。首次排序前，已排序区只有数据源的第一个元素，不断取未排序区的首元素与已排序区的数据进行比较，定位其应插入的位置，同时将大于该元素的排序区数据向后位移1位；定位到位子，插入数据；重复以上过程，直到未排序区无数据。</p>
+</blockquote>
+<p><img src="https://cn-ljb.github.io/images/数据结构与算法-09排序/插入排序.png" alt="插入排序.jpg"></p>
+<p>代码实现：</p>
+<pre><code>public static int[] insertSort(int[] arr) {
+    if (arr.length &lt;= 1) return arr;
+    for (int i = 1; i &lt; arr.length; i++) {    //外层循环表示从未排序区取数
+        int outValue = arr[i];  //将待排序数先保存起来，之后的操作会修改arr内数据，避免影响待排数
+        int j = i - 1;
+        for (; j &gt;= 0; --j) {   //依次从后向前遍历排序区，大于排序数向后移，反之定位到插入位
+            if (arr[j] &gt; outValue) {
+                arr[j + 1] = arr[j];
+            } else {
+                break;
+            }
+        }
+        //内层循环执行完毕，j+1就是插入位置
+        arr[j + 1] = outValue;
+    }
+    return arr;
+}
+</code></pre><p>测试：</p>
+<pre><code>int[] arr = new int[]{1, 4, 2, 3};
+printArr(insertSort(arr));
+</code></pre><p>输出：</p>
+<pre><code>1 2 3 4 
+</code></pre><h3 id="时间复杂度：O-n²-1"><a href="#时间复杂度：O-n²-1" class="headerlink" title="时间复杂度：O(n²)"></a>时间复杂度：O(n²)</h3><ul>
+<li>最好时间复杂度O(n)：数据本身就有序，内循环只走n次；</li>
+<li>最坏时间复杂度O(n²)：倒序，每次插入都是将数据插入到排序区的第一个位置，同时需大批量位移数据。位移次数为1+2+3+…+n-1次，即O(n²)；</li>
+<li>平均时间复杂度O(n²)：<a href="https://cn-ljb.github.io/2019/05/19/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95-03%E6%95%B0%E7%BB%84/" target="_blank" rel="noopener">数组篇章</a>讲过数组的插入操作平均时间复杂度是O(n),对于插入排序来说可以看作在数组的插入基础上再添加一层n循环，所以根据乘法法则平均时间复杂度是O(n²)。</li>
+</ul>
+<h3 id="空间复杂度：O-1-1"><a href="#空间复杂度：O-1-1" class="headerlink" title="空间复杂度：O(1)"></a>空间复杂度：O(1)</h3><p>整个算法过程也没有开辟新的内存空间。</p>
+<h3 id="稳定性：稳定-1"><a href="#稳定性：稳定-1" class="headerlink" title="稳定性：稳定"></a>稳定性：稳定</h3><p>对于值相同的元素，我们将后出现的元素插入到先出现的元素后面，所以插入排序也是稳定性排序。</p>
+<h2 id="三、选择排序"><a href="#三、选择排序" class="headerlink" title="三、选择排序"></a>三、选择排序</h2><blockquote>
+<p><strong>思路：</strong> 与插入排序类似，选择排序也将数据源分为两块区域：<strong>已排序区</strong>，<strong>未排序区</strong>。但选择排序每次是将未排序区最小的元素与排序区的未元素+1的元素交换。</p>
+</blockquote>
+<p><img src="https://cn-ljb.github.io/images/数据结构与算法-09排序/选择排序.png" alt="选择排序.jpg"></p>
+<p>代码实现：</p>
+<pre><code>public static int[] selectSort(int[] arr) {
+    if (arr.length &lt;= 1) return arr;
+    for (int i = 0; i &lt; arr.length - 1; i++) {
+        int minIndex = i;
+        for (int j = i + 1; j &lt; arr.length; j++) {
+            if (arr[minIndex] &gt; arr[j]) {
+                minIndex = j;
+            }
+        }
+        int temp = arr[i];
+        arr[i] = arr[minIndex];
+        arr[minIndex] = temp;
+    }
+    return arr;
+}
+</code></pre><p>测试：</p>
+<pre><code>int[] arr = new int[]{1, 4, 2, 3};
+printArr(selectSort(arr));
+</code></pre><p>输出：</p>
+<pre><code>1 2 3 4 
+</code></pre><h3 id="时间复杂度：O-n²-2"><a href="#时间复杂度：O-n²-2" class="headerlink" title="时间复杂度：O(n²)"></a>时间复杂度：O(n²)</h3><ul>
+<li>最好时间复杂度O(n²)：无论原始是否有序，都需要循环(n-1)*(n-1)次，即O(n²)；</li>
+<li>最坏时间复杂度O(n²)：同上；</li>
+<li>平均时间复杂度O(n²)：同上；</li>
+<li><h3 id="空间复杂度：O-1-2"><a href="#空间复杂度：O-1-2" class="headerlink" title="空间复杂度：O(1)"></a>空间复杂度：O(1)</h3></li>
+</ul>
+<p>整个算法过程也没有开辟新的内存空间。</p>
+<h3 id="稳定性：不稳定"><a href="#稳定性：不稳定" class="headerlink" title="稳定性：不稳定"></a>稳定性：不稳定</h3><p>由于每次都需要从未排序中找最小值与排序区尾元素+1的位置进行交换，这种操作很容易修改相同数值数据的前后位置。</p>
+<p>举个例子：</p>
+<pre><code>3 2 3 1 4
+</code></pre><p>选择排序会先找到最小值1与3进行交换位置，从而导致两个3的顺序颠倒，所以选择排序是一种不稳定排序算法。</p>
+<h2 id="PK"><a href="#PK" class="headerlink" title="PK"></a>PK</h2><p>不难发现，冒泡排序、插入排序、选择排序都属于原地排序（控件复杂度O(1)），在不开辟额外内存空间情况下，这三种排序算法该如何选择？</p>
+<p>首先，选择排序无论是时间复杂度、还是稳定性都逊于其它两者，所以先淘汰掉它。</p>
+<p>冒泡排序和插入排序无论是时间复杂度、空间复杂度、稳定性都是一样的，怎么选择？</p>
+<p>我们知道，冒泡排序和插入排序的位移操作总次数都是固定的，也就是<strong>逆序度</strong>，我们试着比较每一次位移两者的区别：</p>
+<pre><code>//冒泡排序：位移操作代码
+if (arr[j] &gt; arr[j + 1]) {
+    int temp = arr[j];
+    arr[j] = arr[j + 1];
+    arr[j + 1] = temp;
+    hasSort = true;
+}
+
+//插入排序：位移操作代码
+if (arr[j] &gt; outValue) {
+    arr[j + 1] = arr[j];
+} else {
+    break;
+}
+</code></pre><p>显然，我们把位移操作中的每一行代码执行时间比作1个unitTime，冒泡排序需要3 <em> unitTime，而插入操作只需要1 </em> unitTime，从这可以看出插入排序要优于冒泡排序。</p>
+<p>为了验证结论，我随机生成1000个数值，比较两者排序所需时间：</p>
+<pre><code>int[] arr = randomNumArr(1000);
+long startBubbleSort = System.currentTimeMillis();
+printArr(bubbleSort(arr));
+long endBubbleSort = System.currentTimeMillis();
+
+long startInsertSort = System.currentTimeMillis();
+printArr(insertSort(arr));
+long endInsertSort = System.currentTimeMillis();
+
+System.out.println(&quot;bubbleSort time :&quot; + (endBubbleSort - startBubbleSort) + &quot;ms&quot;);
+System.out.println(&quot;insertSort time :&quot; + (endInsertSort - startInsertSort) + &quot;ms&quot;);
+</code></pre><p>输出：</p>
+<pre><code>0 1 2 2 2 3 4 4 4 4 5 7 ...
+0 1 2 2 2 3 4 4 4 4 5 7 ...
+bubbleSort time :20ms
+insertSort time :8ms
+</code></pre><p><strong>结论： 插入排序 优于 冒泡排序 优于 选择排序。</strong></p>
+
       
     </div>
     
@@ -617,7 +726,7 @@ i=2时 j++ 得到 34(有序对)                            有序1对    逆序0
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#常见的排序算法"><span class="nav-number">1.</span> <span class="nav-text">常见的排序算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#排序算法的对比方法"><span class="nav-number">1.1.</span> <span class="nav-text">排序算法的对比方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#冒泡排序"><span class="nav-number">1.2.</span> <span class="nav-text">冒泡排序</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#时间复杂度：O-n²"><span class="nav-number">1.2.1.</span> <span class="nav-text">时间复杂度：O(n²)</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#有序度、逆序度、满序度"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">有序度、逆序度、满序度</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#空间复杂度：O-1"><span class="nav-number">1.2.2.</span> <span class="nav-text">空间复杂度：O(1)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#稳定性：稳定"><span class="nav-number">1.2.3.</span> <span class="nav-text">稳定性：稳定</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#插入排序"><span class="nav-number">1.3.</span> <span class="nav-text">插入排序</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#常见的排序算法"><span class="nav-number">1.</span> <span class="nav-text">常见的排序算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#排序算法的对比方法"><span class="nav-number">1.1.</span> <span class="nav-text">排序算法的对比方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一、冒泡排序"><span class="nav-number">2.</span> <span class="nav-text">一、冒泡排序</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#时间复杂度：O-n²"><span class="nav-number">2.1.</span> <span class="nav-text">时间复杂度：O(n²)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#有序度、逆序度、满序度"><span class="nav-number">2.1.1.</span> <span class="nav-text">有序度、逆序度、满序度</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#空间复杂度：O-1"><span class="nav-number">2.2.</span> <span class="nav-text">空间复杂度：O(1)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#稳定性：稳定"><span class="nav-number">2.3.</span> <span class="nav-text">稳定性：稳定</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、插入排序"><span class="nav-number">3.</span> <span class="nav-text">二、插入排序</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#时间复杂度：O-n²-1"><span class="nav-number">3.1.</span> <span class="nav-text">时间复杂度：O(n²)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#空间复杂度：O-1-1"><span class="nav-number">3.2.</span> <span class="nav-text">空间复杂度：O(1)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#稳定性：稳定-1"><span class="nav-number">3.3.</span> <span class="nav-text">稳定性：稳定</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、选择排序"><span class="nav-number">4.</span> <span class="nav-text">三、选择排序</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#时间复杂度：O-n²-2"><span class="nav-number">4.1.</span> <span class="nav-text">时间复杂度：O(n²)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#空间复杂度：O-1-2"><span class="nav-number">4.2.</span> <span class="nav-text">空间复杂度：O(1)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#稳定性：不稳定"><span class="nav-number">4.3.</span> <span class="nav-text">稳定性：不稳定</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PK"><span class="nav-number">5.</span> <span class="nav-text">PK</span></a></li></ol></div>
             
 
           </div>

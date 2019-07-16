@@ -89,7 +89,7 @@
 <meta property="og:image" content="https://cn-ljb.github.io/images/数据结构与算法-10排序/快速排序-原地排序.png">
 <meta property="og:image" content="https://cn-ljb.github.io/images/数据结构与算法-10排序/求第K大值.png">
 <meta property="og:image" content="https://cn-ljb.github.io/images/数据结构与算法-10排序/等比数列求和公式.png">
-<meta property="og:updated_time" content="2019-07-16T01:10:06.249Z">
+<meta property="og:updated_time" content="2019-07-16T04:00:14.442Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据结构与算法之美-10排序（二）">
 <meta name="twitter:description" content="回顾上篇中介绍了冒泡排序、插入排序、选择排序，得到结论插入排序要优于另外两者 ，但即便如此，插入排序的平均时间复杂度依旧是O(n²)，在大规模数据排序时效率很低。 该篇学习两种时间复杂度为O(nlogn)，效率更高的排序： 归并排序、快速排序。 一、分治思想在学习之前，我们需要先了解分治思想理念。 分而治之，将大问题化成小问题，解决掉所有小问题，大问题也就解决了。 可以看出，分治思想的理念和在之前">
@@ -360,7 +360,7 @@
 <h2 id="二、归并排序"><a href="#二、归并排序" class="headerlink" title="二、归并排序"></a>二、归并排序</h2><blockquote>
 <p><strong>思路：</strong> 把数据源依次平分为两个区间，直到每一区间只有小于等于2个元素时，对小区间进行排序，再依次合并排序小区间，合并排序到最外层就完成排序。</p>
 </blockquote>
-<p><img src="https://cn-ljb.github.io/images/数据结构与算法-10排序/归并排序2.png" alt="归并排序.jpg"></p>
+<p><img src="https://cn-ljb.github.io/images/数据结构与算法-10排序/归并排序2.png" alt="归并排序.png"></p>
 <p>显然我们把排序整个大数组不断化为对两个元素小数组的排序，这里就使用了分治思想。</p>
 <p>既然要使用递归来实现代码，不妨先写出递推公式，假设我们要排序的数组首元素下标为p，尾元素下标为r，中心元素就为q=(r-p)/2，那么只要先对(p,q)、(q+1,r)区间分别排序，再合并排序两个区间的结果就行，得到以下公式：</p>
 <pre><code>mergeSort(p...r) = mergeArr( mergeSort(p...q)  , mergeSort(q+1...r) )
@@ -463,7 +463,7 @@ T(n)=Cn+nlog2n
 <h2 id="三、快速排序"><a href="#三、快速排序" class="headerlink" title="三、快速排序"></a>三、快速排序</h2><blockquote>
 <p><strong>思路：</strong>快速排序也需要使用分治思想，快排中我们找p到r之间任意一个数作为分区点pivot（一般是数据源中最后一个元素），将小于pivot的放到左面，大于放到右面；再已pivot为分界，对左右两边的小区间重复以上操作，直到p&gt;=r。</p>
 </blockquote>
-<p><img src="https://cn-ljb.github.io/images/数据结构与算法-10排序/快速排序.png" alt="快速排序1.jpg"></p>
+<p><img src="https://cn-ljb.github.io/images/数据结构与算法-10排序/快速排序.png" alt="快速排序1.png"></p>
 <p>递推公式：</p>
 <pre><code>quickSort(p...r) = quickSort(p...pivot)  +  quickSort(pivot+1...r)
 </code></pre><p>终止条件：</p>
@@ -513,7 +513,7 @@ printArr(arr);
 <p>有没有什么方法能不开辟额外的内存空间，就能原地排序呢？</p>
 <p>这里的处理有点类似选择排序。我们挨个遍历元素，小于pivot的保持在左边，大于pivot的则与下一个小于pivot位置交换，最后再将大于区域的第一个元素与pivot进行交换，这样pivot就到了中间，左面的数据都小于它，右面则大于它。</p>
 <p>图示：</p>
-<p><img src="https://cn-ljb.github.io/images/数据结构与算法-10排序/快速排序-原地排序.png" alt="快速排序2.jpg"></p>
+<p><img src="https://cn-ljb.github.io/images/数据结构与算法-10排序/快速排序-原地排序.png" alt="快速排序2.png"></p>
 <p>代码实现，修改partition()分区函数：</p>
 <pre><code>/**
  * 快排 * 分区函数2 * 原地排序
@@ -549,7 +549,7 @@ private static int partition(int[] a, int p, int r) {
 <p>首先，这个解题方式肯定是没有问题的，但我们知道排序最快的算法也需要O(nlogn)的时间复杂度，有没有更快的解题思路呢？</p>
 <p>既然我们已经学习了分治思想，那么套用快排中的概念，我们将数据以pivot为中心分为两块区域，如果pivot的下标整好等于size-k，那么pivot就是第k大值；如果小于，则在pivot左面继续查找，否则就从右面。</p>
 <p>图解：</p>
-<p><img src="https://cn-ljb.github.io/images/数据结构与算法-10排序/求第K大值.png" alt="求第K大值.jpg"></p>
+<p><img src="https://cn-ljb.github.io/images/数据结构与算法-10排序/求第K大值.png" alt="求第K大值.png"></p>
 <p>代码：</p>
 <pre><code>private static int findMaxTh(int[] arr, int p, int r, int k) {
     int pivot = partition(arr, p, r);
@@ -581,7 +581,7 @@ System.out.println(String.valueOf(maxThNum));
 最后一次 = 遍历1个元素
 则总的时间复杂度为：T(n) = n + n/2 + n/4 + ... + 1
 </code></pre><p>很明显这是一个等比数列，套入求和公式最后得到2n-1,即时间复杂度O(n).</p>
-<p><img src="https://cn-ljb.github.io/images/数据结构与算法-10排序/等比数列求和公式.png" alt="求第K大值.jpg"></p>
+<p><img src="https://cn-ljb.github.io/images/数据结构与算法-10排序/等比数列求和公式.png" alt="等比数列求和公式.png"></p>
 <p>通过以上推导过程，想必也明白了为什么这种分治思想实现的算法要优于排序后再取第K大值的算法。</p>
 <h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>该篇主要学习了使用分治思想来实现归并排序和快速排序算法。</p>
 <p>归并排序时间复杂度是固定不变的，但需要额外O(n)的空间复杂度，所以在应用上虽然都是O(nlogn)的时间复杂度算法，但没有快速排序使用广泛。</p>
@@ -636,6 +636,10 @@ System.out.println(String.valueOf(maxThNum));
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/07/16/数据结构与算法-11排序（三）-线性排序/" rel="prev" title="数据结构与算法之美-11线性排序">
+                数据结构与算法之美-11线性排序 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -712,7 +716,7 @@ System.out.println(String.valueOf(maxThNum));
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-count">26</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

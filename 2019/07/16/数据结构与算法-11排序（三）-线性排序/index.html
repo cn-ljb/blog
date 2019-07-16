@@ -85,7 +85,8 @@
 <meta property="og:description" content="前两篇学习了五种常见的排序算法，时间复杂度最低的也需要O(nlogn)。 本片介绍三种时间复杂度为O(n)的排序算法：桶排序、计数排序、基数排序，但是这三种排序算法都需要特定场景前提才能适用。 桶排序 前提：假设需要排序的n大小数据源可以平分为m个桶（区块），每个区块里的数据是无序的，但桶与桶之间是有序的，即m-1桶里的数据肯定是小于m桶里的数据。   思路：有了上面的排序，我们只需要将每个小桶进">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://cn-ljb.github.io/images/数据结构与算法-11线性排序/桶排序.png">
-<meta property="og:updated_time" content="2019-07-16T04:01:46.753Z">
+<meta property="og:image" content="https://cn-ljb.github.io/images/数据结构与算法-11线性排序/计数排序.png">
+<meta property="og:updated_time" content="2019-07-16T10:35:09.302Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据结构与算法之美-11线性排序">
 <meta name="twitter:description" content="前两篇学习了五种常见的排序算法，时间复杂度最低的也需要O(nlogn)。 本片介绍三种时间复杂度为O(n)的排序算法：桶排序、计数排序、基数排序，但是这三种排序算法都需要特定场景前提才能适用。 桶排序 前提：假设需要排序的n大小数据源可以平分为m个桶（区块），每个区块里的数据是无序的，但桶与桶之间是有序的，即m-1桶里的数据肯定是小于m桶里的数据。   思路：有了上面的排序，我们只需要将每个小桶进">
@@ -350,7 +351,7 @@
         <p>前两篇学习了五种常见的排序算法，时间复杂度最低的也需要O(nlogn)。</p>
 <p>本片介绍三种时间复杂度为O(n)的排序算法：<strong>桶排序、计数排序、基数排序</strong>，但是这三种排序算法都需要特定场景前提才能适用。</p>
 <h2 id="桶排序"><a href="#桶排序" class="headerlink" title="桶排序"></a>桶排序</h2><blockquote>
-<p><strong>前提</strong>：假设需要排序的n大小数据源可以平分为m个桶（区块），每个区块里的数据是无序的，但桶与桶之间是有序的，即m-1桶里的数据肯定是小于m桶里的数据。</p>
+<p><strong>前提：</strong>假设需要排序的n大小数据源可以平分为m个桶（区块），每个区块里的数据是无序的，但桶与桶之间是有序的，即m-1桶里的数据肯定是小于m桶里的数据。</p>
 </blockquote>
 <blockquote>
 <p><strong>思路：</strong>有了上面的排序，我们只需要将每个小桶进行快速排序，最后再进行拼接每个桶即可。</p>
@@ -402,10 +403,138 @@ m个桶则为：T(n) = O(m * k * logk)
 
 最终T(n) = O(n)
 </code></pre><h3 id="空间复杂度：不确定"><a href="#空间复杂度：不确定" class="headerlink" title="空间复杂度：不确定"></a>空间复杂度：不确定</h3><p>如果包含分桶操作，需要额外的桶空间：O(n)</p>
-<p>但如果数据源本身就表明满足桶排序的前提条件，例如[3, 1, 2, 4, 6, 5,9, 8, 7]我们只要根据小标规律控制p…r的取值，这时空间复杂度为：O(1)</p>
+<p>但如果数据源本身就表明满足桶排序的前提条件，例如[3, 1, 2, 4, 6, 5,9, 8, 7]我们只要根据下标规律控制p…r的取值，这时空间复杂度为：O(1)</p>
 <p>所以空间时间复杂度，对于桶排序来说是不确定，需要根据实际的使用场景来确定</p>
 <h3 id="稳定性：不确定"><a href="#稳定性：不确定" class="headerlink" title="稳定性：不确定"></a>稳定性：不确定</h3><p>同理，虽然上面在桶内部排序使用了快排，导致其不稳定。但实际情况中如果考虑稳定性，我们可以使用其它稳定排序来替换。</p>
-<h2 id="计数排序"><a href="#计数排序" class="headerlink" title="计数排序"></a>计数排序</h2><p>//TODO </p>
+<h2 id="计数排序"><a href="#计数排序" class="headerlink" title="计数排序"></a>计数排序</h2><blockquote>
+<p><strong>前提</strong>：排序值可取范围是精确的。例如绩效考核评分只能取[5,4,3,2,1,0]，然后对员工绩效考核进行排序。</p>
+</blockquote>
+<blockquote>
+<p><strong>思路：</strong> </p>
+<ul>
+<li>1、将所有可能出现的排序值初始化一个同等大小数组，例如上面的绩效评分，初始化一个大小为6的数组r；</li>
+<li>2、遍历要排序的数据源，每出现一个数就在对应的r数组位置+1；</li>
+<li>3、将计数完的数组r依次计算当前下标前（包含当前下标）出现的总次数；<ul>
+<li>举个例子，现在有4个人，评分为[3,4,4,2]</li>
+<li>进行前两步之后，数组r = [0,0,1,1,2,0]</li>
+<li>第3步计算结果后，数组r = [0,0,1,2,4,4]， 这个结果表示：<ul>
+<li>小于等于0的评分有0个人</li>
+<li>小于等于1的评分有0个人</li>
+<li>小于等于2的评分有1个人</li>
+<li>小于等于3的评分有2个人</li>
+<li>小于等于4的评分有4个人</li>
+<li>小于等于5的评分有4个人</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>4、有了第3步计算的r的结果，我们遍历源数组时就会发现规律。 遍历到第一个元素3，它的前面有就只有2-1个元素，所以它的位置就是下标为1的位置，此时r数组对应3的计数器减1即可，当循环结束时源数据也就有序了。</li>
+</ul>
+</blockquote>
+<p><img src="https://cn-ljb.github.io/images/数据结构与算法-11线性排序/计数排序.png" alt="计数排序.png"></p>
+<p>代码实现：</p>
+<pre><code>/**
+ * 计数排序
+ */
+private static int[] countingSort(int[] arr, int count) {
+    int[] result = new int[arr.length];
+    int r[] = new int[count];
+    int i;
+    for (i = 0; i &lt; arr.length; i++) {
+        r[arr[i]]++;
+    }
+    for (i = 1; i &lt; r.length; i++) {
+        r[i] = r[i] + r[i - 1];
+    }
+    for (i = arr.length - 1; i &gt;= 0; i--) {
+        int num = arr[i];
+        int index = --r[num];
+        result[index] = num;
+    }
+    return result;
+}
+</code></pre><p>测试：</p>
+<pre><code>int[] arr = {3, 4, 2, 2, 4, 3, 5, 1, 0, 4};
+int[] result = countingSort(arr, 6);
+printArr(result);
+</code></pre><p>输出：</p>
+<pre><code>0 1 2 2 3 3 4 4 4 5 
+</code></pre><p>相较于桶排序来说，计数排序的代码算是比较固定，但对于数据源的要求却更高，<strong>需要明确知道数据源排序值的范围</strong>。</p>
+<p>除了明确的排序值范围外，因为整个算法中巧妙的用到了数组下标，所以<strong>对于非正整数类型数据也是无法使用计数排序的</strong>。</p>
+<p>并且如果<strong>排序值范围远大于原数据源大小，计数排序未必优于其它排序算法</strong>。</p>
+<h3 id="时间复杂度：O-n-1"><a href="#时间复杂度：O-n-1" class="headerlink" title="时间复杂度：O(n)"></a>时间复杂度：O(n)</h3><p>可以看到整个排序算法就主要由3个循环组成，假设对n个元素排序，那么公式为T(n) = 2n + count ， count我们知道它是个常量（<strong>前提条件</strong>），所以最终的时间复杂度为：O(n)</p>
+<h3 id="空间复杂度：O-n"><a href="#空间复杂度：O-n" class="headerlink" title="空间复杂度：O(n)"></a>空间复杂度：O(n)</h3><p>我们使用了一个新的同等大小数组存储排序后的结果。</p>
+<h3 id="稳定性：稳定"><a href="#稳定性：稳定" class="headerlink" title="稳定性：稳定"></a>稳定性：稳定</h3><p>细心的朋友可能已经发现，在最后一层循环计算index位置时，我们使用的是倒序遍历。也正因此，计数排序是稳定排序。</p>
+<h2 id="基数排序"><a href="#基数排序" class="headerlink" title="基数排序"></a>基数排序</h2><p>基数排序的前提条件就更为复杂，为了方便理解，我们试1以着解决以下问题的方式进行讲解：</p>
+<blockquote>
+<p>现在有一个数组存储着20个人员的年龄，人员年龄范围是1-120岁，试着对这20个人员年龄进行排序。</p>
+</blockquote>
+<p>当然使用桶排序和计数排序是可以解决这个问题的，但它们的时间复杂度真的是O(n)吗？</p>
+<p>显然1-120的范围对于20个人的年龄数据源来说还是很大的，有没有更好的排序方式呢？</p>
+<p>拿3个年龄举例：</p>
+<pre><code>[8,116,116]
+我们先将不够3位的年龄补齐3位
+[008,116,116]
+我们先对个位进行排序
+[116,116,008] 
+再对十位进行排序
+[008,116，116]
+最后百位排序
+[071,116,116]
+</code></pre><p>我们可以对年龄从低位到高位的每一位进行稳定排序，经过3次稳定排序后得到的就是最终的有序数组。</p>
+<p>代码：</p>
+<pre><code>  /**
+ * 基数排序
+ */
+private static int[] radixSort(int[] arr) {
+    String[] result;
+    //转string
+    String[] arrStr = parseStr(arr);
+    result = countingSortChange(arrStr, 10, 1);
+    result = countingSortChange(result, 10, 2);
+    result = countingSortChange(result, 10, 3);
+    return parseInt(result);
+}
+
+  /**
+ * 基数排序 * 计数排序
+ */
+private static String[] countingSortChange(String[] arr, int count, int position) {
+    String[] result = new String[arr.length];
+    int[] positionArr = new int[arr.length];
+    int i;
+    for (i = 0; i &lt; arr.length; i++) {
+        String numStr = arr[i].substring(arr[i].length() - position, arr[i].length() - position + 1);
+        positionArr[i] = Integer.parseInt(numStr);
+    }
+
+    int r[] = new int[count];
+
+    for (i = 0; i &lt; arr.length; i++) {
+        r[positionArr[i]]++;
+    }
+
+    for (i = 1; i &lt; r.length; i++) {
+        r[i] = r[i] + r[i - 1];
+    }
+    for (i = arr.length - 1; i &gt;= 0; i--) {
+        int num = positionArr[i];
+        int index = --r[num];
+        result[index] = arr[i];
+    }
+    return result;
+}
+</code></pre><p>测试：</p>
+<pre><code>int[] arr = {10, 9, 3, 4, 87, 34, 21, 42, 5, 86, 22, 116, 120, 9, 29, 90, 110, 3, 77, 6};
+int[] result = radixSort(arr);
+printArr(result);
+</code></pre><p>输出：</p>
+<pre><code>3 3 4 5 6 9 9 10 21 22 29 34 42 77 86 87 90 110 116 120 
+</code></pre><h3 id="时间复杂度：O-n-2"><a href="#时间复杂度：O-n-2" class="headerlink" title="时间复杂度：O(n)"></a>时间复杂度：O(n)</h3><p>基数排序内部使用3次计数排序，但是将排序范围从120个数减少到了10个以内，从而使得时间复杂度更接近O(n)</p>
+<h3 id="空间复杂度：O-n-1"><a href="#空间复杂度：O-n-1" class="headerlink" title="空间复杂度：O(n)"></a>空间复杂度：O(n)</h3><p>同计数排序</p>
+<h3 id="稳定性：稳定-1"><a href="#稳定性：稳定-1" class="headerlink" title="稳定性：稳定"></a>稳定性：稳定</h3><p>同计数排序</p>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>今天学习了三个线性排序算法：<strong>桶排序、计数排序、基数排序</strong>。</p>
+<p>由于这三种排序算法对排序数据源有很多前提要求，实际开发中使用并不广泛。但如果要排序的需求满足这些前提要求，那么使用这些排序算法的执行时间就会很高效。</p>
 
       
     </div>
@@ -568,7 +697,7 @@ m个桶则为：T(n) = O(m * k * logk)
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#桶排序"><span class="nav-number">1.</span> <span class="nav-text">桶排序</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#时间复杂度：O-n"><span class="nav-number">1.1.</span> <span class="nav-text">时间复杂度：O(n)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#空间复杂度：不确定"><span class="nav-number">1.2.</span> <span class="nav-text">空间复杂度：不确定</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#稳定性：不确定"><span class="nav-number">1.3.</span> <span class="nav-text">稳定性：不确定</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#计数排序"><span class="nav-number">2.</span> <span class="nav-text">计数排序</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#桶排序"><span class="nav-number">1.</span> <span class="nav-text">桶排序</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#时间复杂度：O-n"><span class="nav-number">1.1.</span> <span class="nav-text">时间复杂度：O(n)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#空间复杂度：不确定"><span class="nav-number">1.2.</span> <span class="nav-text">空间复杂度：不确定</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#稳定性：不确定"><span class="nav-number">1.3.</span> <span class="nav-text">稳定性：不确定</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#计数排序"><span class="nav-number">2.</span> <span class="nav-text">计数排序</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#时间复杂度：O-n-1"><span class="nav-number">2.1.</span> <span class="nav-text">时间复杂度：O(n)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#空间复杂度：O-n"><span class="nav-number">2.2.</span> <span class="nav-text">空间复杂度：O(n)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#稳定性：稳定"><span class="nav-number">2.3.</span> <span class="nav-text">稳定性：稳定</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基数排序"><span class="nav-number">3.</span> <span class="nav-text">基数排序</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#时间复杂度：O-n-2"><span class="nav-number">3.1.</span> <span class="nav-text">时间复杂度：O(n)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#空间复杂度：O-n-1"><span class="nav-number">3.2.</span> <span class="nav-text">空间复杂度：O(n)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#稳定性：稳定-1"><span class="nav-number">3.3.</span> <span class="nav-text">稳定性：稳定</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小结"><span class="nav-number">4.</span> <span class="nav-text">小结</span></a></li></ol></div>
             
 
           </div>

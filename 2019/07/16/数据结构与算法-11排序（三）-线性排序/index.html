@@ -86,7 +86,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://cn-ljb.github.io/images/数据结构与算法-11线性排序/桶排序.png">
 <meta property="og:image" content="https://cn-ljb.github.io/images/数据结构与算法-11线性排序/计数排序.png">
-<meta property="og:updated_time" content="2019-07-16T10:35:09.302Z">
+<meta property="og:updated_time" content="2019-07-16T13:54:55.768Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据结构与算法之美-11线性排序">
 <meta name="twitter:description" content="前两篇学习了五种常见的排序算法，时间复杂度最低的也需要O(nlogn)。 本片介绍三种时间复杂度为O(n)的排序算法：桶排序、计数排序、基数排序，但是这三种排序算法都需要特定场景前提才能适用。 桶排序 前提：假设需要排序的n大小数据源可以平分为m个桶（区块），每个区块里的数据是无序的，但桶与桶之间是有序的，即m-1桶里的数据肯定是小于m桶里的数据。   思路：有了上面的排序，我们只需要将每个小桶进">
@@ -428,7 +428,7 @@ m个桶则为：T(n) = O(m * k * logk)
 </li>
 </ul>
 </li>
-<li>4、有了第3步计算的r的结果，我们遍历源数组时就会发现规律。 遍历到第一个元素3，它的前面有就只有2-1个元素，所以它的位置就是下标为1的位置，此时r数组对应3的计数器减1即可，当循环结束时源数据也就有序了。</li>
+<li>4、有了第3步计算的r数组，我们遍历源数组时就会发现规律。 遍历到第一个元素3，它的前面有就只有2-1个元素，所以它的位置就是下标为1的位置，此时r数组对应3的计数器减1即可，当循环结束时源数据也就有序了。</li>
 </ul>
 </blockquote>
 <p><img src="https://cn-ljb.github.io/images/数据结构与算法-11线性排序/计数排序.png" alt="计数排序.png"></p>
@@ -465,7 +465,7 @@ printArr(result);
 <h3 id="时间复杂度：O-n-1"><a href="#时间复杂度：O-n-1" class="headerlink" title="时间复杂度：O(n)"></a>时间复杂度：O(n)</h3><p>可以看到整个排序算法就主要由3个循环组成，假设对n个元素排序，那么公式为T(n) = 2n + count ， count我们知道它是个常量（<strong>前提条件</strong>），所以最终的时间复杂度为：O(n)</p>
 <h3 id="空间复杂度：O-n"><a href="#空间复杂度：O-n" class="headerlink" title="空间复杂度：O(n)"></a>空间复杂度：O(n)</h3><p>我们使用了一个新的同等大小数组存储排序后的结果。</p>
 <h3 id="稳定性：稳定"><a href="#稳定性：稳定" class="headerlink" title="稳定性：稳定"></a>稳定性：稳定</h3><p>细心的朋友可能已经发现，在最后一层循环计算index位置时，我们使用的是倒序遍历。也正因此，计数排序是稳定排序。</p>
-<h2 id="基数排序"><a href="#基数排序" class="headerlink" title="基数排序"></a>基数排序</h2><p>基数排序的前提条件就更为复杂，为了方便理解，我们试1以着解决以下问题的方式进行讲解：</p>
+<h2 id="基数排序"><a href="#基数排序" class="headerlink" title="基数排序"></a>基数排序</h2><p>基数排序的前提条件就更为复杂，为了方便理解，我们试着解决以下问题的方式进行讲解：</p>
 <blockquote>
 <p>现在有一个数组存储着20个人员的年龄，人员年龄范围是1-120岁，试着对这20个人员年龄进行排序。</p>
 </blockquote>
@@ -530,11 +530,11 @@ int[] result = radixSort(arr);
 printArr(result);
 </code></pre><p>输出：</p>
 <pre><code>3 3 4 5 6 9 9 10 21 22 29 34 42 77 86 87 90 110 116 120 
-</code></pre><h3 id="时间复杂度：O-n-2"><a href="#时间复杂度：O-n-2" class="headerlink" title="时间复杂度：O(n)"></a>时间复杂度：O(n)</h3><p>基数排序内部使用3次计数排序，但是将排序范围从120个数减少到了10个以内，从而使得时间复杂度更接近O(n)</p>
-<h3 id="空间复杂度：O-n-1"><a href="#空间复杂度：O-n-1" class="headerlink" title="空间复杂度：O(n)"></a>空间复杂度：O(n)</h3><p>同计数排序</p>
-<h3 id="稳定性：稳定-1"><a href="#稳定性：稳定-1" class="headerlink" title="稳定性：稳定"></a>稳定性：稳定</h3><p>同计数排序</p>
+</code></pre><h3 id="时间复杂度：O-n-2"><a href="#时间复杂度：O-n-2" class="headerlink" title="时间复杂度：O(n)"></a>时间复杂度：O(n)</h3><p>基数排序内部使用3次计数排序，但是将排序范围从120个数减少到了10个以内，从而使得时间复杂度更接近O(n).</p>
+<h3 id="空间复杂度：O-n-1"><a href="#空间复杂度：O-n-1" class="headerlink" title="空间复杂度：O(n)"></a>空间复杂度：O(n)</h3><p>同计数排序。</p>
+<h3 id="稳定性：稳定-1"><a href="#稳定性：稳定-1" class="headerlink" title="稳定性：稳定"></a>稳定性：稳定</h3><p>同计数排序。</p>
 <h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>今天学习了三个线性排序算法：<strong>桶排序、计数排序、基数排序</strong>。</p>
-<p>由于这三种排序算法对排序数据源有很多前提要求，实际开发中使用并不广泛。但如果要排序的需求满足这些前提要求，那么使用这些排序算法的执行时间就会很高效。</p>
+<p>由于这三种排序算法对排序数据源有很多前提要求，实际开发中使用的并不广泛。但如果要排序的数据源满足这些前提要求，那么使用这些排序算法会大大他提高代码的执行效率。</p>
 
       
     </div>
